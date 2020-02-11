@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene color-space="sRGB" renderer="gammaOutput: true, physicallyCorrectLights: true">
+      <a-assets>
+        <a-asset-item id="tonnel" src="models/t4b.gltf"></a-asset-item>
+      </a-assets>
+
+  
+
+      <a-entity gltf-model="#tonnel" scale="0.2 0.2 0.2" position = "0 0 0" ></a-entity>
+
+       <!-- <a-sky src="#sky"></a-sky>  -->
+       <a-sky color="#000"></a-sky> 
+
+
+      <a-entity light="type: ambient; color: #BBB;" ></a-entity>
+      <a-entity light="type: directional; color: #55F; intensity: 0.5" position="-0.5 1 1"></a-entity>
+      <!-- <a-entity light="type: point; intensity: 1; distance: 100; decay: 2; color: #FA2" position="0 1.4 -0.1"></a-entity>  -->
+      <a-entity camera look-controls wasd-controls="acceleration:100" position="0 0.5 -10"></a-entity>
+
+    </a-scene>
+  </body>
+</html>
