@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
+    <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
+  </head>
+  <body style="background-color: #000">
+    <a-scene>
+<!-- <a-scene color-space="sRGB" renderer="gammaOutput: true, physicallyCorrectLights: true"> -->
+      <a-assets >
+        <!-- <a-asset-item id="tonnel" src="models/t5b.gltf"></a-asset-item> -->
+        <a-asset-item id="tonnel" src="models/t5a.gltf"></a-asset-item>
+
+        <img id="map1" src="images/Inter.png">
+        <img id="bgmap1" src="images/BG.png">
+      </a-assets>
+
+  
+      <!-- TONNEL -->
+      <a-entity id="ton" gltf-model="#tonnel" scale="0.8 0.8 0.8" position = "0 0 80" >
+        <!-- <a-plane id="floorTon" width="10" height="115" rotation="-90 0 0" position="0 0.03 -58"></a-plane> -->
+    
+        <!-- MAP -->
+        <a-plane src="#map1"  transparent="true" width="1.920" height="1.080" scale="5 5 0" position="0 3.5 -116"></a-plane>
+        <a-plane src="#bgmap1"  width="2.820" height="1.160" scale="5.1 5.1 0" position="0 3.5 -116.4"></a-plane>
+    
+        <!-- LIGHTS -->
+        <a-entity light="type: ambient; color: #4f6487;" ></a-entity>
+        <a-entity light="type: directional; color: #4f6487; intensity: 1" position="-0.5 2 1"></a-entity>
+        <a-light type="point" color="#94c6ff" distance="120" position="0 1 -6" intensity="0" animation="property: light.intensity; from: 0; to: 1; delay: 500; dur: 500" ></a-light>
+        <a-light type="point" color="#94c6ff" distance="120" position="0 1 -80" intensity="0" animation="property: light.intensity; from: 0; to: 1; delay: 500; dur: 500" ></a-light>
+      </a-entity>
+
+ 
+
+       <!-- BACKGROUND  -->
+       <a-sky color="#000"></a-sky> 
+
+
+
+      <!-- CAMERA -->
+      <a-entity id="cameraRig">
+          <a-entity id="#head" camera look-controls wasd-controls="acceleration:400  " position="0 1.8 0"></a-entity>
+          <!-- <a-entity teleport-controls="cameraRig: #cameraRig; button: trigger;"
+          vive-controls="hand: left"
+          oculus-touch-controls="hand: left"
+          microsoft-motion-controls="hand: left"
+          daydream-controls="left" gearvr-controls="left">
+        </a-entity>
+        <a-entity teleport-controls="cameraRig: #cameraRig; type: line; button: trigger;"
+          vive-controls="hand: right"
+          microsoft-motion-controls="hand: right"
+          oculus-touch-controls="hand: right"
+          daydream-controls="right" gearvr-controls="right"> -->
+        <a-entity id="teleHand"  hand-controls="left" teleport-controls="cameraRig: #cameraRig; type: parabolic; collisionEntities:  #ton; curveHitColor: #94c6ff; hitCylinderColor: #94c6ff; curveLineWidth: 0.05"></a-entity>
+        <a-entity id="choseHand"  hand-controls="right" laser-controls line="color: #9444ff; opacity: 0.9"></a-entity>
+      </a-entity>
+
+
+      
+
+    </a-scene>
+  </body>
+</html>
