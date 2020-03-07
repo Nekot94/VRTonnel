@@ -1,25 +1,290 @@
 <html>
   <head>
-    <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@d893cfacc335696c7183943eab8165100c3a6e1c/dist/aframe-master.min.js"></script>
+    <!-- <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script> -->
+    <!-- <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras/dist/aframe-extras.min.js"></script>
+    <!-- <script src="https://unpkg.com/aframe-svg-extruder@1.0.0/dist/index.min.js"></script> -->
+
+    <!-- <script src="components/vr-move.js"></script> -->
+    <script src="components/change-region.js"></script>
   </head>
-  <body>
-    <a-scene color-space="sRGB" renderer="gammaOutput: true, physicallyCorrectLights: true">
-      <a-assets>
-        <a-asset-item id="tonnel" src="models/t1.gltf"></a-asset-item>
+  <body style="background-color: #000">
+    <a-scene>
+<!-- <a-scene color-space="sRGB" renderer="gammaOutput: true, physicallyCorrectLights: true"> -->
+      <a-assets >
+        <a-asset-item id="tonnel" src="models/t5b.gltf"></a-asset-item>
+        <!-- <a-asset-item id="tonnel" src="models/t5a.gltf"></a-asset-item> -->
+
+        <!-- <img id="maps" src="images/Inter.png"> -->
+        <!-- <img id="bgmap1" src="images/BG.png"> -->
+
+        <img id="bgmap1" src="images/map/BG2.png">
+        
+        <img id="l0" src="images/cur/l0.png">
+        <img id="l1" src="images/cur/l1.png">
+        <img id="l2" src="images/cur/l2.png">
+        <img id="l3" src="images/cur/l3.png">
+
+        <img id="map0" src="images/map/map0.png">
+        <img id="map1" src="images/map/map1.png">
+        <img id="map2" src="images/map/map2.png">
+        <img id="map3" src="images/map/map3.png">
+        <img id="map4" src="images/map/map4.png">
+        <img id="map5" src="images/map/map5.png">
+        <img id="map6" src="images/map/map6.png">
+        <img id="map7" src="images/map/map7.png">
+        <img id="map8" src="images/map/map8.png">
+
+        <img id="pointn" src="images/map/pointN.png">
+        <img id="pointa" src="images/map/pointA.png">
+
+        <img id="r01" src="images/city/r01.png">
+        <img id="r02" src="images/city/r02.png">
+        <img id="r03" src="images/city/r03.png">
+        <img id="r04" src="images/city/r04.png">
+        <img id="r05" src="images/city/r05.png">
+        <img id="r06" src="images/city/r06.png">
+        <img id="r07" src="images/city/r07.png">
+        <img id="r08" src="images/city/r08.png">
+        <img id="r11" src="images/city/r11.png">
+        <img id="r12" src="images/city/r11.png">
+        <img id="r13" src="images/city/r11.png">
+        <img id="r14" src="images/city/r11.png">
+        <img id="r15" src="images/city/r11.png">
+        <img id="r16" src="images/city/r11.png">
+        <img id="r17" src="images/city/r11.png">
+        <img id="r18" src="images/city/r11.png">
+        <img id="r21" src="images/city/r21.png">
+        <img id="r22" src="images/city/r21.png">
+        <img id="r23" src="images/city/r21.png">
+        <img id="r24" src="images/city/r21.png">
+        <img id="r25" src="images/city/r21.png">
+        <img id="r26" src="images/city/r21.png">
+        <img id="r27" src="images/city/r21.png">
+        <img id="r28" src="images/city/r21.png">
+
+        <img id="conc" src="images/console/centre.png">
+        <img id="concl" src="images/console/left.png">
+        <img id="conl2" src="images/console/l2.png">
+        <img id="concr" src="images/console/right.png">
+        <img id="conr2" src="images/console/r2.png">
+        
+        <img id="bpa" src="images/navigation/panels/bpanelagro.png">
+        <img id="bpe" src="images/navigation/panels/bpanelexcursion.png">
+        <img id="bplc" src="images/navigation/panels/bpanellessonc.png">
+        <img id="bplh" src="images/navigation/panels/bpanellessonh.png">
+        <img id="bpp" src="images/navigation/panels/bpanelprint.png">
+        <img id="bps" src="images/navigation/panels/bpanelstop.png">
+
+        <img id="pal" src="images/navigation/wall/panelagrol.png">
+        <img id="par" src="images/navigation/wall/panelagror.png">
+        <img id="pel" src="images/navigation/wall/panelexcursionl.png">
+        <img id="per" src="images/navigation/wall/panelexcursionr.png">
+        <img id="ppl" src="images/navigation/wall/panelfarml.png">
+        <img id="ppr" src="images/navigation/wall/panelfarmr.png">
+        <img id="plcl" src="images/navigation/wall/panellessoncl.png">
+        <img id="plcr" src="images/navigation/wall/panellessoncr.png">
+        <img id="plhl" src="images/navigation/wall/panellessonhl.png">
+        <img id="plhr" src="images/navigation/wall/panellessonhr.png">
+        <img id="psl" src="images/navigation/wall/panelstopl.png">
+        <img id="psr" src="images/navigation/wall/panelstopr.png">
+  
+
+
+
+
+
+ 
+
+
+        
+
+
+        <!-- test svg -->
+        <!-- <a-asset-item id="mozilla" src="images/biohazard.svg"></a-asset-item> -->
       </a-assets>
 
   
+      <!-- TONNEL -->
+      <a-entity id="ton" gltf-model="#tonnel" scale="0.8 0.8 0.8" position = "0 0 50" >
+    
+        <!-- MAP -->
+        <!-- <a-plane src="#maps"  transparent="true" width="1.920" height="1.080" scale="5 5 0" position="0 3.5 -116"></a-plane> -->
+        
+        <a-entity id="holomap" scale="1.6 1.6 1.6" position="0 0.5 -115">
+          <a-plane src="#l0"  transparent="true" width="1.329" height="0.363" scale="0 0 0" position="-2.3 3.05 0" animation="property: scale; delay: 1000; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"></a-plane>
+          <a-plane src="#l1"  transparent="true" width="0.876" height="0.474" scale="0 0 0" position="-2.3 2.5 0" animation="property: scale; delay: 1000; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"></a-plane>
+          <a-plane src="#l2"  transparent="true" width="0.987" height="0.270" scale="0 0 0" position="-2.3 2 0" animation="property: scale;  delay: 2000; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"></a-plane>
+          <a-plane src="#l3"  transparent="true" width="0.980" height="1.287" scale="0 0 0" position="-2.3 1.1 0" animation="property: scale;  delay: 3000;from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"></a-plane>
+         
+          <a-plane id="map" src="#map1"  transparent="true"  blending="additive" width="1.750" height="1.634" scale="1.5 1.5 1.5" position="0 1.6 -0.2"
+           animation__scale="property: scale; from:0 0 0; to: 1.6 1.6 1.6; dur: 2000; easing: easeInSine">
+           <!-- animation__up="property: position; startEvents: up; to: 0 1.5 0.4; dur: 500; easing: easeInSine"
+           animation__down="property: position;  startEvents: down; to: 0 1.5 -0.2; dur: 500; easing: easeInSine"      
+           animation__fastdown="property: position;  startEvents: fastdown; to: 0 1.5 -0.4; dur: 100; easing: easeInSine"      
+           > -->
+            <a-entity id="p1" class="interractible point" geometry="primitive: plane"
+            material="shader:flat; src:#pointa; transparent:true; alphaTest:0.2" position="-0.149 -0.39 0.02" 
+            scale="0.04 0.04 1" change-region="map: #map; number: 1"
+            animation__up="property: position; startEvents: up; to: -0.149 -0.39 0.1; dur: 500; easing: easeInSine"
+            animation__down="property: position;  startEvents: down; to: -0.149 -0.39 0.02; dur: 500; easing: easeInSine"      
+            animation__fastdown="property: position;  startEvents: fastdown; to: -0.149 -0.39 0.02; dur: 100; easing: easeInSine" 
+            ></a-entity>
 
-      <a-entity gltf-model="#tonnel" scale="0.2 0.2 0.2" position = "0 0 0" ></a-entity>
+            <a-entity id="p2" class="interractible point" geometry="primitive: plane"
+            material="shader:flat; src:#pointn; transparent:true; alphaTest:0.2" position="0.131 0.18 0.02" 
+            scale="0.04 0.04 1" change-region="map: #map; number: 2"
+            animation__up="property: position; startEvents: up; to: 0.131 0.18 0.1; dur: 500; easing: easeInSine"
+            animation__down="property: position;  startEvents: down; to: 0.131 0.18 0.02; dur: 500; easing: easeInSine"      
+            animation__fastdown="property: position;  startEvents: fastdown; to: 0.131 0.18 0.02; dur: 100; easing: easeInSine" 
+          ></a-entity>
 
-       <!-- <a-sky src="#sky"></a-sky>  -->
+          <a-entity id="p3" class="interractible point" geometry="primitive: plane"
+          material="shader:flat; src:#pointn; transparent:true; alphaTest:0.2" position="0.0 0.19 0.02" 
+          scale="0.04 0.04 1" change-region="map: #map; number: 3"
+          animation__up="property: position; startEvents: up; to: 0.0 0.19 0.1; dur: 500; easing: easeInSine"
+          animation__down="property: position;  startEvents: down; to: 0.0 0.19 0.02; dur: 500; easing: easeInSine"      
+          animation__fastdown="property: position;  startEvents: fastdown; to: 0.0 0.19 0.02; dur: 100; easing: easeInSine" 
+        ></a-entity>
+
+          <a-entity id="p4" class="interractible point" geometry="primitive: plane"
+          material="shader:flat; src:#pointn; transparent:true; alphaTest:0.2" position="-0.1 0.63 0.02" 
+          scale="0.04 0.04 1" change-region="map: #map; number: 4"
+          animation__up="property: position; startEvents: up; to: -0.1 0.63 0.1; dur: 500; easing: easeInSine"
+          animation__down="property: position;  startEvents: down; to: -0.1 0.63 0.02; dur: 500; easing: easeInSine"      
+          animation__fastdown="property: position;  startEvents: fastdown; to: -0.1 0.63 0.02; dur: 100; easing: easeInSine" 
+        ></a-entity>
+
+        <a-entity id="p5" class="interractible point" geometry="primitive: plane"
+          material="shader:flat; src:#pointn; transparent:true; alphaTest:0.2" position="0.273 0.174 0.02" 
+          scale="0.04 0.04 1" change-region="map: #map; number: 5"
+          animation__up="property: position; startEvents: up; to: 0.273 0.174 0.1; dur: 500; easing: easeInSine"
+          animation__down="property: position;  startEvents: down; to: 0.273 0.174 0.02; dur: 500; easing: easeInSine"      
+          animation__fastdown="property: position;  startEvents: fastdown; to: 0.273 0.174 0.02; dur: 100; easing: easeInSine" 
+      ></a-entity>
+
+      <a-entity id="p6" class="interractible point" geometry="primitive: plane"
+          material="shader:flat; src:#pointn; transparent:true; alphaTest:0.2" position="0.074 0.018 0.02" 
+          scale="0.04 0.04 1" change-region="map: #map; number: 6"
+          animation__up="property: position; startEvents: up; to: 0.074 0.018 0.1; dur: 500; easing: easeInSine"
+          animation__down="property: position;  startEvents: down; to: 0.074 0.018 0.02; dur: 500; easing: easeInSine"      
+          animation__fastdown="property: position;  startEvents: fastdown; to: 0.074 0.018 0.02; dur: 100; easing: easeInSine" 
+      ></a-entity>
+
+      <a-entity id="p7" class="interractible point" geometry="primitive: plane"
+        material="shader:flat; src:#pointn; transparent:true; alphaTest:0.2" position="0.132 -0.08 0.02" 
+        scale="0.04 0.04 1" change-region="map: #map; number: 7"
+        animation__up="property: position; startEvents: up; to: 0.132 -0.08 0.1; dur: 500; easing: easeInSine"
+        animation__down="property: position;  startEvents: down; to: 0.132 -0.08 0.02; dur: 500; easing: easeInSine"      
+        animation__fastdown="property: position;  startEvents: fastdown; to: 0.132 -0.08 0.02; dur: 100; easing: easeInSine" 
+      ></a-entity>
+
+      <a-entity id="p8" class="interractible point" geometry="primitive: plane"
+        material="shader:flat; src:#pointn; transparent:true; alphaTest:0.2" position="-0.034 -0.44 0.02" 
+        scale="0.04 0.04 1" change-region="map: #map; number: 8"
+        animation__up="property: position; startEvents: up; to: -0.034 -0.44 0.1; dur: 500; easing: easeInSine"
+        animation__down="property: position;  startEvents: down; to: -0.034 -0.44 0.02; dur: 500; easing: easeInSine"      
+        animation__fastdown="property: position;  startEvents: fastdown; to: -0.034 -0.44 0.02; dur: 100; easing: easeInSine" 
+      ></a-entity>
+          </a-plane>
+
+          <a-plane  id="r0" src="#r01"  transparent="true" width="1.143" height="0.480" scale="0 0 0" position="2.3 2.9 0" 
+              animation__scale="property: scale; delay: 1500; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"
+              animation__scaleev="property: scale; startEvents: scaleev; delay: 0; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"
+              animation__tozero="property: scale; startEvents: tozero; to: 0 0 0; dur: 300; easing: linear"
+              > 
+          </a-plane>
+          <a-plane id="r1"  src="#r11"  transparent="true" width="0.992" height="0.645" scale="0 0 0" position="2.3 2.2 0" 
+              animation__scale="property: scale; delay: 2500; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"
+              animation__scaleev="property: scale; startEvents: scaleev; delay: 1000; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"
+              animation__tozero="property: scale; startEvents: tozero; to: 0 0 0; dur: 300; easing: linear"
+
+              ></a-plane>
+          <a-plane id="r2"  src="#r21"  transparent="true" width="0.993" height="1.404" scale="0 0 0" position="2.3 1.1 0"
+               animation__scale="property: scale;  delay: 3500; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"
+               animation__scaleev="property: scale; startEvents: scaleev; delay: 2000; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"
+              animation__tozero="property: scale; startEvents: tozero; to: 0 0 0; dur: 300; easing: linear"
+          ></a-plane>
+        </a-entity>
+
+        <a-plane src="#bgmap1"  width="2.820" height="1.160" scale="5.1 5.1 0" position="0 3.5 -116.4"></a-plane>
+        
+      <!-- CONSOLE -->
+      <a-entity id="console">
+        <a-entity id="con1" geometry="primitive: plane; width: 2.18; height: 1.429"
+         position="0.04414 1.19112 -114.41" scale="0.25 0.25 0.25" rotation="-12 0 0"
+          material="shader: flat; src: #conc; transparent: true"></a-entity>
+        <a-entity id="con2" geometry="primitive: plane; width: 1.768; height: 1.479"
+           position="-2.130 1.177 -113.65" scale="0.28 0.28 0.28" rotation="-12 36 0"
+           material="shader: flat; src: #concl; transparent: true"></a-entity>
+        <a-entity id="con3" geometry="primitive: plane; width: 1.768; height: 1.479"
+           position="2.17 1.177 -113.68" scale="0.28 0.28 0.28" rotation="-12 -39 0"
+           material="shader:flat; src: #concr; transparent: true"></a-entity>
+           
+        <a-entity id="con4" geometry="primitive: plane; width: 1.020; height: 1.629"
+           position="-3.35 1.240 -111.8" scale="0.4 0.4 0.4"
+           material="shader: flat; src: #conl2; transparent: true"></a-entity>
+        <a-entity id="con4" geometry="primitive: plane; width: 1.020; height: 1.629"
+           position="3.45 1.240 -111.8" scale="0.4 0.4 0.4"
+           material="shader: flat; src: #conr2; transparent: true"></a-entity>  
+      </a-entity>
+
+      <!-- NAVIGATION -->
+      <a-entity id="navigation">
+        <a-entity id="bp1" geometry="primitive: plane; width: 1.187; height: 0.27" position="1.54468 5.6 -53.5" scale="2.5 2.5 2.5" material="side: double; shader: flat; src: #bplh; transparent: true"></a-entity>
+        <a-entity id="bp2" geometry="primitive: plane; width: 1.187; height: 0.27" position="-1.54468 5.6 -53.5" scale="2.5 2.5 2.5" material="side: double; shader: flat; src: #bplc; transparent: true"></a-entity>
+        <a-entity id="bp3" geometry="primitive: plane; width: 1.187; height: 0.27" position="1.54468 5.6 -75"  scale="2.5 2.5 2.5" material="side: double; shader: flat; src: #bpe; transparent: true"></a-entity>
+        <a-entity id="bp4" geometry="primitive: plane; width: 1.187; height: 0.27" position="-1.54468 5.6 -75" scale="2.5 2.5 2.5" material="side: double; shader: flat; src: #bps; transparent: true"></a-entity>
+        <a-entity id="bp5" geometry="primitive: plane; width: 1.187; height: 0.27" position="1.54468 5.6 -96.5" scale="2.5 2.5 2.5" material="side: double; shader: flat; src: #bpa; transparent: true"></a-entity>
+        <a-entity id="bp6" geometry="primitive: plane; width: 1.187; height: 0.27" position="-1.54468 5.6 -96.5" scale="2.5 2.5 2.5" material="side: double; shader: flat; src: #bpp; transparent: true"></a-entity>   
+        
+        <a-entity id="wpl1" geometry="primitive: plane; width: 0.808; height: 0.175" position="6.851 3.239 -48.5" scale="5.8 5.8 5.8"  rotation="0 -90 0" material=" shader: flat; src: #plhl; transparent: true"></a-entity>
+        <a-entity id="wpr1" geometry="primitive: plane; width: 0.808; height: 0.175" position="6.851 3.239 -58.5" scale="5.8 5.8 5.8"  rotation="0 -90 0" material=" shader: flat; src: #plhr; transparent: true"></a-entity>
+        <a-entity id="wpr2" geometry="primitive: plane; width: 0.808; height: 0.175" position="-6.851 3.239 -48.5" scale="5.8 5.8 5.8"  rotation="0 90 0" material=" shader: flat; src: #plcr; transparent: true"></a-entity>
+        <a-entity id="wpl2" geometry="primitive: plane; width: 0.808; height: 0.175" position="-6.851 3.239 -58.5" scale="5.8 5.8 5.8"  rotation="0 90 0" material=" shader: flat; src: #plcl; transparent: true"></a-entity>
+
+        <a-entity id="wpl3" geometry="primitive: plane; width: 0.808; height: 0.175" position="6.851 3.239 -69.6" scale="5.8 5.8 5.8"  rotation="0 -90 0" material=" shader: flat; src: #pel; transparent: true"></a-entity>
+        <a-entity id="wpr3" geometry="primitive: plane; width: 0.808; height: 0.175" position="6.851 3.239 -80.5" scale="5.8 5.8 5.8"  rotation="0 -90 0" material=" shader: flat; src: #per; transparent: true"></a-entity>
+        <a-entity id="wpr4" geometry="primitive: plane; width: 0.808; height: 0.175" position="-6.851 3.239 -69.6" scale="5.8 5.8 5.8"  rotation="0 90 0" material=" shader: flat; src: #psr; transparent: true"></a-entity>
+        <a-entity id="wpl4" geometry="primitive: plane; width: 0.808; height: 0.175" position="-6.851 3.239 -80.5" scale="5.8 5.8 5.8"  rotation="0 90 0" material=" shader: flat; src: #psl; transparent: true"></a-entity>
+
+        <a-entity id="wpl5" geometry="primitive: plane; width: 0.808; height: 0.175" position="6.851 3.239 -91.5" scale="5.8 5.8 5.8"  rotation="0 -90 0" material=" shader: flat; src: #pal; transparent: true"></a-entity>
+        <a-entity id="wpr5" geometry="primitive: plane; width: 0.808; height: 0.175" position="6.851 3.239 -101.9" scale="5.8 5.8 5.8"  rotation="0 -90 0" material=" shader: flat; src: #par; transparent: true"></a-entity>
+        <a-entity id="wpr6" geometry="primitive: plane; width: 0.808; height: 0.175" position="-6.851 3.239 -91.5" scale="5.8 5.8 5.8"  rotation="0 90 0" material=" shader: flat; src: #ppr; transparent: true"></a-entity>
+        <a-entity id="wpl6" geometry="primitive: plane; width: 0.808; height: 0.175" position="-6.851 3.239 -101.9" scale="5.8 5.8 5.8"  rotation="0 90 0" material=" shader: flat; src: #ppl; transparent: true"></a-entity>
+
+  
+      </a-entity>
+
+        <!-- LIGHTS -->
+        <a-entity light="type: ambient; color: #4f6487;" ></a-entity>
+        <a-entity light="type: directional; color: #4f6487; intensity: 1" position="-0.5 2 1"></a-entity>
+        <a-light type="point" color="#94c6ff" distance="140" position="0 5 -6" intensity="0" animation="property: light.intensity; from: 0; to: 1; delay: 500; dur: 500" ></a-light>
+        <!-- <a-light type="point" color="#94c6ff" distance="120" position="0 5 -100" intensity="0" animation="property: light.intensity; from: 0; to: 1; delay: 500; dur: 500" ></a-light> -->
+        <a-light type="point" color="#94c6ff" distance="140" position="0 5 -80" intensity="0" animation="property: light.intensity; from: 0; to: 1; delay: 500; dur: 500" ></a-light>
+        
+
+      </a-entity>
+
+
+
+       <!-- BACKGROUND  -->
        <a-sky color="#000"></a-sky> 
 
 
-      <a-entity light="type: ambient; color: #BBB;" ></a-entity>
-      <a-entity light="type: directional; color: #55F; intensity: 3" position="-0.5 1 1"></a-entity>
-      <!-- <a-entity light="type: point; intensity: 1; distance: 100; decay: 2; color: #FA2" position="0 1.4 -0.1"></a-entity>  -->
-      <a-entity camera look-controls wasd-controls="acceleration:100" position="0 0.5 0"></a-entity>
+
+      <!-- CAMERA -->
+      <a-entity id="cameraRig" movement-controls>
+          <a-entity id="#head" camera look-controls position="0 1.8 0" cursor="rayOrigin: mouse; object: .interractible" ></a-entity>
+        <a-entity id="leftHand" hand-controls="hand: left; handModelStyle: highPoly; color: #94c6ff"></a-entity>
+        <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: highPoly; color: #94c6ff" laser-controls line="color: red; opacity: 0.75" raycaster="objects: .interractible"></a-entity>
+
+        <a-entity id="choseHand"></a-entity>
+      </a-entity>
+
+
+      
 
     </a-scene>
   </body>
