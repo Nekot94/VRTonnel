@@ -5,16 +5,29 @@
     <!-- <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras/dist/aframe-extras.min.js"></script>
     <!-- <script src="https://unpkg.com/aframe-svg-extruder@1.0.0/dist/index.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
     <!-- <script src="components/vr-move.js"></script> -->
     <script src="components/change-region.js"></script>
     <script src="components/teleport.js"></script>
     <script src="components/room-manager.js"></script>
+    <script src="components/video-player.js"></script>
+    <script src="components/video-player-hls.js"></script>
   </head>
   <body style="background-color: #000">
-    <a-scene room-manager="rooms: ton agro lab excursion les1 les2">
+    <a-scene room-manager>
 <!-- <a-scene color-space="sRGB" renderer="gammaOutput: true, physicallyCorrectLights: true"> -->
       <a-assets >
+
+        <!-- VIDEO -->
+        <!-- <video id="chem" loop="true" src="https://320711.selcdn.ru/mnl/20200305.mp4"> </video> -->
+
+        <video id="chem" src="https://320711.selcdn.ru/mnl/20200305.mp4" controls="controls" style="display:none"
+            crossorigin="anonymous" playsinline webkit-playsinline>
+        <source type="video/mp4"
+            src="" />
+        </video>
+
         <!-- MODELS -->
         <a-asset-item id="tonnel" src="models/t6.gltf"></a-asset-item>
         <a-asset-item id="agro1" src="models/agro1.gltf"></a-asset-item>
@@ -103,6 +116,8 @@
         <img id="p11r" src="images/port/p11r.png">
         <img id="p12r" src="images/port/p12r.png">
 
+        <img id="i1" src="images/npo/i1.jpg">
+
         
   
 
@@ -122,7 +137,7 @@
 
   
       <!-- TONNEL -->
-      <a-entity id="ton"  class="room"  visible="true" gltf-model="#tonnel" scale="0.8 0.8 0.8" position = "0 0 80" >
+      <a-entity id="ton"  class="room"  visible="true" gltf-model="#tonnel" scale="0.8 0.8 0.8" position = "0 0 40" >
     
         <!-- MAP -->
         <!-- <a-plane src="#maps"  transparent="true" width="1.920" height="1.080" scale="5 5 0" position="0 3.5 -116"></a-plane> -->
@@ -274,19 +289,19 @@
 
        <!-- PORTALS -->
        <a-entity id="portals">
-        <a-entity class="interractible" id="portal1" geometry="primitive: cylinder; height:6; width:1.2;" position="6 3 -53.5" scale="1 1 1" material="color:#00ffff; opacity:0.1; transparent: true;" teleport>
+        <a-entity class="interractible" id="portal1" geometry="primitive: cylinder; height:6; width:1.2;" position="6 3 -53.5" scale="1 1 1" material="color:#00ffff; opacity:0.1; transparent: true;" teleport="room:lesson1">
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 3 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p12; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 360 0; loop: true; dur: 20000"></a-entity>
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 3 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p11; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 -360 0; loop: true; dur: 10000"></a-entity>
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p12; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 360 0; loop: true; dur: 20000"></a-entity>
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p11; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 -360 0; loop: true; dur: 10000"></a-entity>
         </a-entity>
-        <a-entity class="interractible" id="portal2" geometry="primitive: cylinder; height:6; width:1.2;" position="-6 3 -53.5" scale="1 1 1" material="color:#00ffff; opacity:0.1; transparent: true;" teleport>
+        <a-entity class="interractible" id="portal2" geometry="primitive: cylinder; height:6; width:1.2;" position="-6 3 -53.5" scale="1 1 1" material="color:#00ffff; opacity:0.1; transparent: true;" teleport="room:lesson2">
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 3 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p12; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 360 0; loop: true; dur: 20000"></a-entity>
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 3 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p11; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 -360 0; loop: true; dur: 10000"></a-entity>
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p12; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 360 0; loop: true; dur: 20000"></a-entity>
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p11; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 -360 0; loop: true; dur: 10000"></a-entity>
         </a-entity>
-        <a-entity class="interractible" id="portal3" geometry="primitive: cylinder; height:6; width:1.2;" position="6 3 -75" scale="1 1 1" material="color:#00ffff; opacity:0.1; transparent: true;" teleport>
+        <a-entity class="interractible" id="portal3" geometry="primitive: cylinder; height:6; width:1.2;" position="6 3 -75" scale="1 1 1" material="color:#00ffff; opacity:0.1; transparent: true;" teleport="room:excursion">
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 3 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p12; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 360 0; loop: true; dur: 20000"></a-entity>
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 3 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p11; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 -360 0; loop: true; dur: 10000"></a-entity>
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p12; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 360 0; loop: true; dur: 20000"></a-entity>
@@ -464,11 +479,50 @@
       </a-entity>
 
         <!-- LIGHTS -->
-        <a-light type="point" color="#94c6ff" distance="140" position="0 5 -6" intensity="0" animation="property: light.intensity; from: 0; to: 2; delay: 500; dur: 500" ></a-light>
+        <a-light type="point" color="#94c6ff" distance="200" position="7 4 -8" intensity="0" animation="property: light.intensity; from: 0; to: 1.5; delay: 500; dur: 500" ></a-light>
+        <a-light type="point" color="#94c6ff" distance="15" position="8.8 2 -14" intensity="0" animation="property: light.intensity; from: 0; to: 0.5; delay: 500; dur: 500" ></a-light>
+        <a-light type="point" color="#94c6ff" distance="15" position="2.8 2 -14" intensity="0" animation="property: light.intensity; from: 0; to: 0.5; delay: 500; dur: 500" ></a-light>
+        <a-light type="point" color="#94c6ff" distance="15" position="4 2 -4.5" intensity="0" animation="property: light.intensity; from: 0; to: 0.5; delay: 500; dur: 500" ></a-light>
    </a-entity>
+        
+      <!-- EXCURSION -->
+      <a-entity id="excursion"  class="room"  visible="false">
+      <!-- MINIBACKPORTAL -->
+      <a-entity id="miniportal1"  position="0 0 -1.5" scale="0.5 0.5 0.5" material="color:#00ffff; opacity:0.1; transparent: true;" teleport="room:ton">
+        <a-entity  class="interractible" geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p12; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 360 0; loop: true; dur: 20000"></a-entity>
+        <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p11; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 -360 0; loop: true; dur: 10000"></a-entity>
+      </a-entity>
+
+        <a-sky id="esphere" radius="100" src="#i1" rotation="0 180 0"></a-sky>
+      </a-entity>
+
+
+      <!-- VIDEO CHEMESTRY -->
+        <a-entity id="lesson1"  class="room"  visible="false" video-player="onPlay:room-enter; onPause:room-exit; video:#chem" l="https://riftman.gcdn.co/videos/8113_tA2MHvYMQ5EmpUp4/master.m3u8" sr="https://320711.selcdn.ru/mnl/20200305.mp4">
+        <!-- MINIBACKPORTAL -->
+        <a-entity id="miniportal1"  position="0 0 -1.5" scale="0.5 0.5 0.5" material="color:#00ffff; opacity:0.1; transparent: true;" teleport="room:ton">
+          <a-entity  class="interractible" geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p12; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 360 0; loop: true; dur: 20000"></a-entity>
+          <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p11; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 -360 0; loop: true; dur: 10000"></a-entity>
+        </a-entity>
+  
+          <a-videosphere id="vsphere1" radius="100" src="#chem" rotation="0 -90 0"></a-videosphers>
+        </a-entity>
+
+      <!-- VIDEO CHEMESTRY 2 -->
+      <a-entity id="lesson2"  class="room"  visible="false" video-player-hls="onPlay:room-enter; onPause:room-exit; video:#chem" l="https://riftman.gcdn.co/videos/8113_tA2MHvYMQ5EmpUp4/master.m3u8" sr="https://320711.selcdn.ru/mnl/20200305.mp4">
+        <!-- MINIBACKPORTAL -->
+        <a-entity id="miniportal1"  position="0 0 -1.5" scale="0.5 0.5 0.5" material="color:#00ffff; opacity:0.1; transparent: true;" teleport="room:ton">
+          <a-entity  class="interractible" geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p12; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 360 0; loop: true; dur: 20000"></a-entity>
+          <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p11; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 -360 0; loop: true; dur: 10000"></a-entity>
+        </a-entity>
+  
+          <a-videosphere id="vsphere1" radius="100" src="#chem" rotation="0 -90 0"></a-videosphers>
+        </a-entity>
+      
       
 
-      
+
+ 
 
        <!-- LIGHTS -->
        <a-entity light="type: ambient; color: #4f6487;" ></a-entity>
