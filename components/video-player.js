@@ -16,16 +16,18 @@ AFRAME.registerComponent('video-player', {
       el.addEventListener(data.onPlay, function () {
           if (!video)
            return;
-           if (!isPlayed) {
+          
+          //  if (!isPlayed) {
               video.src= el.getAttribute('sr');
+              console.log(el.getAttribute('sr'));
               if (data.restart) video.currentTime = 0;
               var playPromise = video.play();
               if (playPromise !== null) {
               playPromise.catch(() => { /* discard runtime error */ })
               }
-          } else {
-              video.pause();
-          }
+          // } else {
+          //     // video.pause();
+          // }
           
       });
 

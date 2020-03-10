@@ -13,6 +13,7 @@
     <script src="components/room-manager.js"></script>
     <script src="components/video-player.js"></script>
     <script src="components/video-player-hls.js"></script>
+    <script src="components/aframe-video-controls.js"></script>
   </head>
   <body style="background-color: #000">
     <a-scene room-manager>
@@ -23,6 +24,8 @@
         <!-- <video id="chem" loop="true" src="https://320711.selcdn.ru/mnl/20200305.mp4"> </video> -->
 
         <video id="chem" src="https://320711.selcdn.ru/mnl/20200305.mp4" controls="controls" style="display:none"
+            crossorigin="anonymous" playsinline webkit-playsinline>
+        <video id="chem2" src="https://320711.selcdn.ru/mnl/20200305.mp4" controls="controls" style="display:none"
             crossorigin="anonymous" playsinline webkit-playsinline>
         <source type="video/mp4"
             src="" />
@@ -136,7 +139,7 @@
         <img id="p11r" src="images/port/p11r.png">
         <img id="p12r" src="images/port/p12r.png">
 
-        <img id="i1" src="images/npo/i1.jpg">
+        <img id="i2" src="images/npo/i2.jpg">
 
         
   
@@ -605,7 +608,7 @@
         <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p11; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 -360 0; loop: true; dur: 10000"></a-entity>
       </a-entity>
 
-        <a-sky id="esphere" radius="100" src="#i1" rotation="0 180 0"></a-sky>
+        <a-sky id="esphere" radius="100" src="#i2" rotation="0 180 0"></a-sky>
       </a-entity>
 
 
@@ -616,19 +619,23 @@
           <a-entity  class="interractible" geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p12; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 360 0; loop: true; dur: 20000"></a-entity>
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p11; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 -360 0; loop: true; dur: 10000"></a-entity>
         </a-entity>
+             <!-- TIMELINE -->
+        <a-entity position="0 -1 -2" rotation="-90 0 0" class="interractible" video-controls="src:#chem; distance:0; size:2.8; background-color: rgba(0,0,0,1); bar-color: #00ffff; timeTextFont:fonts/YaHeiCustom-msdf.json"></a-entity> 
   
           <a-videosphere id="vsphere1" radius="100" src="#chem" rotation="0 -90 0"></a-videosphers>
         </a-entity>
 
       <!-- VIDEO CHEMESTRY 2 -->
-      <a-entity id="lesson2"  class="room"  visible="false" video-player-hls="onPlay:room-enter; onPause:room-exit; video:#chem" l="https://riftman.gcdn.co/videos/8113_tA2MHvYMQ5EmpUp4/master.m3u8" sr="https://320711.selcdn.ru/mnl/20200305.mp4">
+      <a-entity id="lesson2"  class="room"  visible="false" video-player-hls="onPlay:room-enter; onPause:room-exit; video:#chem2" l="https://riftman.gcdn.co/videos/8113_tA2MHvYMQ5EmpUp4/master.m3u8" sr="https://320711.selcdn.ru/mnl/20200305.mp4">
         <!-- MINIBACKPORTAL -->
         <a-entity id="miniportal1"  position="0 0 -1.5" scale="0.5 0.5 0.5" material="color:#00ffff; opacity:0.1; transparent: true;" teleport="room:ton; position: -2 0 -3">
           <a-entity  class="interractible" geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p12; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 360 0; loop: true; dur: 20000"></a-entity>
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p11; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 -360 0; loop: true; dur: 10000"></a-entity>
         </a-entity>
+        <!-- TIMELINE -->
+        <a-entity position="0 -1 -2" rotation="-90 0 0" class="interractible" video-controls="src:#chem2; distance:0; size:2.8; background-color: rgba(0,0,0,1); bar-color: #00ffff; timeTextFont:fonts/YaHeiCustom-msdf.json"></a-entity> 
   
-          <a-videosphere id="vsphere1" radius="100" src="#chem" rotation="0 -90 0"></a-videosphers>
+          <a-videosphere id="vsphere1" radius="100" src="#chem2" rotation="0 -90 0"></a-videosphers>
         </a-entity>
       
       
@@ -647,7 +654,7 @@
 
       <!-- CAMERA -->
       <a-entity id="cameraRig" movement-controls>
-          <a-entity id="#head" camera look-controls position="0 1.8 0" cursor="rayOrigin: mouse; objects:"  raycaster="objects: .interractible">
+          <a-entity id="cursor" camera look-controls position="0 1.8 0" cursor="rayOrigin: mouse" raycaster="objects: .interractible" >
           </a-entity>
         <a-entity id="leftHand" hand-controls="hand: left; handModelStyle: highPoly; color: #94c6ff"></a-entity>
         <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: highPoly; color: #94c6ff" laser-controls line="color: red; opacity: 0.75" raycaster="objects: .interractible"></a-entity>
