@@ -47,6 +47,9 @@
         <img id="l2" src="images/cur/l2.png">
         <img id="l3" src="images/cur/l3.png">
 
+        <img id="l1m" src="images/cur/l1m.png">
+        <img id="l1c" src="images/cur/l1c.png">
+
         <img id="map0" src="images/map/map0.png">
         <img id="map1" src="images/map/map1.png">
         <img id="map2" src="images/map/map2.png">
@@ -59,15 +62,31 @@
 
         <img id="pointn" src="images/map/pointN.png">
         <img id="pointa" src="images/map/pointA.png">
+        <img id="points" src="images/map/pointS.png">
 
-        <img id="r01" src="images/city/r01.png">
+        <!-- <img id="r01" src="images/city/r01.png">
         <img id="r02" src="images/city/r02.png">
         <img id="r03" src="images/city/r03.png">
         <img id="r04" src="images/city/r04.png">
         <img id="r05" src="images/city/r05.png">
         <img id="r06" src="images/city/r06.png">
         <img id="r07" src="images/city/r07.png">
-        <img id="r08" src="images/city/r08.png">
+        <img id="r08" src="images/city/r08.png"> -->
+
+
+        
+        <img id="r01" src="images/city/rb01.png">
+        <img id="r02" src="images/city/rb02.png">
+        <img id="r03" src="images/city/rb03.png">
+        <img id="r04" src="images/city/rb04.png">
+        <img id="r05" src="images/city/rb05.png">
+        <img id="r06" src="images/city/rb06.png">
+        <img id="r07" src="images/city/rb07.png">
+        <img id="r08" src="images/city/rb08.png">
+        <img id="rc" src="images/city/rc.png">
+
+
+
         <img id="r11" src="images/city/r11.png">
         <img id="r12" src="images/city/r11.png">
         <img id="r13" src="images/city/r11.png">
@@ -137,86 +156,176 @@
 
   
       <!-- TONNEL -->
-      <a-entity id="ton"  class="room"  visible="true" gltf-model="#tonnel" scale="0.8 0.8 0.8" position = "0 0 40" >
+      <a-entity id="ton"  class="room"  visible="true" gltf-model="#tonnel" scale="0.8 0.8 0.8" position = "0 0 80" >
     
         <!-- MAP -->
         <!-- <a-plane src="#maps"  transparent="true" width="1.920" height="1.080" scale="5 5 0" position="0 3.5 -116"></a-plane> -->
         
-        <a-entity id="holomap" scale="1.6 1.6 1.6" position="0 0.5 -115">
-          <a-plane src="#l0"  transparent="true" width="1.329" height="0.363" scale="0 0 0" position="-2.3 3.05 0" animation="property: scale; delay: 1000; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"></a-plane>
-          <a-plane src="#l1"  transparent="true" width="0.876" height="0.474" scale="0 0 0" position="-2.3 2.5 0" animation="property: scale; delay: 1000; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"></a-plane>
+        <a-entity id="holomap" scale="1.6 1.6 1.6" position="0 0.4 -115">
+          <a-plane src="#l0"  transparent="true" width="1.329" height="0.363" scale="0 0 0" position="-2.1 3.05 0" animation="property: scale; delay: 1000; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"></a-plane>
+          <a-plane src="#l1m"  transparent="true" width="0.876" height="0.474" scale="0 0 0" position="-2.3 2.5 0" animation="property: scale; delay: 1000; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear">
+            <a-entity  material="shader:flat; src:#l1c; transparent:true; alphaTest:0.2"  geometry="primitive: plane; width:0.474; height:0.474" scale="1 1 1" position="-0.2 0 0.01" animation="property: rotation; from: 0 0 0; to: 0 0 360; loop: true; dur: 10000; easing: linear"></a->
+          </a-plane>
           <a-plane src="#l2"  transparent="true" width="0.987" height="0.270" scale="0 0 0" position="-2.3 2 0" animation="property: scale;  delay: 2000; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"></a-plane>
           <a-plane src="#l3"  transparent="true" width="0.980" height="1.287" scale="0 0 0" position="-2.3 1.1 0" animation="property: scale;  delay: 3000;from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"></a-plane>
          
-          <a-plane id="map" src="#map1"  transparent="true"  blending="additive" width="1.750" height="1.634" scale="1.5 1.5 1.5" position="0 1.6 -0.2"
+          <a-plane id="map" src="#map1"  transparent="true"  blending="additive" width="1.750" height="1.634" scale="1.5 1.5 1.5" position="0 1.7 -0.2"
            animation__scale="property: scale; from:0 0 0; to: 1.6 1.6 1.6; dur: 2000; easing: easeInSine">
            <!-- animation__up="property: position; startEvents: up; to: 0 1.5 0.4; dur: 500; easing: easeInSine"
            animation__down="property: position;  startEvents: down; to: 0 1.5 -0.2; dur: 500; easing: easeInSine"      
            animation__fastdown="property: position;  startEvents: fastdown; to: 0 1.5 -0.4; dur: 100; easing: easeInSine"      
            > -->
             <a-entity id="p1" class="interractible point" geometry="primitive: plane"
-            material="shader:flat; src:#pointa; transparent:true; alphaTest:0.2" position="-0.149 -0.39 0.02" 
-            scale="0.04 0.04 1" change-region="map: #map; number: 1"
-            animation__up="property: position; startEvents: up; to: -0.149 -0.39 0.06; dur: 500; easing: easeInSine"
-            animation__down="property: position;  startEvents: down; to: -0.149 -0.39 0.02; dur: 500; easing: easeInSine"      
-            animation__fastdown="property: position;  startEvents: fastdown; to: -0.149 -0.39 0.02; dur: 100; easing: easeInSine" 
-            ></a-entity>
+              material="shader:flat; src:#pointa; transparent:true; alphaTest:0.2" position="-0.149 -0.39 0.02" 
+              scale="0.04 0.04 1" change-region="map: #map; number: 1"
+              animation__scaleup="property: scale; startEvents: up; to: 0.045 0.045 1; dur: 500; easing: easeInSine"
+              animation__scaledown="property: scale;  startEvents: down; to: 0.04 0.04 1; dur: 500; easing: easeInSine"
+              animation__scalefastdown="property: scale;  startEvents: fastdown; to: 0.04 0.04 1; dur: 100; easing: easeInSine" 
+              animation__up="property: position; startEvents: up; to: -0.149 -0.39 0.04; dur: 500; easing: easeInSine"
+              animation__down="property: position;  startEvents: down; to: -0.149 -0.39 0.02; dur: 500; easing: easeInSine"      
+              animation__fastdown="property: position;  startEvents: fastdown; to: -0.149 -0.39 0.02; dur: 100; easing: easeInSine" 
+            >
+            <a-entity geometry="primitive: plane"
+            visible="true"
+            material="shader:flat; src:#points; transparent:true; alphaTest:0.3" 
+            positon="0 0 -0."
+            scale="1 1 1" change-region="map: #map; number: 2"
+            animation__scaleup="property: scale;  to: 1.6 1.6 1; dur: 910; easing: easeInSine; loop:true">
+          </a-entity>  
+            </a-entity>
 
             <a-entity id="p2" class="interractible point" geometry="primitive: plane"
             material="shader:flat; src:#pointn; transparent:true; alphaTest:0.2" position="0.131 0.18 0.02" 
             scale="0.04 0.04 1" change-region="map: #map; number: 2"
-            animation__up="property: position; startEvents: up; to: 0.131 0.18 0.06; dur: 500; easing: easeInSine"
+            animation__scaleup="property: scale; startEvents: up; to: 0.045 0.045 1; dur: 500; easing: easeInSine"
+            animation__scaledown="property: scale;  startEvents: down; to: 0.04 0.04 1; dur: 500; easing: easeInSine"
+            animation__scalefastdown="property: scale;  startEvents: fastdown; to: 0.04 0.04 1; dur: 100; easing: easeInSine"
+            animation__up="property: position; startEvents: up; to: 0.131 0.18 0.04; dur: 500; easing: easeInSine"
             animation__down="property: position;  startEvents: down; to: 0.131 0.18 0.02; dur: 500; easing: easeInSine"      
             animation__fastdown="property: position;  startEvents: fastdown; to: 0.131 0.18 0.02; dur: 100; easing: easeInSine" 
-          ></a-entity>
+          >
+          <a-entity geometry="primitive: plane"
+            visible="true"
+            material="shader:flat; src:#points; transparent:true; alphaTest:0.3" 
+            positon="0 0 -0."
+            scale="1 1 1" change-region="map: #map; number: 2"
+            animation__scaleup="property: scale;  to: 1.6 1.6 1; dur: 920; easing: easeInOutQuad; loop:true">
+          </a-entity>  
+        </a-entity>
 
           <a-entity id="p3" class="interractible point" geometry="primitive: plane"
           material="shader:flat; src:#pointn; transparent:true; alphaTest:0.2" position="0.0 0.19 0.02" 
           scale="0.04 0.04 1" change-region="map: #map; number: 3"
-          animation__up="property: position; startEvents: up; to: 0.0 0.19 0.06; dur: 500; easing: easeInSine"
+          animation__scaleup="property: scale; startEvents: up; to: 0.045 0.045 1; dur: 500; easing: easeInSine"
+          animation__scaledown="property: scale;  startEvents: down; to: 0.04 0.04 1; dur: 500; easing: easeInSine"
+          animation__scalefastdown="property: scale;  startEvents: fastdown; to: 0.04 0.04 1; dur: 100; easing: easeInSine"
+          animation__up="property: position; startEvents: up; to: 0.0 0.19 0.04; dur: 500; easing: easeInSine"
           animation__down="property: position;  startEvents: down; to: 0.0 0.19 0.02; dur: 500; easing: easeInSine"      
           animation__fastdown="property: position;  startEvents: fastdown; to: 0.0 0.19 0.02; dur: 100; easing: easeInSine" 
-        ></a-entity>
+        >
+        <a-entity geometry="primitive: plane"
+        visible="true"
+        material="shader:flat; src:#points; transparent:true; alphaTest:0.3" 
+        positon="0 0 -0."
+        scale="1 1 1" change-region="map: #map; number: 2"
+        animation__scaleup="property: scale;  to: 1.6 1.6 1; dur: 930; easing: easeInOutQuad; loop:true">
+        </a-entity>  
+      </a-entity>
 
           <a-entity id="p4" class="interractible point" geometry="primitive: plane"
           material="shader:flat; src:#pointn; transparent:true; alphaTest:0.2" position="-0.1 0.63 0.02" 
           scale="0.04 0.04 1" change-region="map: #map; number: 4"
-          animation__up="property: position; startEvents: up; to: -0.1 0.63 0.06; dur: 500; easing: easeInSine"
+          animation__scaleup="property: scale; startEvents: up; to: 0.045 0.045 1; dur: 500; easing: easeInSine"
+          animation__scaledown="property: scale;  startEvents: down; to: 0.04 0.04 1; dur: 500; easing: easeInSine"
+          animation__scalefastdown="property: scale;  startEvents: fastdown; to: 0.04 0.04 1; dur: 100; easing: easeInSine"
+          animation__up="property: position; startEvents: up; to: -0.1 0.63 0.04; dur: 500; easing: easeInSine"
           animation__down="property: position;  startEvents: down; to: -0.1 0.63 0.02; dur: 500; easing: easeInSine"      
           animation__fastdown="property: position;  startEvents: fastdown; to: -0.1 0.63 0.02; dur: 100; easing: easeInSine" 
-        ></a-entity>
+        >
+        <a-entity geometry="primitive: plane"
+        visible="true"
+        material="shader:flat; src:#points; transparent:true; alphaTest:0.3" 
+        positon="0 0 -0."
+        scale="1 1 1" change-region="map: #map; number: 2"
+        animation__scaleup="property: scale;  to: 1.6 1.6 1; dur: 940; easing: easeInOutQuad; loop:true">
+      </a-entity>  
+      </a-entity>
 
         <a-entity id="p5" class="interractible point" geometry="primitive: plane"
           material="shader:flat; src:#pointn; transparent:true; alphaTest:0.2" position="0.273 0.174 0.02" 
           scale="0.04 0.04 1" change-region="map: #map; number: 5"
-          animation__up="property: position; startEvents: up; to: 0.273 0.174 0.06; dur: 500; easing: easeInSine"
+          animation__scaleup="property: scale; startEvents: up; to: 0.045 0.045 1; dur: 500; easing: easeInSine"
+          animation__scaledown="property: scale;  startEvents: down; to: 0.04 0.04 1; dur: 500; easing: easeInSine"
+          animation__scalefastdown="property: scale;  startEvents: fastdown; to: 0.04 0.04 1; dur: 100; easing: easeInSine"
+          animation__up="property: position; startEvents: up; to: 0.273 0.174 0.04; dur: 500; easing: easeInSine"
           animation__down="property: position;  startEvents: down; to: 0.273 0.174 0.02; dur: 500; easing: easeInSine"      
           animation__fastdown="property: position;  startEvents: fastdown; to: 0.273 0.174 0.02; dur: 100; easing: easeInSine" 
-      ></a-entity>
+      >
+      <a-entity geometry="primitive: plane"
+      visible="true"
+      material="shader:flat; src:#points; transparent:true; alphaTest:0.3" 
+      positon="0 0 -0."
+      scale="1 1 1" change-region="map: #map; number: 2"
+      animation__scaleup="property: scale;  to: 1.6 1.6 1; dur: 950; easing: easeInOutQuad; loop:true">
+    </a-entity>  
+    </a-entity>
 
       <a-entity id="p6" class="interractible point" geometry="primitive: plane"
           material="shader:flat; src:#pointn; transparent:true; alphaTest:0.2" position="0.074 0.018 0.02" 
           scale="0.04 0.04 1" change-region="map: #map; number: 6"
-          animation__up="property: position; startEvents: up; to: 0.074 0.018 0.06; dur: 500; easing: easeInSine"
+          animation__scaleup="property: scale; startEvents: up; to: 0.045 0.045 1; dur: 500; easing: easeInSine"
+          animation__scaledown="property: scale;  startEvents: down; to: 0.04 0.04 1; dur: 500; easing: easeInSine"
+          animation__scalefastdown="property: scale;  startEvents: fastdown; to: 0.04 0.04 1; dur: 100; easing: easeInSine"
+          animation__up="property: position; startEvents: up; to: 0.074 0.018 0.04; dur: 500; easing: easeInSine"
           animation__down="property: position;  startEvents: down; to: 0.074 0.018 0.02; dur: 500; easing: easeInSine"      
           animation__fastdown="property: position;  startEvents: fastdown; to: 0.074 0.018 0.02; dur: 100; easing: easeInSine" 
-      ></a-entity>
+      >
+      <a-entity geometry="primitive: plane"
+      visible="true"
+      material="shader:flat; src:#points; transparent:true; alphaTest:0.3" 
+      positon="0 0 -0."
+      scale="1 1 1" change-region="map: #map; number: 2"
+      animation__scaleup="property: scale;  to: 1.6 1.6 1; dur: 960; easing: easeInOutQuad; loop:true">
+    </a-entity>  
+    </a-entity>
 
       <a-entity id="p7" class="interractible point" geometry="primitive: plane"
         material="shader:flat; src:#pointn; transparent:true; alphaTest:0.2" position="0.132 -0.08 0.02" 
         scale="0.04 0.04 1" change-region="map: #map; number: 7"
-        animation__up="property: position; startEvents: up; to: 0.132 -0.08 0.06; dur: 500; easing: easeInSine"
+        animation__scaleup="property: scale; startEvents: up; to: 0.045 0.045 1; dur: 500; easing: easeInSine"
+        animation__scaledown="property: scale;  startEvents: down; to: 0.04 0.04 1; dur: 500; easing: easeInSine"
+        animation__scalefastdown="property: scale;  startEvents: fastdown; to: 0.04 0.04 1; dur: 100; easing: easeInSine"
+        animation__up="property: position; startEvents: up; to: 0.132 -0.08 0.04; dur: 500; easing: easeInSine"
         animation__down="property: position;  startEvents: down; to: 0.132 -0.08 0.02; dur: 500; easing: easeInSine"      
         animation__fastdown="property: position;  startEvents: fastdown; to: 0.132 -0.08 0.02; dur: 100; easing: easeInSine" 
-      ></a-entity>
+      >
+      <a-entity geometry="primitive: plane"
+      visible="true"
+      material="shader:flat; src:#points; transparent:true; alphaTest:0.3" 
+      positon="0 0 -0."
+      scale="1 1 1" change-region="map: #map; number: 2"
+      animation__scaleup="property: scale;  to: 1.6 1.6 1; dur: 970; easing: easeInOutQuad; loop:true">
+    </a-entity>  
+    </a-entity>
 
       <a-entity id="p8" class="interractible point" geometry="primitive: plane"
         material="shader:flat; src:#pointn; transparent:true; alphaTest:0.2" position="-0.034 -0.44 0.02" 
         scale="0.04 0.04 1" change-region="map: #map; number: 8"
-        animation__up="property: position; startEvents: up; to: -0.034 -0.44 0.06; dur: 500; easing: easeInSine"
+        animation__scaleup="property: scale; startEvents: up; to: 0.045 0.045 1; dur: 500; easing: easeInSine"
+        animation__scaledown="property: scale;  startEvents: down; to: 0.04 0.04 1; dur: 500; easing: easeInSine"
+        animation__scalefastdown="property: scale;  startEvents: fastdown; to: 0.04 0.04 1; dur: 100; easing: easeInSine"
+        animation__up="property: position; startEvents: up; to: -0.034 -0.44 0.04; dur: 500; easing: easeInSine"
         animation__down="property: position;  startEvents: down; to: -0.034 -0.44 0.02; dur: 500; easing: easeInSine"      
         animation__fastdown="property: position;  startEvents: fastdown; to: -0.034 -0.44 0.02; dur: 100; easing: easeInSine" 
-      ></a-entity>
+      >
+      <a-entity geometry="primitive: plane"
+      visible="true"
+      material="shader:flat; src:#points; transparent:true; alphaTest:0.3" 
+      positon="0 0 -0."
+      scale="1 1 1" change-region="map: #map; number: 2"
+      animation__scaleup="property: scale;  to: 1.6 1.6 1; dur: 980; easing: easeInOutQuad; loop:true">
+    </a-entity>  
+    </a-entity>
           </a-plane>
 
           <a-plane  id="r0" src="#r01"  transparent="true" width="1.143" height="0.480" scale="0 0 0" position="2.3 2.9 0" 
@@ -224,7 +333,9 @@
               animation__scaleev="property: scale; startEvents: scaleev; delay: 0; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"
               animation__tozero="property: scale; startEvents: tozero; to: 0 0 0; dur: 300; easing: linear"
               > 
+              <a-entity  material="shader:flat; src:#rc; transparent:true; alphaTest:0.2"  geometry="primitive: plane; width:0.438; height:0.439" scale="1 1 1" position="-0.35 0 0.01" animation="property: rotation; from: 0 0 0; to: 0 0 -360; loop: true; dur: 15000; easing: linear"></a->          
           </a-plane>
+
           <a-plane id="r1"  src="#r11"  transparent="true" width="0.992" height="0.645" scale="0 0 0" position="2.3 2.2 0" 
               animation__scale="property: scale; delay: 2500; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"
               animation__scaleev="property: scale; startEvents: scaleev; delay: 1000; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"
