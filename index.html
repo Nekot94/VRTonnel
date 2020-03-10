@@ -35,7 +35,8 @@
         <a-asset-item id="lab1" src="models/lab1.glb"></a-asset-item>
         <a-asset-item id="lab2" src="models/lab2.gltf"></a-asset-item>
 
-        <a-asset-item id="printer" src="models/printer1.gltf"></a-asset-item>
+        <!-- <a-asset-item id="printer" src="models/printer1.gltf"></a-asset-item> -->
+        <a-asset-item id="printer" src="models/printer3.gltf"></a-asset-item>
         <a-asset-item id="shelf" src="models/shelf2.gltf"></a-asset-item>
         
 
@@ -156,20 +157,20 @@
 
   
       <!-- TONNEL -->
-      <a-entity id="ton"  class="room"  visible="true" gltf-model="#tonnel" scale="0.8 0.8 0.8" position = "0 0 40" >
+      <a-entity id="ton"  class="room"  visible="true" gltf-model="#tonnel" scale="0.8 0.8 0.8" position = "0 0 80" >
     
         <!-- MAP -->
         <!-- <a-plane src="#maps"  transparent="true" width="1.920" height="1.080" scale="5 5 0" position="0 3.5 -116"></a-plane> -->
         
         <a-entity id="holomap" scale="1.6 1.6 1.6" position="0 0.4 -115">
-          <a-plane src="#l0"  transparent="true" width="1.329" height="0.363" scale="0 0 0" position="-2.1 3.05 0" animation="property: scale; delay: 1000; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"></a-plane>
-          <a-plane src="#l1m"  transparent="true" width="0.876" height="0.474" scale="0 0 0" position="-2.3 2.5 0" animation="property: scale; delay: 1000; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear">
+          <a-plane src="#l0"  shader="flat" transparent="true" width="1.329" height="0.363" scale="0 0 0" position="-2.1 3.05 0" animation="property: scale; delay: 1000; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"></a-plane>
+          <a-plane src="#l1m"  shader="flat" transparent="true" width="0.876" height="0.474" scale="0 0 0" position="-2.3 2.5 0" animation="property: scale; delay: 1000; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear">
             <a-entity  material="shader:flat; src:#l1c; transparent:true; alphaTest:0.2"  geometry="primitive: plane; width:0.474; height:0.474" scale="1 1 1" position="-0.2 0 0.01" animation="property: rotation; from: 0 0 0; to: 0 0 360; loop: true; dur: 10000; easing: linear"></a->
           </a-plane>
-          <a-plane src="#l2"  transparent="true" width="0.987" height="0.270" scale="0 0 0" position="-2.3 2 0" animation="property: scale;  delay: 2000; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"></a-plane>
-          <a-plane src="#l3"  transparent="true" width="0.980" height="1.287" scale="0 0 0" position="-2.3 1.1 0" animation="property: scale;  delay: 3000;from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"></a-plane>
+          <a-plane src="#l2"  shader="flat" transparent="true" width="0.987" height="0.270" scale="0 0 0" position="-2.3 2 0" animation="property: scale;  delay: 2000; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"></a-plane>
+          <a-plane src="#l3"  shader="flat" transparent="true" width="0.980" height="1.287" scale="0 0 0" position="-2.3 1.1 0" animation="property: scale;  delay: 3000;from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"></a-plane>
          
-          <a-plane id="map" src="#map1"  transparent="true"  blending="additive" width="1.750" height="1.634" scale="1.5 1.5 1.5" position="0 1.7 -0.2"
+          <a-plane id="map" src="#map1"  shader="flat" transparent="true"  blending="additive" width="1.750" height="1.634" scale="1.5 1.5 1.5" position="0 1.7 -0.2"
            animation__scale="property: scale; from:0 0 0; to: 1.6 1.6 1.6; dur: 2000; easing: easeInSine">
            <!-- animation__up="property: position; startEvents: up; to: 0 1.5 0.4; dur: 500; easing: easeInSine"
            animation__down="property: position;  startEvents: down; to: 0 1.5 -0.2; dur: 500; easing: easeInSine"      
@@ -328,7 +329,7 @@
     </a-entity>
           </a-plane>
 
-          <a-plane  id="r0" src="#r01"  transparent="true" width="1.143" height="0.480" scale="0 0 0" position="2.3 2.9 0" 
+          <a-plane shader="flat"  id="r0" src="#r01"  transparent="true" width="1.143" height="0.480" scale="0 0 0" position="2.3 2.9 0" 
               animation__scale="property: scale; delay: 1500; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"
               animation__scaleev="property: scale; startEvents: scaleev; delay: 0; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"
               animation__tozero="property: scale; startEvents: tozero; to: 0 0 0; dur: 300; easing: linear"
@@ -336,13 +337,13 @@
               <a-entity  material="shader:flat; src:#rc; transparent:true; alphaTest:0.2"  geometry="primitive: plane; width:0.438; height:0.439" scale="1 1 1" position="-0.35 0 0.01" animation="property: rotation; from: 0 0 0; to: 0 0 -360; loop: true; dur: 15000; easing: linear"></a->          
           </a-plane>
 
-          <a-plane id="r1"  src="#r11"  transparent="true" width="0.992" height="0.645" scale="0 0 0" position="2.3 2.2 0" 
+          <a-plane shader="flat"  id="r1"  src="#r11"  transparent="true" width="0.992" height="0.645" scale="0 0 0" position="2.3 2.2 0" 
               animation__scale="property: scale; delay: 2500; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"
               animation__scaleev="property: scale; startEvents: scaleev; delay: 1000; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"
               animation__tozero="property: scale; startEvents: tozero; to: 0 0 0; dur: 300; easing: linear"
 
               ></a-plane>
-          <a-plane id="r2"  src="#r21"  transparent="true" width="0.993" height="1.404" scale="0 0 0" position="2.3 1.1 0"
+          <a-plane  shader="flat" id="r2"  src="#r21"  transparent="true" width="0.993" height="1.404" scale="0 0 0" position="2.3 1.1 0"
                animation__scale="property: scale;  delay: 3500; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"
                animation__scaleev="property: scale; startEvents: scaleev; delay: 2000; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"
               animation__tozero="property: scale; startEvents: tozero; to: 0 0 0; dur: 300; easing: linear"
@@ -373,12 +374,12 @@
 
       <!-- NAVIGATION -->
       <a-entity id="navigation">
-        <a-entity id="bp1" geometry="primitive: plane; width: 1.187; height: 0.27" position="1.54468 5.6 -53.5" scale="2.5 2.5 2.5" material="side: double; shader: flat; src: #bplh; transparent: true"></a-entity>
-        <a-entity id="bp2" geometry="primitive: plane; width: 1.187; height: 0.27" position="-1.54468 5.6 -53.5" scale="2.5 2.5 2.5" material="side: double; shader: flat; src: #bplc; transparent: true"></a-entity>
-        <a-entity id="bp3" geometry="primitive: plane; width: 1.187; height: 0.27" position="1.54468 5.6 -75"  scale="2.5 2.5 2.5" material="side: double; shader: flat; src: #bpe; transparent: true"></a-entity>
-        <a-entity id="bp4" geometry="primitive: plane; width: 1.187; height: 0.27" position="-1.54468 5.6 -75" scale="2.5 2.5 2.5" material="side: double; shader: flat; src: #bps; transparent: true"></a-entity>
-        <a-entity id="bp5" geometry="primitive: plane; width: 1.187; height: 0.27" position="1.54468 5.6 -96.5" scale="2.5 2.5 2.5" material="side: double; shader: flat; src: #bpa; transparent: true"></a-entity>
-        <a-entity id="bp6" geometry="primitive: plane; width: 1.187; height: 0.27" position="-1.54468 5.6 -96.5" scale="2.5 2.5 2.5" material="side: double; shader: flat; src: #bpp; transparent: true"></a-entity>   
+        <a-entity id="bp1" geometry="primitive: plane; width: 1.187; height: 0.27" position="1.54468 5.6 -53.5" scale="2.5 2.5 2.5" material=" shader: flat; src: #bplh; transparent: true"></a-entity>
+        <a-entity id="bp2" geometry="primitive: plane; width: 1.187; height: 0.27" position="-1.54468 5.6 -53.5" scale="2.5 2.5 2.5" material=" shader: flat; src: #bplc; transparent: true"></a-entity>
+        <a-entity id="bp3" geometry="primitive: plane; width: 1.187; height: 0.27" position="1.54468 5.6 -75"  scale="2.5 2.5 2.5" material=" shader: flat; src: #bpe; transparent: true"></a-entity>
+        <a-entity id="bp4" geometry="primitive: plane; width: 1.187; height: 0.27" position="-1.54468 5.6 -75" scale="2.5 2.5 2.5" material=" shader: flat; src: #bps; transparent: true"></a-entity>
+        <a-entity id="bp5" geometry="primitive: plane; width: 1.187; height: 0.27" position="1.54468 5.6 -96.5" scale="2.5 2.5 2.5" material=" shader: flat; src: #bpa; transparent: true"></a-entity>
+        <a-entity id="bp6" geometry="primitive: plane; width: 1.187; height: 0.27" position="-1.54468 5.6 -96.5" scale="2.5 2.5 2.5" material=" shader: flat; src: #bpp; transparent: true"></a-entity>   
         
         <a-entity id="wpl1" geometry="primitive: plane; width: 0.808; height: 0.175" position="6.851 3.239 -48.5" scale="5.8 5.8 5.8"  rotation="0 -90 0" material=" shader: flat; src: #plhl; transparent: true"></a-entity>
         <a-entity id="wpr1" geometry="primitive: plane; width: 0.808; height: 0.175" position="6.851 3.239 -58.5" scale="5.8 5.8 5.8"  rotation="0 -90 0" material=" shader: flat; src: #plhr; transparent: true"></a-entity>
