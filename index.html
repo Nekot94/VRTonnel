@@ -33,9 +33,17 @@
 
         <!-- MODELS -->
         <a-asset-item id="tonnel" src="https://320711.selcdn.ru/izobr/models/t6.gltf"></a-asset-item>
-        <a-asset-item id="agro1" src="https://320711.selcdn.ru/izobr/models/agro1.gltf"></a-asset-item>
-        <a-asset-item id="agro2" src="https://320711.selcdn.ru/izobr/models/agro2.gltf"></a-asset-item>
-        <a-asset-item id="lab1" src="https://320711.selcdn.ru/izobr/models/lab1.glb"></a-asset-item>
+        <!-- <a-asset-item id="agro1" src="https://320711.selcdn.ru/izobr/models/agro1.gltf"></a-asset-item> -->
+        <!-- <a-asset-item id="agro2" src="https://320711.selcdn.ru/izobr/models/agro2.gltf"></a-asset-item> -->
+        <!-- <a-asset-item id="agro2" src="https://320711.selcdn.ru/izobr/models/agro2.gltf"></a-asset-item> -->
+        <a-asset-item id="agro3" src="https://320711.selcdn.ru/izobr/models/agrofarmall.glb"></a-asset-item>
+        <a-asset-item id="agrocapsule" src="https://320711.selcdn.ru/izobr/models/kapsula.glb"></a-asset-item>
+        <a-asset-item id="agroplant" src="https://320711.selcdn.ru/izobr/models/cvetok.glb"></a-asset-item>
+
+        <!-- <a-asset-item id="bnav" src="models/bNavMesh.glb"></a-asset-item> -->
+
+
+        <!-- <a-asset-item id="lab1" src="https://320711.selcdn.ru/izobr/models/lab1.glb"></a-asset-item> -->
         <a-asset-item id="lab2" src="https://320711.selcdn.ru/izobr/models/lab2.gltf"></a-asset-item>
 
         <!-- <a-asset-item id="printer" src="https://320711.selcdn.ru/izobr/models/printer1.gltf"></a-asset-item> -->
@@ -165,6 +173,8 @@
         <!-- <a-asset-item id="mozilla" src="images/biohazard.svg"></a-asset-item> -->
       </a-assets>
 
+          <!-- NAVMESH -->
+        <!-- <a-entity  id="agnav" visible="true" gltf-model="#bnav"  nav-mesh ></a-entity> -->
   
       <!-- TONNEL -->
       <a-entity id="ton"  class="room"  visible="true" gltf-model="#tonnel" scale="0.8 0.8 0.8" position = "0 0 40" >
@@ -173,12 +183,12 @@
         <!-- <a-plane src="#maps"  transparent="true" width="1.920" height="1.080" scale="5 5 0" position="0 3.5 -116"></a-plane> -->
         
         <a-entity id="holomap" scale="1.6 1.6 1.6" position="0 0.4 -115">
-          <a-plane src="#l0"  shader="flat" transparent="true" width="1.329" height="0.363" scale="0 0 0" position="-2.1 3.05 0" animation="property: scale; delay: 1000; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"></a-plane>
-          <a-plane src="#l1m"  shader="flat" transparent="true" width="0.876" height="0.474" scale="0 0 0" position="-2.3 2.5 0" animation="property: scale; delay: 1000; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear">
+          <a-plane src="#l0"  shader="flat" transparent="true" width="1.329" height="0.363" scale="0 0 0" position="-1.8 3.05 0" animation="property: scale; delay: 1000; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"></a-plane>
+          <a-plane src="#l1m"  shader="flat" transparent="true" width="0.876" height="0.474" scale="0 0 0" position="-2.0 2.5 0" animation="property: scale; delay: 1000; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear">
             <a-entity  material="shader:flat; src:#l1c; transparent:true; alphaTest:0.2"  geometry="primitive: plane; width:0.474; height:0.474" scale="1 1 1" position="-0.2 0 0.01" animation="property: rotation; from: 0 0 0; to: 0 0 360; loop: true; dur: 10000; easing: linear"></a->
           </a-plane>
-          <a-plane src="#l2"  shader="flat" transparent="true" width="0.987" height="0.270" scale="0 0 0" position="-2.3 2 0" animation="property: scale;  delay: 2000; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"></a-plane>
-          <a-plane src="#l3"  shader="flat" transparent="true" width="0.980" height="1.287" scale="0 0 0" position="-2.3 1.1 0" animation="property: scale;  delay: 3000;from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"></a-plane>
+          <a-plane src="#l2"  shader="flat" transparent="true" width="0.987" height="0.270" scale="0 0 0" position="-2.0 2 0" animation="property: scale;  delay: 2000; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"></a-plane>
+          <a-plane src="#l3"  shader="flat" transparent="true" width="0.980" height="1.287" scale="0 0 0" position="-2.0 1.1 0" animation="property: scale;  delay: 3000;from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"></a-plane>
          
           <a-plane id="map" src="#map1"  shader="flat" transparent="true"  blending="additive" width="1.750" height="1.634" scale="1.5 1.5 1.5" position="0 1.7 -0.2"
            animation__scale="property: scale; from:0 0 0; to: 1.6 1.6 1.6; dur: 2000; easing: easeInSine">
@@ -339,7 +349,7 @@
     </a-entity>
           </a-plane>
 
-          <a-plane shader="flat"  id="r0" src="#r01"  transparent="true" width="1.143" height="0.480" scale="0 0 0" position="2.3 2.9 0" 
+          <a-plane shader="flat"  id="r0" src="#r01"  transparent="true" width="1.143" height="0.480" scale="0 0 0" position="2.0 2.9 0" 
               animation__scale="property: scale; delay: 1500; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"
               animation__scaleev="property: scale; startEvents: scaleev; delay: 0; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"
               animation__tozero="property: scale; startEvents: tozero; to: 0 0 0; dur: 300; easing: linear"
@@ -347,13 +357,13 @@
               <a-entity  material="shader:flat; src:#rc; transparent:true; alphaTest:0.2"  geometry="primitive: plane; width:0.438; height:0.439" scale="1 1 1" position="-0.35 0 0.01" animation="property: rotation; from: 0 0 0; to: 0 0 -360; loop: true; dur: 15000; easing: linear"></a->          
           </a-plane>
 
-          <a-plane shader="flat"  id="r1"  src="#r11"  transparent="true" width="0.992" height="0.645" scale="0 0 0" position="2.3 2.2 0" 
+          <a-plane shader="flat"  id="r1"  src="#r11"  transparent="true" width="0.992" height="0.645" scale="0 0 0" position="2.0 2.2 0" 
               animation__scale="property: scale; delay: 2500; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"
               animation__scaleev="property: scale; startEvents: scaleev; delay: 1000; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"
               animation__tozero="property: scale; startEvents: tozero; to: 0 0 0; dur: 300; easing: linear"
 
               ></a-plane>
-          <a-plane  shader="flat" id="r2"  src="#r21"  transparent="true" width="0.993" height="1.404" scale="0 0 0" position="2.3 1.1 0"
+          <a-plane  shader="flat" id="r2"  src="#r21"  transparent="true" width="0.993" height="1.404" scale="0 0 0" position="2.0 1.1 0"
                animation__scale="property: scale;  delay: 3500; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"
                animation__scaleev="property: scale; startEvents: scaleev; delay: 2000; from:0 0 0; to: 1 1 1; dur: 1000; easing: linear"
               animation__tozero="property: scale; startEvents: tozero; to: 0 0 0; dur: 300; easing: linear"
@@ -442,7 +452,7 @@
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p12r; transparent: true; alphaTest:0.2" ></a-entity>
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p11r; transparent: true; alphaTest:0.2" ></a-entity>
         </a-entity>
-        <a-entity class="interractible" id="portal5" geometry="primitive: cylinder; height:6; width:1.2;" position="6 3 -96.5" scale="1 1 1" material="color:#00ffff; opacity:0.1; transparent: true;" teleport="room:agro">
+        <a-entity class="interractible" id="portal5" geometry="primitive: cylinder; height:6; width:1.2;" position="6 3 -96.5" scale="1 1 1" material="color:#00ffff; opacity:0.1; transparent: true;" teleport="room:agro; position: 0 0 0">
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 3 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p12; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 360 0; loop: true; dur: 20000"></a-entity>
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 3 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p11; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 -360 0; loop: true; dur: 10000"></a-entity>
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p12; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 360 0; loop: true; dur: 20000"></a-entity>
@@ -468,9 +478,69 @@
       </a-entity>
       
       <!-- AGROBOX -->
-      <a-entity id="agro"  class="room"  visible="false" gltf-model="#agro2" scale="1.6 1.6 1.6" position = "-12 0 12" >
+      <a-entity id="agro"  class="room"  visible="false" gltf-model="#agro3" scale="1.6 1.6 1.6" position = "0 0 0" >
+    
+        <!-- AGROCAPSULES -->
+        <a-entity  gltf-model="#agrocapsule"  position = "-2.5 0.01 -1" >
+          <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
+        </a-entity>
+        <a-entity  gltf-model="#agrocapsule"  position = "-2.5 0.01 -2" >
+          <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
+        </a-entity>
+        <a-entity  gltf-model="#agrocapsule"  position = "-2.5 0.01 -3" >
+          <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
+        </a-entity>
+        <a-entity  gltf-model="#agrocapsule"  position = "-2.5 0.01 -4" >
+          <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
+        </a-entity>
+        <a-entity  gltf-model="#agrocapsule"  position = "-2.5 0.01 -5" >
+          <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
+        </a-entity>
+        <a-entity  gltf-model="#agrocapsule"  position = "-2.5 0.01 -6" >
+          <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
+        </a-entity>
+
+        <a-entity  gltf-model="#agrocapsule"  position = "-3.8 0.01 -1" >
+          <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
+        </a-entity>
+        <a-entity  gltf-model="#agrocapsule"  position = "-3.8 0.01 -2" >
+          <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
+        </a-entity>
+        <a-entity  gltf-model="#agrocapsule"  position = "-3.8 0.01 -3" >
+          <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
+        </a-entity>
+        <a-entity  gltf-model="#agrocapsule"  position = "-3.8 0.01 -4" >
+          <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
+        </a-entity>
+        <a-entity  gltf-model="#agrocapsule"  position = "-3.8 0.01 -5" >
+          <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
+        </a-entity>
+        <a-entity  gltf-model="#agrocapsule"  position = "-3.8 0.01 -6" >
+          <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
+        </a-entity>
+
+        <a-entity  gltf-model="#agrocapsule"  position = "-8 0.01 -1" >
+          <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
+        </a-entity>
+        <a-entity  gltf-model="#agrocapsule"  position = "-8 0.01 -2" >
+          <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
+        </a-entity>
+        <a-entity  gltf-model="#agrocapsule"  position = "-8 0.01 -3" >
+          <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
+        </a-entity>
+        <a-entity  gltf-model="#agrocapsule"  position = "-8 0.01 -4" >
+          <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
+        </a-entity>
+        <a-entity  gltf-model="#agrocapsule"  position = "-8 0.01 -5" >
+          <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
+        </a-entity>
+        <a-entity  gltf-model="#agrocapsule"  position = "-8 0.01 -6" >
+          <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
+        </a-entity>
+
+
         <!-- BACKPORTAL -->
-        <a-entity class="interractible" id="portall" geometry="primitive: cylinder; height:6 width:1.2;" position="10 1.5 -1" scale="0.5 0.5 0.5" material="color:#00ffff; opacity:0.1; transparent: true;" teleport="room:ton;  position: 2 0 -37">
+        <a-entity class="interractible" id="portall" geometry="primitive: cylinder; height:6 width:1.2;" position="0 1.5 1" scale="0.5 0.5 0.5" material="color:#00ffff; opacity:0.1; transparent: true;" teleport="room:ton;  position: 2 0 -37">
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 2.5 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p12; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 360 0; loop: true; dur: 20000"></a-entity>
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 2.5 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p11; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 -360 0; loop: true; dur: 10000"></a-entity>
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p12; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 360 0; loop: true; dur: 20000"></a-entity>
@@ -483,8 +553,12 @@
       <!-- <a-entity gltf-model="#room" rotation="0 0 0" scale="0.2 0.2 0.2" position = "0 1.2 0"></a-entity> -->
 
         <!-- LIGHTS -->
-        <a-light type="point" color="#94c6ff" distance="140" position="0 5 -6" intensity="0" animation="property: light.intensity; from: 0; to: 2; delay: 500; dur: 500" ></a-light>
-        </a-entity>
+        <a-light type="point" color="#94c6ff" distance="140" position="0 2 -1" intensity="0" animation="property: light.intensity; from: 0; to: 1; delay: 500; dur: 500" ></a-light>
+        <a-light type="point" color="#94c6ff" distance="140" position="-5 2 -1" intensity="0" animation="property: light.intensity; from: 0; to: 1; delay: 500; dur: 500" ></a-light>
+        <a-light type="point" color="#94c6ff" distance="140" position="0 2 -8" intensity="0" animation="property: light.intensity; from: 0; to: 1; delay: 500; dur: 500" ></a-light>
+        <a-light type="point" color="#94c6ff" distance="140" position="-5 2 -8" intensity="0" animation="property: light.intensity; from: 0; to: 1; delay: 500; dur: 500" ></a-light>
+        
+      </a-entity>
 
 
       <!-- LABORATORY -->
@@ -667,7 +741,7 @@
 
 
       <!-- CAMERA -->
-      <a-entity id="cameraRig" movement-controls>
+      <a-entity id="cameraRig" movement-controls="constrainToNavMesh: true">
           <a-entity id="cursor" camera look-controls position="0 1.8 0" cursor="rayOrigin: mouse" raycaster="objects: .interractible" >
           </a-entity>
         <a-entity id="leftHand" hand-controls="hand: left; handModelStyle: highPoly; color: #94c6ff"></a-entity>
