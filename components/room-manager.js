@@ -1,7 +1,10 @@
 AFRAME.registerComponent('room-manager', {
     schema: {
       rig: {type: 'selector', default: "#cameraRig"},
-      cam: {type: 'selector', default: "[camera]"}
+      cam: {type: 'selector', default: "[camera]"},
+      nav: {default: false},
+      startPos: {deafult: "0 0 0"}
+
     },
 
     init: function () {
@@ -25,11 +28,20 @@ AFRAME.registerComponent('room-manager', {
 
         let room = href.split('#')[1];
 
-        console.log(room);
-        if (room)
+        console.log("123", myRooms[room]);
+        if (room && myRooms[room])
         {
-            this.changeRoom(room);
+
+            console.log("pps2",myRooms[room].room.getAttribute("start"));
+            let pos = myRooms[room].room.getAttribute("startp");
+            pos = pos ? pos : "0 0 0"; 
+            console.log("pps",pos);
             
+            this.changeRoom(room,position=pos);
+            
+        }
+        else{
+            this.data.rig.setAttribute("position", this.data.startPos); 
         }
 
 
@@ -49,6 +61,18 @@ AFRAME.registerComponent('room-manager', {
                 myRooms[r].room.setAttribute("visible", "true");
                 myRooms[r].room.emit('room-enter');
 
+                if (myRooms[r].room.hasAttribute("stay")) {
+                 
+                    rig.setAttribute('movement-controls','enabled',false)
+
+                 
+                }
+                else {
+
+                    rig.setAttribute('movement-controls','enabled',true)
+
+                }
+
                 for(let i=0; i<myRooms[r].interractibles.length; i++)
                 {
                     myRooms[r].interractibles[i].classList.add("interractible");
@@ -64,8 +88,16 @@ AFRAME.registerComponent('room-manager', {
             myRooms[r].room.emit('room-exit');
 
         }
-        rig.setAttribute("position", position);
+        
+
+        // rig.setAttribute("position", "1000 0 0");
         // rig.setAttribute("rotation", rotation);
+        if (this.data.nav)
+        {
+            rig.setAttribute('movement-controls','constrainToNavMesh',false)
+
+
+        }
         
 
         cam.setAttribute("look-controls", {enabled:false})
@@ -74,7 +106,16 @@ AFRAME.registerComponent('room-manager', {
         var newY = cam.object3D.rotation.y
         cam.components['look-controls'].pitchObject.rotation.x = newX
         cam.components['look-controls'].yawObject.rotation.y = newY
-        cam.setAttribute("look-controls",{enabled:true})
+        cam.setAttribute("look-controls",{enabled:true});
+        rig.setAttribute("position", position);  
+
+
+        if (this.data.nav)
+        {
+            rig.setAttribute('movement-controls','constrainToNavMesh',true)
+
+        }
+
 
     }
 

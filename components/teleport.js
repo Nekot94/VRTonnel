@@ -2,7 +2,7 @@ AFRAME.registerComponent('teleport', {
     schema: {
       room: { default: "agro" },
       position: {default: "0 0 0"},
-      rotation: {default: "0 0 0"},
+      rotation: {default: "0 0 0"}
     },
 
     init: function () {
