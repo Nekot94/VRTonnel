@@ -27,15 +27,14 @@ AFRAME.registerComponent('room-manager', {
         }
 
         let room = href.split('#')[1];
+        if (room) 
+            room = room.split("/")[0];
 
-        console.log("123", myRooms[room]);
         if (room && myRooms[room])
         {
 
-            console.log("pps2",myRooms[room].room.getAttribute("start"));
             let pos = myRooms[room].room.getAttribute("startp");
             pos = pos ? pos : "0 0 0"; 
-            console.log("pps",pos);
             
             this.changeRoom(room,position=pos);
             
@@ -79,7 +78,6 @@ AFRAME.registerComponent('room-manager', {
                 }
                 continue;
             }
-            console.log(myRooms[r]);
             myRooms[r].room.setAttribute("visible", "false");
             for(let i=0; i<myRooms[r].interractibles.length; i++)
             {

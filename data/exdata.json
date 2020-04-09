@@ -1,0 +1,41 @@
+[
+    {
+        "id":0,
+        "url":"images/excursion360/PIC_20200228_114724_20200228130950.jpg",
+        "rotation": 180,
+        "transitions":[
+            {"transitionId": 1, "additionalRotation": 0,  "position": "10 2 9", "latitude":10, "longitude":135, "radius": 18 } 
+            ],
+        "info":[
+                {"text": "Кошка крошка", "position": "0 0 -1", "latitude":12, "longitude":190, "radius": 18   },
+                {"text": "home shom home shom home shom home shom home shom home shom home shom home shom home shom home", "position": "0 0 -1", "latitude":12, "longitude":90, "radius": 18  }
+            ]
+     },
+     {
+        "id":1,
+        "url":"images/excursion360/PIC_20200228_114829_20200228130950.jpg",
+        "rotation": 180,
+        "transitions":[
+            {"transitionId": 0, "additionalRotation": 0, "position": "10 2 -9", "latitude":10, "longitude":55, "radius": 18 },
+            {"transitionId": 2, "additionalRotation": 0, "position": "-14 0 -9", "latitude":0, "longitude":300, "radius": 18 } 
+            ],
+        "info":[
+                {"text": "lorem ipsum", "position": "0 0 -1" },
+                {"text": "home shom home shom home shom home shom home shom home shom", "position": "0 0 -1" } 
+            ]
+    },
+    {
+        "id":2,
+        "url":"images/excursion360/PIC_20200228_114916_20200228130950.jpg",
+        "rotation": 180,
+        "transitions":[
+            {"transitionId": 1, "additionalRotation": -90, "position": "-16 0 8", "latitude":10, "longitude":240, "radius": 18 },
+            {"transitionId": 0, "additionalRotation": 0, "position": "1 0 -5", "latitude":0, "longitude":80, "radius": 18} 
+            ],
+        "info":[
+                {"text": "lorem ipsum", "position": "0 0 -1" },
+                {"text": "home shom home shom home shom home shom home shom home shom", "position": "0 0 -1" } 
+            ]
+    }
+    
+]
