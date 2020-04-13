@@ -30,7 +30,7 @@ AFRAME.registerComponent('excursion-controller', {
               } 
 
               if (!room || !this.exdata.find(e => e.id == room)) {
-                this.changeRoom(this.exdata[0].id);
+                this.changeRoom(this.exdata[0].id, 0, false);
               }
               else {
                 this.changeRoom(room);      
@@ -43,14 +43,16 @@ AFRAME.registerComponent('excursion-controller', {
     
     },
 
-    changeRoom : function(num, addRot = 0) {
+    changeRoom : function(num, addRot = 0, doURL = true) {
         let loader =this.data.loader;
         loader.setAttribute("visible", true);
         let target = this.data.target;
         let linkParrent = this.data.linkp;
         let exel = this.exdata.find(e => e.id == num);
 
-        // history.pushState( {} ,'', '#'+ this.el.id + '/' + num);
+        console.log("doURL", doURL);
+
+        if (doURL) history.pushState( {} ,'', '#'+ this.el.id + '/' + num);
 
 
         target.setAttribute('src', exel.url);
