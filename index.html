@@ -7,6 +7,8 @@
     <!-- <script src="https://unpkg.com/aframe-svg-extruder@1.0.0/dist/index.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
+    <script src="https://unpkg.com/@editvr/aframe-dialog-popup-component@1.7.2/dist/aframe-dialog-popup-component.min.js"></script>
+
     <!-- <script src="components/vr-move.js"></script> -->
     <script src="components/change-region.js"></script>
     <script src="components/teleport.js"></script>
@@ -17,6 +19,7 @@
     <script src="components/excursion-controller.js"></script>
     <script src="components/setup-fade.js"></script>
     <script src="components/camera-look.js"></script>
+    <script src="components/print-panel.js"></script>
 
     <!-- data -->
     <script type="text/javascript" src="data/exdata.json"></script>
@@ -42,8 +45,15 @@
         <!-- <a-asset-item id="agro1" src="https://320711.selcdn.ru/izobr/models/agro1.gltf"></a-asset-item> -->
         <!-- <a-asset-item id="agro2" src="https://320711.selcdn.ru/izobr/models/agro2.gltf"></a-asset-item> -->
         <!-- <a-asset-item id="agro2" src="https://320711.selcdn.ru/izobr/models/agro2.gltf"></a-asset-item> -->
-        <a-asset-item id="agro3" src="https://320711.selcdn.ru/izobr/models/agrofarmall.glb"></a-asset-item>
-        <a-asset-item id="agrocapsule" src="https://320711.selcdn.ru/izobr/models/kapsula.glb"></a-asset-item>
+        <a-asset-item id="agro3" src="models/agro3.glb"></a-asset-item>
+
+        <a-asset-item id="co3" src="models/co3.gltf"></a-asset-item>
+        <a-asset-item id="cristal2" src="models/cristal2.gltf"></a-asset-item>
+        <a-asset-item id="dna" src="models/DNA.gltf"></a-asset-item>
+        <a-asset-item id="h2o" src="models/h2o.gltf"></a-asset-item>
+
+
+        <a-asset-item id="agrocapsule" src="/models/kapsula.glb"></a-asset-item>
         <a-asset-item id="agroplant" src="https://320711.selcdn.ru/izobr/models/cvetok.glb"></a-asset-item>
 
         <a-asset-item id="bnav" src="models/bNavMesh.glb"></a-asset-item>
@@ -55,6 +65,9 @@
         <!-- <a-asset-item id="printer" src="https://320711.selcdn.ru/izobr/models/printer1.gltf"></a-asset-item> -->
         <a-asset-item id="printer" src="https://320711.selcdn.ru/izobr/models/printer3.gltf"></a-asset-item>
         <a-asset-item id="shelf" src="https://320711.selcdn.ru/izobr/models/shelf2.gltf"></a-asset-item>
+
+        <a-asset-item id="brilok" src="models/brilokOp42.gltf"></a-asset-item>
+
         
 
         <!-- IMAGES -->
@@ -154,6 +167,13 @@
         <img id="i2" src="https://320711.selcdn.ru/izobr/images/npo/i2.jpg">
 
         <img id="info1" src="/images/excursionstuff/info1.png">
+
+
+        <img id="agrop1" src="/images/agro/agrop1.png">
+
+        <img id="printp1" src="/images/printer/printp1.png">
+        <img id="printc" src="/images/printer/printc.png">
+        <img id="printo" src="/images/printer/printo.png">
         
 
 
@@ -174,7 +194,8 @@
         <!-- <a-asset-item id="mozilla" src="images/biohazard.svg"></a-asset-item> -->
       </a-assets>
 
-      <!-- LAODER -->
+
+      <!-- LOADER -->
       <a-entity id="loader" visible="false" position="0 1.8 -0.5">
         <a-entity
           geometry="primitive: sphere; radius: 0.02"
@@ -505,62 +526,122 @@
       
       <!-- AGROBOX -->
       <a-entity id="agro"  class="room"  visible="false" gltf-model="#agro3" scale="1.6 1.6 1.6" position = "40 0 0" startp="40 0 0" >
-    
+        
+        <!-- ADDMODELS -->
+        <a-entity id="dnam" gltf-model="#dna" position = "2.65 0 -7.45" animation="property: rotation; from: 0 0 0; to: 0 -360 0; loop: true; dur: 10000 easing:easeInSine"></a-entity>
+        <a-entity id="cristal2m" gltf-model="#cristal2" position = "2.65 0.5 -5.8" animation="property: rotation; from: 0 0 0; to: 359 359 0; loop: true; dur: 15000 easing:linear"></a-entity>
+        <a-entity id="h20m" gltf-model="#h2o" position = "2.65 0.5 -3.8" animation="property: position; from:2.65 0.4 -3.8; to:2.65 0.6 -3.8; loop: true; dur: 3000 easing:linear; dir: alternate"></a-entity>
+        <a-entity id="co3m" gltf-model="#co3" position = "2.65 0.5 -1.3" animation="property: rotation; from: 0 0 0; to: 0 359 0; loop: true; dur: 15000 easing:linear"></a-entity>
+        
         <!-- AGROCAPSULES -->
         <a-entity  gltf-model="#agrocapsule"  position = "-2.8 0.01 -1.5" >
+          <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
+         position="0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 90 0"
+          material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
         <a-entity  gltf-model="#agrocapsule"  position = "-2.8 0.01 -2.5" >
+          <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
+          position="0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 90 0"
+           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
         <a-entity  gltf-model="#agrocapsule"  position = "-2.8 0.01 -3.5" >
+          <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
+          position="0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 90 0"
+           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
         <a-entity  gltf-model="#agrocapsule"  position = "-2.8 0.01 -4.5" >
+          <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
+          position="0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 90 0"
+           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
         <a-entity  gltf-model="#agrocapsule"  position = "-2.8 0.01 -5.5" >
+          <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
+          position="0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 90 0"
+           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
         <a-entity  gltf-model="#agrocapsule"  position = "-2.8 0.01 -6.5" >
+          <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
+          position="0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 90 0"
+           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
 
         <a-entity  gltf-model="#agrocapsule"  position = "-4.0 0.01 -1.5" >
+          <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
+          position="-0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 -90 0"
+           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
         <a-entity  gltf-model="#agrocapsule"  position = "-4.0 0.01 -2.5" >
+          <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
+          position="-0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 -90 0"
+           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
         <a-entity  gltf-model="#agrocapsule"  position = "-4.0 0.01 -3.5" >
+          <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
+          position="-0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 -90 0"
+           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
         <a-entity  gltf-model="#agrocapsule"  position = "-4.0 0.01 -4.5" >
+          <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
+          position="-0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 -90 0"
+           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
         <a-entity  gltf-model="#agrocapsule"  position = "-4.0 0.01 -5.5" >
+          <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
+          position="-0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 -90 0"
+           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
         <a-entity  gltf-model="#agrocapsule"  position = "-4.0 0.01 -6.5" >
+          <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
+          position="-0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 -90 0"
+           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
 
         <a-entity  gltf-model="#agrocapsule"  position = "-8 0.01 -1.5" >
+          <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
+          position="0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 90 0"
+           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
         <a-entity  gltf-model="#agrocapsule"  position = "-8 0.01 -2.5" >
+          <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
+          position="0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 90 0"
+           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
         <a-entity  gltf-model="#agrocapsule"  position = "-8 0.01 -3.5" >
+          <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
+          position="0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 90 0"
+           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
         <a-entity  gltf-model="#agrocapsule"  position = "-8 0.01 -4.5" >
+          <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
+          position="0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 90 0"
+           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
         <a-entity  gltf-model="#agrocapsule"  position = "-8 0.01 -5.5" >
+          <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
+          position="0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 90 0"
+           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
         <a-entity  gltf-model="#agrocapsule"  position = "-8 0.01 -6.5" >
+          <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
+          position="0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 90 0"
+           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
 
@@ -589,6 +670,7 @@
 
       <!-- LABORATORY -->
       <a-entity id="lab"  class="room"  visible="false" gltf-model="#lab2" scale="1.6 1.6 1.6" position = "-40 0 0"  startp="-30 0 -8">
+        
         <!-- BACKPORTAL -->
         <a-entity class="interractible" id="portall" geometry="primitive: cylinder; height:6 width:1.2;" position="6 1.5 -1" scale="0.5 0.5 0.5" material="color:#00ffff; opacity:0.1; transparent: true;" teleport="room:ton; position: -2 0 -77">
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 2.5 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p12; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 360 0; loop: true; dur: 20000"></a-entity>
@@ -597,114 +679,406 @@
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p11; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 -360 0; loop: true; dur: 10000"></a-entity>
         </a-entity>
 
+        <a-entity visible="false" id="printmodel" gltf-model="#brilok" rotation="0 0 0" scale="15 15 15" position = "6.5 1.2 -9" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
+      
+
       <!-- SHELFS -->
       <a-entity id ="shelf1" position="3.5 0 -2" rotation="0 90 0">
         <a-entity gltf-model="#shelf" rotation="0 0 0" scale="0.4 0.4 0.4" position = "0 0 0"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 -0.1 -2.8"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 -0.1 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 0.54 -2.45"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 0.54 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.2 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.2 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.8 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.8 -2.55"></a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 -0.1 -2.5">
+            <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+            position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+             material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 -0.1 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 0.54 -2.45">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 0.54 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.2 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.2 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.8 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.8 -2.55">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
       </a-entity>
 
       <a-entity id ="shelf2" position="3.5 0 -4.5" rotation="0 90 0">
         <a-entity gltf-model="#shelf" rotation="0 0 0" scale="0.4 0.4 0.4" position = "0 0 0"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 -0.1 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 -0.1 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 0.54 -2.45"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 0.54 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.2 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.2 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.8 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.8 -2.55"></a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 -0.1 -2.5">
+            <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+            position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+             material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 -0.1 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 0.54 -2.45">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 0.54 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.2 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.2 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.8 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.8 -2.55">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
       </a-entity>
 
       <a-entity id ="shelf3" position="3.5 0 -7" rotation="0 90 0">
         <a-entity gltf-model="#shelf" rotation="0 0 0" scale="0.4 0.4 0.4" position = "0 0 0"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 -0.1 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 -0.1 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 0.54 -2.45"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 0.54 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.2 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.2 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.8 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.8 -2.55"></a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 -0.1 -2.5">
+            <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+            position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+             material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 -0.1 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 0.54 -2.45">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 0.54 -2.5">
+          <a-entity class="printerpanel interractible" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printo; transparent: true; alphaTest: 0.1" print-panel="showel: #printmodel; printpanelimg: #printp1">
+          </a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.2 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.2 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.8 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.8 -2.55">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
       </a-entity>
 
       <a-entity id ="shelf4" position="2.8 0 -13.5" rotation="0 0 0">
         <a-entity gltf-model="#shelf" rotation="0 0 0" scale="0.4 0.4 0.4" position = "0 0 0"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 -0.1 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 -0.1 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 0.54 -2.45"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 0.54 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.2 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.2 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.8 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.8 -2.55"></a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 -0.1 -2.5">
+            <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+            position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+             material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 -0.1 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 0.54 -2.45">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 0.54 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.2 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.2 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.8 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.8 -2.55">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
       </a-entity>
       
       <a-entity id ="shelf5" position="2.2 0 -13" rotation="0 30 0">
         <a-entity gltf-model="#shelf" rotation="0 0 0" scale="0.4 0.4 0.4" position = "0 0 0"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 -0.1 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 -0.1 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 0.54 -2.45"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 0.54 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.2 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.2 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.8 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.8 -2.55"></a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 -0.1 -2.5">
+            <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+            position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+             material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 -0.1 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 0.54 -2.45">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 0.54 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.2 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.2 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.8 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.8 -2.55">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
       </a-entity>
 
       <a-entity id ="shelf6" position="3.6 0 -13.7" rotation="0 -30 0">
         <a-entity gltf-model="#shelf" rotation="0 0 0" scale="0.4 0.4 0.4" position = "0 0 0"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 -0.1 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 -0.1 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 0.54 -2.45"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 0.54 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.2 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.2 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.8 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.8 -2.55"></a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 -0.1 -2.5">
+            <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+            position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+             material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 -0.1 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 0.54 -2.45">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 0.54 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.2 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.2 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.8 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.8 -2.55">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
       </a-entity>
 
 
       <a-entity id ="shelf7" position="8.8 0 -13.5" rotation="0 0 0">
         <a-entity gltf-model="#shelf" rotation="0 0 0" scale="0.4 0.4 0.4" position = "0 0 0"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 -0.1 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 -0.1 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 0.54 -2.45"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 0.54 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.2 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.2 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.8 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.8 -2.55"></a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 -0.1 -2.5">
+            <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+            position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+             material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 -0.1 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 0.54 -2.45">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 0.54 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.2 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.2 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.8 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.8 -2.55">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
       </a-entity>
       
       <a-entity id ="shelf8" position="8.2 0 -13" rotation="0 30 0">
         <a-entity gltf-model="#shelf" rotation="0 0 0" scale="0.4 0.4 0.4" position = "0 0 0"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 -0.1 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 -0.1 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 0.54 -2.45"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 0.54 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.2 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.2 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.8 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.8 -2.55"></a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 -0.1 -2.5">
+            <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+            position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+             material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 -0.1 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 0.54 -2.45">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 0.54 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.2 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.2 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.8 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.8 -2.55">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
       </a-entity>
 
       <a-entity id ="shelf9" position="9.6 0 -13.7" rotation="0 -30 0">
         <a-entity gltf-model="#shelf" rotation="0 0 0" scale="0.4 0.4 0.4" position = "0 0 0"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 -0.1 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 -0.1 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 0.54 -2.45"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 0.54 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.2 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.2 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.8 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.8 -2.55"></a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 -0.1 -2.5">
+            <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+            position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+             material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 -0.1 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 0.54 -2.45">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 0.54 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.2 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.2 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.8 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.8 -2.55">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
       </a-entity>
 
         <!-- LIGHTS -->
@@ -724,6 +1098,9 @@
 
         <a-sky setup-fade="target:#esphere" color="#000" id="esphere" radius="100" rotation="0 0 0"></a-sky>
         <a-entity id="linkParent"></a-entity>
+
+      <!-- <a-entity id="hun" class="interractible" position="2 2 -10" dialog-popup="title: My Title; body: My Body"></a-entity> -->
+
 
         
       </a-entity>

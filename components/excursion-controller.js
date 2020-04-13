@@ -13,6 +13,7 @@ AFRAME.registerComponent('excursion-controller', {
 
     init: function () {
         let data = this.data;
+
         var xobj = new XMLHttpRequest();
         xobj.overrideMimeType("application/json");
         xobj.open('GET', "data/" + data.edata + ".json", true);
@@ -49,7 +50,7 @@ AFRAME.registerComponent('excursion-controller', {
         let linkParrent = this.data.linkp;
         let exel = this.exdata.find(e => e.id == num);
 
-        history.pushState( {} ,'', '#'+ this.el.id + '/' + num);
+        // history.pushState( {} ,'', '#'+ this.el.id + '/' + num);
 
 
         target.setAttribute('src', exel.url);
