@@ -7,7 +7,7 @@
     <!-- <script src="https://unpkg.com/aframe-svg-extruder@1.0.0/dist/index.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
-    <script src="https://unpkg.com/@editvr/aframe-dialog-popup-component@1.7.2/dist/aframe-dialog-popup-component.min.js"></script>
+    <!-- <script src="https://unpkg.com/@editvr/aframe-dialog-popup-component@1.7.2/dist/aframe-dialog-popup-component.min.js"></script> -->
 
     <!-- <script src="components/vr-move.js"></script> -->
     <script src="components/change-region.js"></script>
@@ -20,6 +20,9 @@
     <script src="components/setup-fade.js"></script>
     <script src="components/camera-look.js"></script>
     <script src="components/print-panel.js"></script>
+    
+    <script src="components/aframe-dialog-popup-component.js"></script>
+
 
     <!-- data -->
     <script type="text/javascript" src="data/exdata.json"></script>
@@ -167,6 +170,9 @@
         <img id="i2" src="https://320711.selcdn.ru/izobr/images/npo/i2.jpg">
 
         <img id="info1" src="/images/excursionstuff/info1.png">
+        <img id="infoClose" src="/images/excursionstuff/close.jpg">
+        <img id="tony" src="/images/excursionstuff/tony.jpg">
+        <img id="info" src="/images/excursionstuff/info.jpg">
 
 
         <img id="agrop1" src="https://320711.selcdn.ru/izobr/images/agro/agrop1.png">
@@ -1089,7 +1095,7 @@
    </a-entity>
         
       <!-- EXCURSION -->
-      <a-entity id="excursion" stay class="room"  visible="false" excursion-controller="target:#esphere;  edata:exdata; timg: #pointa; inimg: #info1; font: fonts/YaHeiCustom-msdf.json; linkp:#linkParent">
+      <a-entity id="excursion" stay class="room"  visible="false" excursion-controller="target:#esphere;  edata:exdata; timg: #pointa; inoimg: #info; incimg: #infoClose; font: fonts/YaHeiCustom-msdf.json; linkp:#linkParent">
       <!-- MINIBACKPORTAL -->
       <a-entity id="miniportal1"  position="0 0 -1.5" scale="0.5 0.5 0.5" material="color:#00ffff; opacity:0.1; transparent: true;" teleport="room:ton; position: 2 0 -60">
         <a-entity  class="interractible" geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p12; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 360 0; loop: true; dur: 20000"></a-entity>
@@ -1099,7 +1105,7 @@
         <a-sky setup-fade="target:#esphere" color="#000" id="esphere" radius="100" rotation="0 0 0"></a-sky>
         <a-entity id="linkParent"></a-entity>
 
-      <!-- <a-entity id="hun" class="interractible" position="2 2 -10" dialog-popup="title: My Title; body: My Body"></a-entity> -->
+      <!-- <a-entity id="hun" class="interractible" position="2 2 -10" dialog-popup="title: My Title; body: My Body; openIconImage: #info; closeIconImage: #infoClose"></a-entity> -->
 
 
         

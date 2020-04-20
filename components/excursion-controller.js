@@ -3,7 +3,8 @@ AFRAME.registerComponent('excursion-controller', {
         target: {type: 'selector'},
         data: {type: "string"},
         timg: {type: "string"},
-        inimg: {type: "string"},
+        inoimg: {type: "string", default: ''},
+        incimg: {type: "string", default: ''},
         font: {type: "string"},
         linkp: {type: "selector"},
         attachPoints: {default: true},
@@ -74,7 +75,7 @@ AFRAME.registerComponent('excursion-controller', {
          for (let i=0; i<exel.transitions.length; i++)
          {
               let item = document.createElement('a-entity');
-              item.setAttribute("camera-look","")
+              item.setAttribute("camera-look","");
               item.setAttribute("material","shader","flat")
               item.setAttribute("material","src",this.data.timg)
               item.setAttribute("material","transparent",0);
@@ -142,6 +143,36 @@ AFRAME.registerComponent('excursion-controller', {
 
 
         //  }
+
+
+        for (let i=0; i<exel.info.length; i++)
+        {
+          let popup = document.createElement('a-entity');
+          popup.classList.add("info");
+          // popup.setAttribute("position",  i + " 2 10");
+          popup.setAttribute("position", this.data.sphereCoordinates ? this.getSphereCoordinate(exel.info[i].latitude, exel.info[i].longitude, exel.info[i].radius) : exel.info[i].position); 
+
+          popup.setAttribute('dialog-popup', {
+            openIconImage: this.data.inoimg,
+            closeIconImage: this.data.incimg,
+            title: exel.info[i].title,
+            body: exel.info[i].text,
+            titleFont: this.data.font,
+            bodyFont: this.data.font,
+            addAttribute: 'camera-look',
+            bodyWrapCount: exel.info[i].bodyWrapCount ? exel.info[i].bodyWrapCount :  40,
+            titleWrapCount:  exel.info[i].titleWrapCount ? exel.info[i].titleWrapCount :  25,
+            dialogBoxHeight: exel.info[i].panelHeight ? exel.info[i].panelHeight : 10,
+            dialogBoxWidth: exel.info[i].panelWidth ? exel.info[i].panelWidth : 8,
+            image: exel.info[i].image ? exel.info[i].image : '',
+            imageWidth: exel.info[i].imageWidth ? exel.info[i].imageWidth : 2,
+            imageHeight: exel.info[i].imageHeight ? exel.info[i].imageHeight: 2
+          });
+        
+
+          linkParrent.appendChild(popup); 
+
+        }
 
 
          target.addEventListener('materialtextureloaded', _=> {
