@@ -1,7 +1,7 @@
 [
     {
         "id":0,
-        "url":"images/excursion360/PIC_20200228_114724_20200228130950.jpg",
+        "url":"https://320711.selcdn.ru/izobr/images/excursion360/PIC_20200228_114724_20200228130950.jpg",
         "rotation": 180,
         "transitions":[
             {"transitionId": 1, "additionalRotation": 0,  "position": "10 2 9", "latitude":10, "longitude":135, "radius": 18 } 
@@ -15,7 +15,7 @@
      },
      {
         "id":1,
-        "url":"images/excursion360/PIC_20200228_114829_20200228130950.jpg",
+        "url":"https://320711.selcdn.ru/izobr/images/excursion360/PIC_20200228_114829_20200228130950.jpg",
         "rotation": 180,
         "transitions":[
             {"transitionId": 0, "additionalRotation": 0, "position": "10 2 -9", "latitude":10, "longitude":125, "radius": 18 },
@@ -25,25 +25,26 @@
             {"title":"Home", "text": "Nulla dolor magna, gravida in orci quis, sagittis pharetra metus. Nam at tempus felis. In interdum efficitur erat eget sollicitudin. Proin tincidunt diam velit, vulputate feugiat urna mattis et. Duis sed turpis sed mi ultricies facilisis. Sed tempus lacinia nisi a tempus. Nam tellus est, ullamcorper sed viverra ut, convallis et metus. Pellentesque ut convallis justo. Pellentesque finibus, erat quis tincidunt congue, mauris magna fringilla nisi, sed lobortis odio tortor ac tellus. Nunc fermentum consectetur libero, a congue mauris. Nulla mattis nisi tellus, consectetur porttitor sapien semper in. Ut venenatis velit elit, vel sodales dui efficitur eu. Nulla placerat nunc ligula, sit amet rutrum nisl ornare ac.\n\n Nam molestie a ligula nec faucibus. Vestibulum ultricies sapien elit, eu viverra est vulputate nec. Vestibulum sed lorem leo. Curabitur eget auctor felis. Curabitur vel sapien enim. Nulla consequat tincidunt sem id scelerisque. Nam placerat vulputate sapien, eget pretium lorem lacinia quis. Etiam porttitor lacus eu quam molestie, nec volutpat arcu scelerisque. Cras magna eros, commodo et lacus id, rhoncus aliquet felis. Duis a odio tortor. Praesent laoreet iaculis pharetra. Aenean aliquam lorem justo, in euismod lacus convallis eget. Cras eget felis id lacus pellentesque dapibus.", 
                 "position": "0 0 -1", "latitude":10, "longitude":80, "radius": 10, "panelHeight": 11 },
             {"title":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vel arcu metus.", "text": "Nulla dolor magna, gravida in orci quis, sagittis pharetra metus. Nam at tempus felis. In interdum efficitur erat eget sollicitudin. Proin tincidunt diam velit, vulputate feugiat urna mattis et. Duis sed turpis sed mi ultricies facilisis. Sed tempus lacinia nisi a tempus. Nam tellus est, ullamcorper sed viverra ut, convallis et metus. Pellentesque ut convallis justo. Pellentesque finibus, erat quis tincidunt congue, mauris magna fringilla nisi, sed lobortis odio tortor ac tellus. Nunc fermentum consectetur libero, a congue mauris. Nulla mattis nisi tellus, consectetur porttitor sapien semper in. Ut venenatis velit elit, vel sodales dui efficitur eu. Nulla placerat nunc ligula, sit amet rutrum nisl ornare ac.\n\n Nam molestie a ligula nec faucibus. Vestibulum ultricies sapien elit, eu viverra est vulputate nec. Vestibulum sed lorem leo. Curabitur eget auctor felis. Curabitur vel sapien enim. Nulla consequat tincidunt sem id scelerisque. Nam placerat vulputate sapien, eget pretium lorem lacinia quis. Etiam porttitor lacus eu quam molestie, nec volutpat arcu scelerisque. Cras magna eros, commodo et lacus id, rhoncus aliquet felis. Duis a odio tortor. Praesent laoreet iaculis pharetra. Aenean aliquam lorem justo, in euismod lacus convallis eget. Cras eget felis id lacus pellentesque dapibus.", 
-                "position": "0 0 -1", "latitude":10, "longitude":84, "radius": 10, "panelHeight": 11},
+                "position": "0 0 -1", "latitude":10, "longitude":84, "radius": 10, "panelHeight": 12},
             {"title":"Home3", "text": "Nulla dolor magna, gravida in orci quis, sagittis pharetra metus. Nam at tempus felis. In interdum efficitur erat eget sollicitudin. Proin tincidunt diam velit, vulputate feugiat urna mattis et. Duis sed turpis sed mi ultricies facilisis. Sed tempus lacinia nisi a tempus. Nam tellus est, ullamcorper sed viverra ut, convallis et metus. Pellentesque ut convallis justo. Pellentesque finibus, erat quis tincidunt congue, mauris magna fringilla nisi, sed lobortis odio tortor ac tellus. Nunc fermentum consectetur libero, a congue mauris. Nulla mattis nisi tellus, consectetur porttitor sapien semper in. Ut venenatis velit elit, vel sodales dui efficitur eu. Nulla placerat nunc ligula, sit amet rutrum nisl ornare ac.\n\n Nam molestie a ligula nec faucibus. Vestibulum ultricies sapien elit, eu viverra est vulputate nec. Vestibulum sed lorem leo. Curabitur eget auctor felis. Curabitur vel sapien enim. Nulla consequat tincidunt sem id scelerisque. Nam placerat vulputate sapien, eget pretium lorem lacinia quis. Etiam porttitor lacus eu quam molestie, nec volutpat arcu scelerisque. Cras magna eros, commodo et lacus id, rhoncus aliquet felis. Duis a odio tortor. Praesent laoreet iaculis pharetra. Aenean aliquam lorem justo, in euismod lacus convallis eget. Cras eget felis id lacus pellentesque dapibus.", 
                 "position": "0 0 -1", "latitude": -5, "longitude":10, "radius": 10, "panelHeight": 11},
             {"title":"Ракетный комплекс с крылатой ракетой П-5", "text": "П-5 — первая в мире ракета с автоматически раскрывающимся в полёте крылом, стартующая из герметичного цилиндрического контейнера, имеющего минимальные габариты. Старт крылатой ракеты (КР) осуществлялся с подводной лодки (ПЛ) в надводном положении из поднимающегося в наклонное положение контейнера.\n\n Комплекс с КР П-5 предназначен для поражения береговых, административных, промышленных объектов и военно-морских баз, расположенных как на побережье, так и в глубине территории.\n\n В период 1959—1967 гг. комплекс был эффективным средством доставки ядерного оружия на межконтинентальную дальность в Вооруженных Силах СССР. ", 
-                "position": "0 0 -1", "latitude": 10, "longitude":245, "radius": 10, "panelHeight": 11, "image": "images/excursionstuff/rocket1.png", "imageWidth" : 7, "imageHeight": 4.2}
+                "position": "0 0 -1", "latitude": 10, "longitude":245, "radius": 10, "panelHeight": 11, "image": "https://320711.selcdn.ru/izobr/images/excursionstuff/rocket1.png", "imageWidth" : 7, "imageHeight": 4.2}
             
 
             ]
     },
     {
         "id":2,
-        "url":"images/excursion360/PIC_20200228_114916_20200228130950.jpg",
+        "url":"https://320711.selcdn.ru/izobr/images/excursion360/PIC_20200228_114916_20200228130950.jpg",
         "rotation": 180,
         "transitions":[
             {"transitionId": 1, "additionalRotation": -90, "position": "-16 0 8", "latitude":10, "longitude":240, "radius": 18 },
             {"transitionId": 0, "additionalRotation": 0, "position": "1 0 -5", "latitude":0, "longitude":80, "radius": 18} 
             ],
         "info":[
-                {"text": "lorem ipsum", "position": "0 0 -1" }
+            {"title":"Ракетный комплекс с крылатой ракетой П-5", "text": "П-5 — первая в мире ракета с автоматически раскрывающимся в полёте крылом, стартующая из герметичного цилиндрического контейнера, имеющего минимальные габариты. Старт крылатой ракеты (КР) осуществлялся с подводной лодки (ПЛ) в надводном положении из поднимающегося в наклонное положение контейнера.\n\n Комплекс с КР П-5 предназначен для поражения береговых, административных, промышленных объектов и военно-морских баз, расположенных как на побережье, так и в глубине территории.\n\n В период 1959—1967 гг. комплекс был эффективным средством доставки ядерного оружия на межконтинентальную дальность в Вооруженных Силах СССР. ", 
+                "position": "0 0 -1", "latitude": 10, "longitude":180, "radius": 10, "panelHeight": 11, "image": "https://320711.selcdn.ru/izobr/images/excursionstuff/rocket1.png", "imageWidth" : 7, "imageHeight": 4.2}
             ]
     }
     

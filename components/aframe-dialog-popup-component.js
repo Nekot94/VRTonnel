@@ -94,7 +94,7 @@
         },
         addAttribute: {
           type: 'string',
-          default: ''
+          default: 'lal'
         },
         addAttrValue: {
           type: 'string',
