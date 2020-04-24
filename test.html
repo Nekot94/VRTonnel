@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+        <a-assets>
+          <a-asset-item id="wall" src="/models/walll.glb"></a-asset-item>
+
+
+        </a-assets>
+        <a-entity id="ton"  class="room"  visible="true" gltf-model="#wall" scale="1 1 1" position = "0 0 -3" rotation="0 90 90" ></a-entity>
+
+                 <!-- LIGHTS -->
+       <a-entity light="type: ambient; color: #4f6487;" ></a-entity>
+       <a-entity light="type: directional; color: #4f6487; intensity: 3" position="-0.5 2 1"></a-entity>
+
+          <a-sky color="#000"></a-sky> 
+
+    </a-scene>
+  </body>
+</html>
+

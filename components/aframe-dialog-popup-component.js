@@ -496,7 +496,12 @@
       positionDialogPlane: function positionDialogPlane() {
         if (this.dialogPlaneEl) {
           var vector = this.dialogPlaneEl.object3D.parent.worldToLocal(this.cameraEl.object3D.getWorldPosition());
-          this.dialogPlaneEl.object3D.lookAt(vector);
+          var vector2 = this.dialogPlaneEl.object3D.position;
+          var vector3 = new THREE.Vector3(vector.x,  vector2.y, vector.z);
+          // console.log("vector",vector2);
+          // console.log("vector",vector3);
+          // // console.log("vector",vector2);
+          this.dialogPlaneEl.object3D.lookAt(vector3);
         }
       },
       spawnEntities: function spawnEntities() {
