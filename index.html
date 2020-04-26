@@ -17,7 +17,6 @@
     <script src="components/video-player-hls.js"></script>
     <script src="components/aframe-video-controls.js"></script>
     <script src="components/excursion-controller.js"></script>
-    <script src="components/agro-controller.js"></script>
     <script src="components/setup-fade.js"></script>
     <script src="components/camera-look.js"></script>
     <script src="components/print-panel.js"></script>
@@ -39,10 +38,9 @@
         <video id="chem" src="https://320711.selcdn.ru/mnl/20200305.mp4" controls="controls" style="display:none"
             crossorigin="anonymous" playsinline webkit-playsinline>
         <video id="chem2" src="https://320711.selcdn.ru/mnl/20200305.mp4" controls="controls" style="display:none"
-            crossorigin="anonymous" playsinline webkit-playsinline>
-        <source type="video/mp4"
-            src="" />
-        </video>
+            crossorigin="anonymous" playsinline webkit-playsinline></video>
+        <video id="printerVideo" src="https://320711.selcdn.ru/mnl/20200305.mp4" controls="controls" style="display:none"
+            crossorigin="anonymous" playsinline webkit-playsinline></video>
 
         <!-- MODELS -->
         <a-asset-item id="tonnel" src="https://320711.selcdn.ru/izobr/models/t6.gltf"></a-asset-item>
@@ -64,8 +62,10 @@
 
 
         <!-- <a-asset-item id="lab1" src="https://320711.selcdn.ru/izobr/models/lab1.glb"></a-asset-item> -->
-        <a-asset-item id="lab2" src="https://320711.selcdn.ru/izobr/models/lab2.gltf"></a-asset-item>
+        <!-- <a-asset-item id="lab2" src="https://320711.selcdn.ru/izobr/models/lab2.gltf"></a-asset-item> -->
         <!-- <a-asset-item id="lab2" src="https://320711.selcdn.ru/izobr/models/lab3.glb"></a-asset-item> -->
+        <!-- <a-asset-item id="lab2" src="https://320711.selcdn.ru/izobr/models/lab3-2.glb"></a-asset-item> -->
+        <a-asset-item id="lab2" src="https://320711.selcdn.ru/izobr/models/lab3-3.glb"></a-asset-item>
 
         <!-- <a-asset-item id="printer" src="https://320711.selcdn.ru/izobr/models/printer1.gltf"></a-asset-item> -->
         <a-asset-item id="printer" src="https://320711.selcdn.ru/izobr/models/printer3.gltf"></a-asset-item>
@@ -795,8 +795,9 @@
           position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
            material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
         </a-entity>
+        <!-- MAIN-PRINTER -->
         <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 0.54 -2.5">
-          <a-entity class="printerpanel interractible" geometry="primitive: plane; width: 0.62; height: 0.18"
+          <a-entity l="https://riftman.gcdn.co/streams/8113_10326/playlist.m3u8" class="printerpanel interractible" geometry="primitive: plane; width: 0.62; height: 0.18"
           position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
            material="shader: flat; src: #printo; transparent: true; alphaTest: 0.1" print-panel="showel: #printmodel; printpanelimg : #printp1">
           </a-entity>
