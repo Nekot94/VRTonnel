@@ -1,7 +1,8 @@
 AFRAME.registerComponent('print-panel', {
     schema: {
         showel: {type: 'selector'},
-        printpanelimg: {type: "string"}
+        printpanelimg: {type: "string"},
+        videoId: {type: 'string', default: "#printerVideo"}
     },
 
     init: function () {
@@ -12,22 +13,50 @@ AFRAME.registerComponent('print-panel', {
 
             data.showel.setAttribute("visible", true);
             console.log("data-show", data.showel);
-            let item = document.createElement('a-entity');
-            item.setAttribute("material","shader","flat");
-            item.setAttribute("geometry","primitive", "plane");
-            item.setAttribute("geometry","width", "1.3");
-            item.setAttribute("geometry","height", "1");
-            item.setAttribute("material","src", data.printpanelimg);
-            item.setAttribute("material","transparent",0);
-            item.setAttribute("position","0.3 -0.04 0.1 ");
-            item.setAttribute('animation__growup', {
+            let mainPanel = document.createElement('a-entity');
+            mainPanel.setAttribute("material","shader","flat");
+            mainPanel.setAttribute("geometry","primitive", "plane");
+            mainPanel.setAttribute("geometry","width", "1.3");
+            mainPanel.setAttribute("geometry","height", "1");
+            mainPanel.setAttribute("material","src", data.printpanelimg);
+            mainPanel.setAttribute("material","transparent",0);
+            mainPanel.setAttribute("position","0.3 -0.04 0.1 ");
+            mainPanel.setAttribute('animation__growup', {
                 property: 'scale',
                 dur: 500,
                 from: '0 0 0',
                 to: '1 1 1'
             });
 
-            el.appendChild(item); 
+            el.appendChild(mainPanel); 
+
+            let videoPanel = document.createElement('a-video');
+            videoPanel.setAttribute("src", data.videoId);
+            videoPanel.setAttribute("id","videoPanel");
+            videoPanel.setAttribute("width", "0.6");
+            videoPanel.setAttribute("height", "0.3375");
+            videoPanel.setAttribute("material","src", data.printpanelimg);
+            videoPanel.setAttribute("material","transparent",0);
+            videoPanel.setAttribute("position","0.37 0.25 0.01 ");
+            videoPanel.setAttribute('animation__growup', {
+                property: 'scale',
+                dur: 500,
+                from: '0 0 0',
+                to: '1 1 1'
+            });
+
+            el.setAttribute('video-player-hls', {
+                onPlay: "printer-video-start",
+                onPause: "printer-video-pause",
+                video: data.videoId,
+            });
+
+            el.emit("printer-video-start");
+
+            mainPanel.appendChild(videoPanel); 
+
+
+
             el.classList.remove("interractible");
             el.setAttribute("material", "visible", "false");
 

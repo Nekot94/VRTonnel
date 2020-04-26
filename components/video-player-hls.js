@@ -3,7 +3,8 @@ AFRAME.registerComponent('video-player-hls', {
       onPlay: {type: 'string'},
       onPause: {type: 'string'},
       video: {type: 'selector'},
-      restart: {default: true}   
+      restart: {default: true},
+      startLevel: {default: 4}  
     },
 
     init: function () {
@@ -27,10 +28,12 @@ AFRAME.registerComponent('video-player-hls', {
         //   }
           
           console.log("fuu", el.getAttribute('l'));
+          console.log("video", data.video);
           if (Hls.isSupported()) {
             var hls = new Hls();
             hls.loadSource(el.getAttribute('l'));
             hls.attachMedia(video);
+            hls.startLevel = 4;
             hls.on(Hls.Events.MANIFEST_PARSED, function() {
               video.play();
             });
