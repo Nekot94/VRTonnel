@@ -7,6 +7,8 @@
     <!-- <script src="https://unpkg.com/aframe-svg-extruder@1.0.0/dist/index.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
+    <!-- <script src="https://unpkg.com/@editvr/aframe-dialog-popup-component@1.7.2/dist/aframe-dialog-popup-component.min.js"></script> -->
+
     <!-- <script src="components/vr-move.js"></script> -->
     <script src="components/change-region.js"></script>
     <script src="components/teleport.js"></script>
@@ -14,9 +16,19 @@
     <script src="components/video-player.js"></script>
     <script src="components/video-player-hls.js"></script>
     <script src="components/aframe-video-controls.js"></script>
+    <script src="components/excursion-controller.js"></script>
+    <script src="components/setup-fade.js"></script>
+    <script src="components/camera-look.js"></script>
+    <script src="components/print-panel.js"></script>
+    
+    <script src="components/aframe-dialog-popup-component.js"></script>
+
+
+    <!-- data -->
+    <script type="text/javascript" src="data/exdata.json"></script>
   </head>
   <body style="background-color: #000">
-    <a-scene room-manager>
+    <a-scene room-manager="nav: true; startPos: 0 0 -40">
 <!-- <a-scene color-space="sRGB" renderer="gammaOutput: true, physicallyCorrectLights: true"> -->
       <a-assets >
 
@@ -36,125 +48,140 @@
         <!-- <a-asset-item id="agro1" src="https://320711.selcdn.ru/izobr/models/agro1.gltf"></a-asset-item> -->
         <!-- <a-asset-item id="agro2" src="https://320711.selcdn.ru/izobr/models/agro2.gltf"></a-asset-item> -->
         <!-- <a-asset-item id="agro2" src="https://320711.selcdn.ru/izobr/models/agro2.gltf"></a-asset-item> -->
-        <a-asset-item id="agro3" src="https://320711.selcdn.ru/izobr/models/agrofarmall.glb"></a-asset-item>
-        <a-asset-item id="agrocapsule" src="https://320711.selcdn.ru/izobr/models/kapsula.glb"></a-asset-item>
+        <a-asset-item id="agro3" src="https://320711.selcdn.ru/izobr/models/agro3.glb"></a-asset-item>
+
+        <a-asset-item id="co3" src="https://320711.selcdn.ru/izobr/models/co3.gltf"></a-asset-item>
+        <a-asset-item id="cristal2" src="https://320711.selcdn.ru/izobr/models/cristal2.gltf"></a-asset-item>
+        <a-asset-item id="dna" src="https://320711.selcdn.ru/izobr/models/DNA.gltf"></a-asset-item>
+        <a-asset-item id="h2o" src="https://320711.selcdn.ru/izobr/models/h2O.gltf"></a-asset-item>
+
+
+        <a-asset-item id="agrocapsule" src="https://320711.selcdn.ru/izobr//models/kapsula.glb"></a-asset-item>
         <a-asset-item id="agroplant" src="https://320711.selcdn.ru/izobr/models/cvetok.glb"></a-asset-item>
 
-        <!-- <a-asset-item id="bnav" src="models/bNavMesh.glb"></a-asset-item> -->
+        <a-asset-item id="bnav" src="https://320711.selcdn.ru/izobr/models/bNavMesh.glb"></a-asset-item>
 
 
         <!-- <a-asset-item id="lab1" src="https://320711.selcdn.ru/izobr/models/lab1.glb"></a-asset-item> -->
-        <a-asset-item id="lab2" src="https://320711.selcdn.ru/izobr/models/lab2.gltf"></a-asset-item>
+        <!-- <a-asset-item id="lab2" src="https://320711.selcdn.ru/izobr/models/lab2.gltf"></a-asset-item> -->
+        <a-asset-item id="lab2" src="https://320711.selcdn.ru/izobr/models/lab3.glb"></a-asset-item>
 
         <!-- <a-asset-item id="printer" src="https://320711.selcdn.ru/izobr/models/printer1.gltf"></a-asset-item> -->
         <a-asset-item id="printer" src="https://320711.selcdn.ru/izobr/models/printer3.gltf"></a-asset-item>
         <a-asset-item id="shelf" src="https://320711.selcdn.ru/izobr/models/shelf2.gltf"></a-asset-item>
+
+        <a-asset-item id="brilok" src="models/brilokOp42.gltf"></a-asset-item>
+
         
 
         <!-- IMAGES -->
-        <img id="bgmap1" src="https://320711.selcdn.ru/izobr/images/map/BG2.png">
+        <img  id="bgmap1" src="https://320711.selcdn.ru/izobr/images/map/BG2.png">
         
-        <img id="l0" src="https://320711.selcdn.ru/izobr/images/cur/l0.png">
-        <img id="l1" src="https://320711.selcdn.ru/izobr/images/cur/l1.png">
-        <img id="l2" src="https://320711.selcdn.ru/izobr/images/cur/l2.png">
-        <img id="l3" src="https://320711.selcdn.ru/izobr/images/cur/l3.png">
+        <img  id="l0" src="https://320711.selcdn.ru/izobr/images/cur/l0.png">
+        <img  id="l1" src="https://320711.selcdn.ru/izobr/images/cur/l1.png">
+        <img  id="l2" src="https://320711.selcdn.ru/izobr/images/cur/l2.png">
+        <img  id="l3" src="https://320711.selcdn.ru/izobr/images/cur/l3.png">
 
-        <img id="l1m" src="https://320711.selcdn.ru/izobr/images/cur/l1m.png">
-        <img id="l1c" src="https://320711.selcdn.ru/izobr/images/cur/l1c.png">
+        <img  id="l1m" src="https://320711.selcdn.ru/izobr/images/cur/l1m.png">
+        <img  id="l1c" src="https://320711.selcdn.ru/izobr/images/cur/l1c.png">
 
-        <img id="map0" src="https://320711.selcdn.ru/izobr/images/map/map0.png">
-        <img id="map1" src="https://320711.selcdn.ru/izobr/images/map/map1.png">
-        <img id="map2" src="https://320711.selcdn.ru/izobr/images/map/map2.png">
-        <img id="map3" src="https://320711.selcdn.ru/izobr/images/map/map3.png">
-        <img id="map4" src="https://320711.selcdn.ru/izobr/images/map/map4.png">
-        <img id="map5" src="https://320711.selcdn.ru/izobr/images/map/map5.png">
-        <img id="map6" src="https://320711.selcdn.ru/izobr/images/map/map6.png">
-        <img id="map7" src="https://320711.selcdn.ru/izobr/images/map/map7.png">
-        <img id="map8" src="https://320711.selcdn.ru/izobr/images/map/map8.png">
+        <img  id="map0" src="https://320711.selcdn.ru/izobr/images/map/map0.png">
+        <img  id="map1" src="https://320711.selcdn.ru/izobr/images/map/map1.png">
+        <img  id="map2" src="https://320711.selcdn.ru/izobr/images/map/map2.png">
+        <img  id="map3" src="https://320711.selcdn.ru/izobr/images/map/map3.png">
+        <img  id="map4" src="https://320711.selcdn.ru/izobr/images/map/map4.png">
+        <img  id="map5" src="https://320711.selcdn.ru/izobr/images/map/map5.png">
+        <img  id="map6" src="https://320711.selcdn.ru/izobr/images/map/map6.png">
+        <img  id="map7" src="https://320711.selcdn.ru/izobr/images/map/map7.png">
+        <img  id="map8" src="https://320711.selcdn.ru/izobr/images/map/map8.png">
 
-        <img id="pointn" src="https://320711.selcdn.ru/izobr/images/map/pointN.png">
-        <img id="pointa" src="https://320711.selcdn.ru/izobr/images/map/pointA.png">
-        <img id="points" src="https://320711.selcdn.ru/izobr/images/map/pointS.png">
-
-        <!-- <img id="r01" src="images/city/r01.png">
-        <img id="r02" src="images/city/r02.png">
-        <img id="r03" src="images/city/r03.png">
-        <img id="r04" src="images/city/r04.png">
-        <img id="r05" src="images/city/r05.png">
-        <img id="r06" src="images/city/r06.png">
-        <img id="r07" src="images/city/r07.png">
-        <img id="r08" src="images/city/r08.png"> -->
+        <img  id="pointn" src="https://320711.selcdn.ru/izobr/images/map/pointN.png">
+        <img  id="pointa" src="https://320711.selcdn.ru/izobr/images/map/pointA.png">
+        <img  id="points" src="https://320711.selcdn.ru/izobr/images/map/pointS.png">
 
 
         
-        <img id="r01" src="https://320711.selcdn.ru/izobr/images/city/rb01.png">
-        <img id="r02" src="https://320711.selcdn.ru/izobr/images/city/rb02.png">
-        <img id="r03" src="https://320711.selcdn.ru/izobr/images/city/rb03.png">
-        <img id="r04" src="https://320711.selcdn.ru/izobr/images/city/rb04.png">
-        <img id="r05" src="https://320711.selcdn.ru/izobr/images/city/rb05.png">
-        <img id="r06" src="https://320711.selcdn.ru/izobr/images/city/rb06.png">
-        <img id="r07" src="https://320711.selcdn.ru/izobr/images/city/rb07.png">
-        <img id="r08" src="https://320711.selcdn.ru/izobr/images/city/rb08.png">
-        <img id="rc" src="https://320711.selcdn.ru/izobr/images/city/rc.png">
+        <img  id="r01" src="https://320711.selcdn.ru/izobr/images/city/rb01.png">
+        <img  id="r02" src="https://320711.selcdn.ru/izobr/images/city/rb02.png">
+        <img  id="r03" src="https://320711.selcdn.ru/izobr/images/city/rb03.png">
+        <img  id="r04" src="https://320711.selcdn.ru/izobr/images/city/rb04.png">
+        <img  id="r05" src="https://320711.selcdn.ru/izobr/images/city/rb05.png">
+        <img  id="r06" src="https://320711.selcdn.ru/izobr/images/city/rb06.png">
+        <img  id="r07" src="https://320711.selcdn.ru/izobr/images/city/rb07.png">
+        <img  id="r08" src="https://320711.selcdn.ru/izobr/images/city/rb08.png">
+        <img  id="rc" src="https://320711.selcdn.ru/izobr/images/city/rc.png">
 
 
 
-        <img id="r11" src="https://320711.selcdn.ru/izobr/images/city/r11.png">
-        <img id="r12" src="https://320711.selcdn.ru/izobr/images/city/r11.png">
-        <img id="r13" src="https://320711.selcdn.ru/izobr/images/city/r11.png">
-        <img id="r14" src="https://320711.selcdn.ru/izobr/images/city/r11.png">
-        <img id="r15" src="https://320711.selcdn.ru/izobr/images/city/r11.png">
-        <img id="r16" src="https://320711.selcdn.ru/izobr/images/city/r11.png">
-        <img id="r17" src="https://320711.selcdn.ru/izobr/images/city/r11.png">
-        <img id="r18" src="https://320711.selcdn.ru/izobr/images/city/r11.png">
-        <img id="r21" src="https://320711.selcdn.ru/izobr/images/city/r21.png">
-        <img id="r22" src="https://320711.selcdn.ru/izobr/images/city/r21.png">
-        <img id="r23" src="https://320711.selcdn.ru/izobr/images/city/r21.png">
-        <img id="r24" src="https://320711.selcdn.ru/izobr/images/city/r21.png">
-        <img id="r25" src="https://320711.selcdn.ru/izobr/images/city/r21.png">
-        <img id="r26" src="https://320711.selcdn.ru/izobr/images/city/r21.png">
-        <img id="r27" src="https://320711.selcdn.ru/izobr/images/city/r21.png">
-        <img id="r28" src="https://320711.selcdn.ru/izobr/images/city/r21.png">
+        <img  id="r11" src="https://320711.selcdn.ru/izobr/images/city/r11.png">
+        <img  id="r12" src="https://320711.selcdn.ru/izobr/images/city/r11.png">
+        <img  id="r13" src="https://320711.selcdn.ru/izobr/images/city/r11.png">
+        <img  id="r14" src="https://320711.selcdn.ru/izobr/images/city/r11.png">
+        <img  id="r15" src="https://320711.selcdn.ru/izobr/images/city/r11.png">
+        <img  id="r16" src="https://320711.selcdn.ru/izobr/images/city/r11.png">
+        <img  id="r17" src="https://320711.selcdn.ru/izobr/images/city/r11.png">
+        <img  id="r18" src="https://320711.selcdn.ru/izobr/images/city/r11.png">
+        <img  id="r21" src="https://320711.selcdn.ru/izobr/images/city/r21.png">
+        <img  id="r22" src="https://320711.selcdn.ru/izobr/images/city/r21.png">
+        <img  id="r23" src="https://320711.selcdn.ru/izobr/images/city/r21.png">
+        <img  id="r24" src="https://320711.selcdn.ru/izobr/images/city/r21.png">
+        <img  id="r25" src="https://320711.selcdn.ru/izobr/images/city/r21.png">
+        <img  id="r26" src="https://320711.selcdn.ru/izobr/images/city/r21.png">
+        <img  id="r27" src="https://320711.selcdn.ru/izobr/images/city/r21.png">
+        <img  id="r28" src="https://320711.selcdn.ru/izobr/images/city/r21.png">
 
-        <img id="conc" src="https://320711.selcdn.ru/izobr/images/console/centre.png">
-        <img id="concl" src="https://320711.selcdn.ru/izobr/images/console/left.png">
-        <img id="conl2" src="https://320711.selcdn.ru/izobr/images/console/l2.png">
-        <img id="concr" src="https://320711.selcdn.ru/izobr/images/console/right.png">
-        <img id="conr2" src="https://320711.selcdn.ru/izobr/images/console/r2.png">
+        <img  id="conc" src="https://320711.selcdn.ru/izobr/images/console/centre.png">
+        <img  id="concl" src="https://320711.selcdn.ru/izobr/images/console/left.png">
+        <img  id="conl2" src="https://320711.selcdn.ru/izobr/images/console/l2.png">
+        <img  id="concr" src="https://320711.selcdn.ru/izobr/images/console/right.png">
+        <img  id="conr2" src="https://320711.selcdn.ru/izobr/images/console/r2.png">
         
-        <img id="bpa" src="https://320711.selcdn.ru/izobr/images/navigation/panels/bpanelagro.png">
-        <img id="bpe" src="https://320711.selcdn.ru/izobr/images/navigation/panels/bpanelexcursion.png">
-        <img id="bplc" src="https://320711.selcdn.ru/izobr/images/navigation/panels/bpanellessonc.png">
-        <img id="bplh" src="https://320711.selcdn.ru/izobr/images/navigation/panels/bpanellessonh.png">
-        <img id="bpp" src="https://320711.selcdn.ru/izobr/images/navigation/panels/bpanelprint.png">
-        <img id="bps" src="https://320711.selcdn.ru/izobr/images/navigation/panels/bpanelstop.png">
+        <img  id="bpa" src="https://320711.selcdn.ru/izobr/images/navigation/panels/bpanelagro.png">
+        <img  id="bpe" src="https://320711.selcdn.ru/izobr/images/navigation/panels/bpanelexcursion.png">
+        <img  id="bplc" src="https://320711.selcdn.ru/izobr/images/navigation/panels/bpanellessonc.png">
+        <img  id="bplh" src="https://320711.selcdn.ru/izobr/images/navigation/panels/bpanellessonh.png">
+        <img  id="bpp" src="https://320711.selcdn.ru/izobr/images/navigation/panels/bpanelprint.png">
+        <img  id="bps" src="https://320711.selcdn.ru/izobr/images/navigation/panels/bpanelstop.png">
 
-        <img id="bpaf" src="https://320711.selcdn.ru/izobr/images/navigation/panels/bpanelagrof.png">
-        <img id="bpef" src="https://320711.selcdn.ru/izobr/images/navigation/panels/bpanelexcursionf.png">
-        <img id="bplcf" src="https://320711.selcdn.ru/izobr/images/navigation/panels/bpanellessoncf.png">
-        <img id="bplhf" src="https://320711.selcdn.ru/izobr/images/navigation/panels/bpanellessonhf.png">
-        <img id="bppf" src="https://320711.selcdn.ru/izobr/images/navigation/panels/bpanelprintf.png">
-        <img id="bpsf" src="https://320711.selcdn.ru/izobr/images/navigation/panels/bpanelstopf.png">
+        <img  id="bpaf" src="https://320711.selcdn.ru/izobr/images/navigation/panels/bpanelagrof.png">
+        <img  id="bpef" src="https://320711.selcdn.ru/izobr/images/navigation/panels/bpanelexcursionf.png">
+        <img  id="bplcf" src="https://320711.selcdn.ru/izobr/images/navigation/panels/bpanellessoncf.png">
+        <img  id="bplhf" src="https://320711.selcdn.ru/izobr/images/navigation/panels/bpanellessonhf.png">
+        <img  id="bppf" src="https://320711.selcdn.ru/izobr/images/navigation/panels/bpanelprintf.png">
+        <img  id="bpsf" src="https://320711.selcdn.ru/izobr/images/navigation/panels/bpanelstopf.png">
 
-        <img id="pal" src="https://320711.selcdn.ru/izobr/images/navigation/wall/panelagrol.png">
-        <img id="par" src="https://320711.selcdn.ru/izobr/images/navigation/wall/panelagror.png">
-        <img id="pel" src="https://320711.selcdn.ru/izobr/images/navigation/wall/panelexcursionl.png">
-        <img id="per" src="https://320711.selcdn.ru/izobr/images/navigation/wall/panelexcursionr.png">
-        <img id="ppl" src="https://320711.selcdn.ru/izobr/images/navigation/wall/panelfarml.png">
-        <img id="ppr" src="https://320711.selcdn.ru/izobr/images/navigation/wall/panelfarmr.png">
-        <img id="plcl" src="https://320711.selcdn.ru/izobr/images/navigation/wall/panellessoncl.png">
-        <img id="plcr" src="https://320711.selcdn.ru/izobr/images/navigation/wall/panellessoncr.png">
-        <img id="plhl" src="https://320711.selcdn.ru/izobr/images/navigation/wall/panellessonhl.png">
-        <img id="plhr" src="https://320711.selcdn.ru/izobr/images/navigation/wall/panellessonhr.png">
-        <img id="psl" src="https://320711.selcdn.ru/izobr/images/navigation/wall/panelstopl.png">
-        <img id="psr" src="https://320711.selcdn.ru/izobr/images/navigation/wall/panelstopr.png">
+        <img  id="pal" src="https://320711.selcdn.ru/izobr/images/navigation/wall/panelagrol.png">
+        <img  id="par" src="https://320711.selcdn.ru/izobr/images/navigation/wall/panelagror.png">
+        <img  id="pel" src="https://320711.selcdn.ru/izobr/images/navigation/wall/panelexcursionl.png">
+        <img  id="per" src="https://320711.selcdn.ru/izobr/images/navigation/wall/panelexcursionr.png">
+        <img  id="ppl" src="https://320711.selcdn.ru/izobr/images/navigation/wall/panelfarml.png">
+        <img  id="ppr" src="https://320711.selcdn.ru/izobr/images/navigation/wall/panelfarmr.png">
+        <img  id="plcl" src="https://320711.selcdn.ru/izobr/images/navigation/wall/panellessoncl.png">
+        <img  id="plcr" src="https://320711.selcdn.ru/izobr/images/navigation/wall/panellessoncr.png">
+        <img  id="plhl" src="https://320711.selcdn.ru/izobr/images/navigation/wall/panellessonhl.png">
+        <img  id="plhr" src="https://320711.selcdn.ru/izobr/images/navigation/wall/panellessonhr.png">
+        <img  id="psl" src="https://320711.selcdn.ru/izobr/images/navigation/wall/panelstopl.png">
+        <img  id="psr" src="https://320711.selcdn.ru/izobr/images/navigation/wall/panelstopr.png">
 
-        <img id="p11" src="https://320711.selcdn.ru/izobr/images/port/p11.png">
-        <img id="p12" src="https://320711.selcdn.ru/izobr/images/port/p12.png">
-        <img id="p11r" src="https://320711.selcdn.ru/izobr/images/port/p11r.png">
-        <img id="p12r" src="https://320711.selcdn.ru/izobr/images/port/p12r.png">
+        <img  id="p11" src="https://320711.selcdn.ru/izobr/images/port/p11.png">
+        <img  id="p12" src="https://320711.selcdn.ru/izobr/images/port/p12.png">
+        <img  id="p11r" src="https://320711.selcdn.ru/izobr/images/port/p11r.png">
+        <img  id="p12r" src="https://320711.selcdn.ru/izobr/images/port/p12r.png">
 
-        <img id="i2" src="https://320711.selcdn.ru/izobr/images/npo/i2.jpg">
+        <img  id="i2" src="https://320711.selcdn.ru/izobr/images/npo/i2.jpg">
+
+        <img  id="info1" src="https://320711.selcdn.ru/izobr/images/excursionstuff/info1.png">
+        <img  id="infoClose" src="https://320711.selcdn.ru/izobr/images/excursionstuff/close.jpg">
+        <img  id="info" src="https://320711.selcdn.ru/izobr/images/excursionstuff/info.jpg">
+
+
+        <img  id="agrop1" src="https://320711.selcdn.ru/izobr/images/agro/agrop1.png">
+
+        <img  id="printp1" src="https://320711.selcdn.ru/izobr/images/printer/printp1.png">
+        <img  id="printc" src="https://320711.selcdn.ru/izobr/images/printer/printc.png">
+        <img  id="printo" src="https://320711.selcdn.ru/izobr/images/printer/printo.png">
+        
+
 
         
   
@@ -173,11 +200,37 @@
         <!-- <a-asset-item id="mozilla" src="images/biohazard.svg"></a-asset-item> -->
       </a-assets>
 
+
+      <!-- LOADER -->
+      <a-entity id="loader" visible="false" position="0 1.8 -0.5">
+        <a-entity
+          geometry="primitive: sphere; radius: 0.02"
+          position="-0.05 0 0"
+          material="color: white;"
+          animation__scale="property: scale; dir: alternate; dur: 800; easing: easeInOutSine; loop: true; from: 0 0 0; to: 1 1 1">
+        </a-entity>
+        <a-entity
+            geometry="primitive: sphere; radius: 0.02"
+            position="0 0 0"
+            material="color: white;"
+            animation__scale="property: scale; dir: alternate; dur: 900; easing: easeInOutSine; loop: true; from: 0 0 0; to: 1 1 1">
+        </a-entity>
+        <a-entity
+            geometry="primitive: sphere; radius: 0.02"
+            position="0.05 0 0"
+            material="color: white;"
+            animation__scale="property: scale; dir: alternate; dur: 1000; easing: easeInOutSine; loop: true; from: 0 0 0; to: 1 1 1">
+        </a-entity>
+      </a-entity>
+
+ 
+
+
           <!-- NAVMESH -->
-        <!-- <a-entity  id="agnav" visible="true" gltf-model="#bnav"  nav-mesh ></a-entity> -->
+        <a-entity  id="agnav" visible="false" gltf-model="#bnav"  nav-mesh ></a-entity>
   
       <!-- TONNEL -->
-      <a-entity id="ton"  class="room"  visible="true" gltf-model="#tonnel" scale="0.8 0.8 0.8" position = "0 0 40" >
+      <a-entity id="ton"  class="room"  visible="true" gltf-model="#tonnel" scale="0.8 0.8 0.8" position = "0 0 0" startp="0 0 -40" >
     
         <!-- MAP -->
         <!-- <a-plane src="#maps"  transparent="true" width="1.920" height="1.080" scale="5 5 0" position="0 3.5 -116"></a-plane> -->
@@ -428,7 +481,7 @@
 
        <!-- PORTALS -->
        <a-entity id="portals">
-        <a-entity class="interractible" id="portal1" geometry="primitive: cylinder; height:6; width:1.2;" position="6 3 -53.5" scale="1 1 1" material="color:#00ffff; opacity:0.1; transparent: true;" teleport="room:lesson1">
+        <a-entity class="interractible" id="portal1" geometry="primitive: cylinder; height:6; width:1.2;" position="6 3 -53.5" scale="1 1 1" material="color:#00ffff; opacity:0.1; transparent: true;" teleport="room:lesson1; position: 0 0 0">
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 3 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p12; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 360 0; loop: true; dur: 20000"></a-entity>
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 3 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p11; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 -360 0; loop: true; dur: 10000"></a-entity>
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p12; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 360 0; loop: true; dur: 20000"></a-entity>
@@ -452,13 +505,13 @@
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p12r; transparent: true; alphaTest:0.2" ></a-entity>
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p11r; transparent: true; alphaTest:0.2" ></a-entity>
         </a-entity>
-        <a-entity class="interractible" id="portal5" geometry="primitive: cylinder; height:6; width:1.2;" position="6 3 -96.5" scale="1 1 1" material="color:#00ffff; opacity:0.1; transparent: true;" teleport="room:agro; position: 0 0 0">
+        <a-entity class="interractible" id="portal5" geometry="primitive: cylinder; height:6; width:1.2;" position="6 3 -96.5" scale="1 1 1" material="color:#00ffff; opacity:0.1; transparent: true;" teleport="room:agro; position: 40 0 0">
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 3 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p12; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 360 0; loop: true; dur: 20000"></a-entity>
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 3 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p11; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 -360 0; loop: true; dur: 10000"></a-entity>
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p12; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 360 0; loop: true; dur: 20000"></a-entity>
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p11; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 -360 0; loop: true; dur: 10000"></a-entity>
         </a-entity>
-        <a-entity class="interractible" id="portal6" geometry="primitive: cylinder; height:6; width:1.2;" position="-6 3 -96.5" scale="1 1 1" material="color:#00ffff; opacity:0.1; transparent: true;" teleport="room:lab">
+        <a-entity class="interractible" id="portal6" geometry="primitive: cylinder; height:6; width:1.2;" position="-6 3 -96.5" scale="1 1 1" material="color:#00ffff; opacity:0.1; transparent: true;" teleport="room:lab; position: -30 0 -8">
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 3 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p12; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 360 0; loop: true; dur: 20000"></a-entity>
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 3 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p11; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 -360 0; loop: true; dur: 10000"></a-entity>
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p12; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 360 0; loop: true; dur: 20000"></a-entity>
@@ -470,77 +523,137 @@
         <!-- LIGHTS -->
         <!-- <a-entity light="type: ambient; color: #4f6487;" ></a-entity>
         <a-entity light="type: directional; color: #4f6487; intensity: 1" position="-0.5 2 1"></a-entity> -->
-        <a-light type="point" color="#94c6ff" distance="140" position="0 5 -6" intensity="0" animation="property: light.intensity; from: 0; to: 1; delay: 500; dur: 500" ></a-light>
+        <a-light type="point" color="#94c6ff" distance="140" position="0 5 -6" intensity="0" animation="property: light.intensity; from: 0; to: 2; delay: 500; dur: 500" ></a-light>
         <a-light type="point" color="#94c6ff" distance="60" position="0 5 -100" intensity="0" animation="property: light.intensity; from: 0; to: 0.5; delay: 500; dur: 500" ></a-light>
-        <a-light type="point" color="#94c6ff" distance="140" position="0 5 -80" intensity="0" animation="property: light.intensity; from: 0; to: 1; delay: 500; dur: 500" ></a-light>
+        <a-light type="point" color="#94c6ff" distance="140" position="0 5 -80" intensity="0" animation="property: light.intensity; from: 0; to: 2; delay: 500; dur: 500" ></a-light>
         
 
       </a-entity>
       
       <!-- AGROBOX -->
-      <a-entity id="agro"  class="room"  visible="false" gltf-model="#agro3" scale="1.6 1.6 1.6" position = "0 0 0" >
-    
+      <a-entity id="agro"  class="room"  visible="false" gltf-model="#agro3" scale="1.6 1.6 1.6" position = "40 0 0" startp="40 0 0" >
+        
+        <!-- ADDMODELS -->
+        <a-entity id="dnam" gltf-model="#dna" position = "2.65 0 -7.45" animation="property: rotation; from: 0 0 0; to: 0 -360 0; loop: true; dur: 10000 easing:easeInSine"></a-entity>
+        <a-entity id="cristal2m" gltf-model="#cristal2" position = "2.65 0.5 -5.8" animation="property: rotation; from: 0 0 0; to: 359 359 0; loop: true; dur: 15000 easing:linear"></a-entity>
+        <a-entity id="h20m" gltf-model="#h2o" position = "2.65 0.5 -3.8" animation="property: position; from:2.65 0.4 -3.8; to:2.65 0.6 -3.8; loop: true; dur: 3000 easing:linear; dir: alternate"></a-entity>
+        <a-entity id="co3m" gltf-model="#co3" position = "2.65 0.5 -1.3" animation="property: rotation; from: 0 0 0; to: 0 359 0; loop: true; dur: 15000 easing:linear"></a-entity>
+        
         <!-- AGROCAPSULES -->
-        <a-entity  gltf-model="#agrocapsule"  position = "-2.5 0.01 -1" >
+        <a-entity  gltf-model="#agrocapsule"  position = "-2.8 0.01 -1.5" >
+          <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
+         position="0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 90 0"
+          material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
-        <a-entity  gltf-model="#agrocapsule"  position = "-2.5 0.01 -2" >
+        <a-entity  gltf-model="#agrocapsule"  position = "-2.8 0.01 -2.5" >
+          <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
+          position="0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 90 0"
+           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
-        <a-entity  gltf-model="#agrocapsule"  position = "-2.5 0.01 -3" >
+        <a-entity  gltf-model="#agrocapsule"  position = "-2.8 0.01 -3.5" >
+          <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
+          position="0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 90 0"
+           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
-        <a-entity  gltf-model="#agrocapsule"  position = "-2.5 0.01 -4" >
+        <a-entity  gltf-model="#agrocapsule"  position = "-2.8 0.01 -4.5" >
+          <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
+          position="0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 90 0"
+           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
-        <a-entity  gltf-model="#agrocapsule"  position = "-2.5 0.01 -5" >
+        <a-entity  gltf-model="#agrocapsule"  position = "-2.8 0.01 -5.5" >
+          <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
+          position="0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 90 0"
+           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
-        <a-entity  gltf-model="#agrocapsule"  position = "-2.5 0.01 -6" >
+        <a-entity  gltf-model="#agrocapsule"  position = "-2.8 0.01 -6.5" >
+          <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
+          position="0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 90 0"
+           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
 
-        <a-entity  gltf-model="#agrocapsule"  position = "-3.8 0.01 -1" >
+        <a-entity  gltf-model="#agrocapsule"  position = "-4.0 0.01 -1.5" >
+          <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
+          position="-0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 -90 0"
+           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
-        <a-entity  gltf-model="#agrocapsule"  position = "-3.8 0.01 -2" >
+        <a-entity  gltf-model="#agrocapsule"  position = "-4.0 0.01 -2.5" >
+          <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
+          position="-0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 -90 0"
+           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
-        <a-entity  gltf-model="#agrocapsule"  position = "-3.8 0.01 -3" >
+        <a-entity  gltf-model="#agrocapsule"  position = "-4.0 0.01 -3.5" >
+          <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
+          position="-0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 -90 0"
+           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
-        <a-entity  gltf-model="#agrocapsule"  position = "-3.8 0.01 -4" >
+        <a-entity  gltf-model="#agrocapsule"  position = "-4.0 0.01 -4.5" >
+          <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
+          position="-0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 -90 0"
+           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
-        <a-entity  gltf-model="#agrocapsule"  position = "-3.8 0.01 -5" >
+        <a-entity  gltf-model="#agrocapsule"  position = "-4.0 0.01 -5.5" >
+          <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
+          position="-0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 -90 0"
+           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
-        <a-entity  gltf-model="#agrocapsule"  position = "-3.8 0.01 -6" >
+        <a-entity  gltf-model="#agrocapsule"  position = "-4.0 0.01 -6.5" >
+          <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
+          position="-0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 -90 0"
+           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
 
-        <a-entity  gltf-model="#agrocapsule"  position = "-8 0.01 -1" >
+        <a-entity  gltf-model="#agrocapsule"  position = "-8 0.01 -1.5" >
+          <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
+          position="0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 90 0"
+           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
-        <a-entity  gltf-model="#agrocapsule"  position = "-8 0.01 -2" >
+        <a-entity  gltf-model="#agrocapsule"  position = "-8 0.01 -2.5" >
+          <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
+          position="0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 90 0"
+           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
-        <a-entity  gltf-model="#agrocapsule"  position = "-8 0.01 -3" >
+        <a-entity  gltf-model="#agrocapsule"  position = "-8 0.01 -3.5" >
+          <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
+          position="0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 90 0"
+           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
-        <a-entity  gltf-model="#agrocapsule"  position = "-8 0.01 -4" >
+        <a-entity  gltf-model="#agrocapsule"  position = "-8 0.01 -4.5" >
+          <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
+          position="0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 90 0"
+           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
-        <a-entity  gltf-model="#agrocapsule"  position = "-8 0.01 -5" >
+        <a-entity  gltf-model="#agrocapsule"  position = "-8 0.01 -5.5" >
+          <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
+          position="0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 90 0"
+           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
-        <a-entity  gltf-model="#agrocapsule"  position = "-8 0.01 -6" >
+        <a-entity  gltf-model="#agrocapsule"  position = "-8 0.01 -6.5" >
+          <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
+          position="0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 90 0"
+           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
 
 
         <!-- BACKPORTAL -->
-        <a-entity class="interractible" id="portall" geometry="primitive: cylinder; height:6 width:1.2;" position="0 1.5 1" scale="0.5 0.5 0.5" material="color:#00ffff; opacity:0.1; transparent: true;" teleport="room:ton;  position: 2 0 -37">
+        <a-entity class="interractible" id="portall" geometry="primitive: cylinder; height:6 width:1.2;" position="0 1.5 1" scale="0.5 0.5 0.5" material="color:#00ffff; opacity:0.1; transparent: true;" teleport="room:ton;  position: 2 0 -77">
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 2.5 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p12; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 360 0; loop: true; dur: 20000"></a-entity>
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 2.5 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p11; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 -360 0; loop: true; dur: 10000"></a-entity>
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p12; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 360 0; loop: true; dur: 20000"></a-entity>
@@ -562,123 +675,416 @@
 
 
       <!-- LABORATORY -->
-      <a-entity id="lab"  class="room"  visible="false" gltf-model="#lab2" scale="1.6 1.6 1.6" position = "-10 0 8" >
+      <a-entity id="lab"  class="room"  visible="false" gltf-model="#lab2" scale="1.6 1.6 1.6" position = "-40 0 0"  startp="-30 0 -8">
+        
         <!-- BACKPORTAL -->
-        <a-entity class="interractible" id="portall" geometry="primitive: cylinder; height:6 width:1.2;" position="6 1.5 -1" scale="0.5 0.5 0.5" material="color:#00ffff; opacity:0.1; transparent: true;" teleport="room:ton; position: -2 0 -37">
+        <a-entity class="interractible" id="portall" geometry="primitive: cylinder; height:6 width:1.2;" position="6 1.5 -1" scale="0.5 0.5 0.5" material="color:#00ffff; opacity:0.1; transparent: true;" teleport="room:ton; position: -2 0 -77">
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 2.5 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p12; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 360 0; loop: true; dur: 20000"></a-entity>
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 2.5 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p11; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 -360 0; loop: true; dur: 10000"></a-entity>
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p12; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 360 0; loop: true; dur: 20000"></a-entity>
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p11; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 -360 0; loop: true; dur: 10000"></a-entity>
         </a-entity>
 
+        <a-entity visible="false" id="printmodel" gltf-model="#brilok" rotation="0 0 0" scale="15 15 15" position = "6.5 1.2 -9" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
+      
+
       <!-- SHELFS -->
       <a-entity id ="shelf1" position="3.5 0 -2" rotation="0 90 0">
         <a-entity gltf-model="#shelf" rotation="0 0 0" scale="0.4 0.4 0.4" position = "0 0 0"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 -0.1 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 -0.1 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 0.54 -2.45"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 0.54 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.2 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.2 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.8 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.8 -2.55"></a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 -0.1 -2.5">
+            <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+            position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+             material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 -0.1 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 0.54 -2.45">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 0.54 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.2 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.2 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.8 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.8 -2.55">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
       </a-entity>
 
       <a-entity id ="shelf2" position="3.5 0 -4.5" rotation="0 90 0">
         <a-entity gltf-model="#shelf" rotation="0 0 0" scale="0.4 0.4 0.4" position = "0 0 0"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 -0.1 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 -0.1 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 0.54 -2.45"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 0.54 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.2 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.2 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.8 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.8 -2.55"></a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 -0.1 -2.5">
+            <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+            position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+             material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 -0.1 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 0.54 -2.45">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 0.54 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.2 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.2 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.8 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.8 -2.55">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
       </a-entity>
 
       <a-entity id ="shelf3" position="3.5 0 -7" rotation="0 90 0">
         <a-entity gltf-model="#shelf" rotation="0 0 0" scale="0.4 0.4 0.4" position = "0 0 0"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 -0.1 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 -0.1 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 0.54 -2.45"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 0.54 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.2 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.2 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.8 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.8 -2.55"></a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 -0.1 -2.5">
+            <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+            position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+             material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 -0.1 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 0.54 -2.45">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 0.54 -2.5">
+          <a-entity class="printerpanel interractible" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printo; transparent: true; alphaTest: 0.1" print-panel="showel: #printmodel; printpanelimg : #printp1">
+          </a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.2 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.2 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.8 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.8 -2.55">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
       </a-entity>
 
       <a-entity id ="shelf4" position="2.8 0 -13.5" rotation="0 0 0">
         <a-entity gltf-model="#shelf" rotation="0 0 0" scale="0.4 0.4 0.4" position = "0 0 0"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 -0.1 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 -0.1 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 0.54 -2.45"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 0.54 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.2 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.2 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.8 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.8 -2.55"></a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 -0.1 -2.5">
+            <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+            position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+             material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 -0.1 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 0.54 -2.45">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 0.54 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.2 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.2 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.8 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.8 -2.55">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
       </a-entity>
       
       <a-entity id ="shelf5" position="2.2 0 -13" rotation="0 30 0">
         <a-entity gltf-model="#shelf" rotation="0 0 0" scale="0.4 0.4 0.4" position = "0 0 0"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 -0.1 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 -0.1 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 0.54 -2.45"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 0.54 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.2 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.2 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.8 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.8 -2.55"></a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 -0.1 -2.5">
+            <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+            position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+             material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 -0.1 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 0.54 -2.45">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 0.54 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.2 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.2 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.8 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.8 -2.55">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
       </a-entity>
 
       <a-entity id ="shelf6" position="3.6 0 -13.7" rotation="0 -30 0">
         <a-entity gltf-model="#shelf" rotation="0 0 0" scale="0.4 0.4 0.4" position = "0 0 0"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 -0.1 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 -0.1 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 0.54 -2.45"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 0.54 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.2 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.2 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.8 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.8 -2.55"></a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 -0.1 -2.5">
+            <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+            position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+             material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 -0.1 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 0.54 -2.45">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 0.54 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.2 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.2 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.8 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.8 -2.55">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
       </a-entity>
 
 
       <a-entity id ="shelf7" position="8.8 0 -13.5" rotation="0 0 0">
         <a-entity gltf-model="#shelf" rotation="0 0 0" scale="0.4 0.4 0.4" position = "0 0 0"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 -0.1 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 -0.1 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 0.54 -2.45"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 0.54 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.2 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.2 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.8 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.8 -2.55"></a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 -0.1 -2.5">
+            <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+            position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+             material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 -0.1 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 0.54 -2.45">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 0.54 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.2 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.2 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.8 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.8 -2.55">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
       </a-entity>
       
       <a-entity id ="shelf8" position="8.2 0 -13" rotation="0 30 0">
         <a-entity gltf-model="#shelf" rotation="0 0 0" scale="0.4 0.4 0.4" position = "0 0 0"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 -0.1 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 -0.1 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 0.54 -2.45"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 0.54 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.2 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.2 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.8 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.8 -2.55"></a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 -0.1 -2.5">
+            <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+            position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+             material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 -0.1 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 0.54 -2.45">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 0.54 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.2 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.2 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.8 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.8 -2.55">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
       </a-entity>
 
       <a-entity id ="shelf9" position="9.6 0 -13.7" rotation="0 -30 0">
         <a-entity gltf-model="#shelf" rotation="0 0 0" scale="0.4 0.4 0.4" position = "0 0 0"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 -0.1 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 -0.1 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 0.54 -2.45"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 0.54 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.2 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.2 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.8 -2.5"></a-entity>
-        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.8 -2.55"></a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 -0.1 -2.5">
+            <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+            position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+             material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 -0.1 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 0.54 -2.45">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 0.54 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.2 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.2 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.8 -2.5">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
+        <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 1.8 -2.55">
+          <a-entity class="printerpanel" geometry="primitive: plane; width: 0.62; height: 0.18"
+          position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
+           material="shader: flat; src: #printc; transparent: true; alphaTest: 0.1"></a-entity>
+        </a-entity>
       </a-entity>
 
         <!-- LIGHTS -->
@@ -689,21 +1095,27 @@
    </a-entity>
         
       <!-- EXCURSION -->
-      <a-entity id="excursion"  class="room"  visible="false">
+      <a-entity id="excursion" stay class="room"  visible="false" excursion-controller="target:#esphere;  edata:exdata; timg : #pointa; inoimg : #info; incimg : #infoClose; font: fonts/YaHeiCustom-msdf.json; linkp:#linkParent">
       <!-- MINIBACKPORTAL -->
-      <a-entity id="miniportal1"  position="0 0 -1.5" scale="0.5 0.5 0.5" material="color:#00ffff; opacity:0.1; transparent: true;" teleport="room:ton; position: 2 0 -20">
+      <a-entity id="miniportal1"  position="0 0 -1.5" scale="0.5 0.5 0.5" material="color:#00ffff; opacity:0.1; transparent: true;" teleport="room:ton; position: 2 0 -60">
         <a-entity  class="interractible" geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p12; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 360 0; loop: true; dur: 20000"></a-entity>
         <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p11; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 -360 0; loop: true; dur: 10000"></a-entity>
       </a-entity>
 
-        <a-sky id="esphere" radius="100" src="#i2" rotation="0 180 0"></a-sky>
+        <a-sky setup-fade="target:#esphere" color="#000" id="esphere" radius="100" rotation="0 0 0"></a-sky>
+        <a-entity id="linkParent"></a-entity>
+
+      <!-- <a-entity id="hun" class="interractible" position="2 2 -10" dialog-popup="title: My Title; body: My Body; openIconImage: #info; closeIconImage: #infoClose"></a-entity> -->
+
+
+        
       </a-entity>
 
 
       <!-- VIDEO CHEMESTRY -->
-        <a-entity id="lesson1"  class="room"  visible="false" video-player="onPlay:room-enter; onPause:room-exit; video:#chem" l="https://riftman.gcdn.co/videos/8113_tA2MHvYMQ5EmpUp4/master.m3u8" sr="https://320711.selcdn.ru/mnl/20200305.mp4">
+        <a-entity id="lesson1" stay  class="room"  visible="false" video-player="onPlay:room-enter; onPause:room-exit; video:#chem" l="https://riftman.gcdn.co/videos/8113_tA2MHvYMQ5EmpUp4/master.m3u8" sr="https://320711.selcdn.ru/mnl/20200305.mp4">
         <!-- MINIBACKPORTAL -->
-        <a-entity id="miniportal1"  position="0 0 -1.5" scale="0.5 0.5 0.5" material="color:#00ffff; opacity:0.1; transparent: true;" teleport="room:ton; position: 2 0 -3">
+        <a-entity id="miniportal1"  position="0 0 -1.5" scale="0.5 0.5 0.5" material="color:#00ffff; opacity:0.1; transparent: true;" teleport="room:ton; position: 2 0 -43">
           <a-entity  class="interractible" geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p12; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 360 0; loop: true; dur: 20000"></a-entity>
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p11; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 -360 0; loop: true; dur: 10000"></a-entity>
         </a-entity>
@@ -714,9 +1126,9 @@
         </a-entity>
 
       <!-- VIDEO CHEMESTRY 2 -->
-      <a-entity id="lesson2"  class="room"  visible="false" video-player-hls="onPlay:room-enter; onPause:room-exit; video:#chem2" l="https://riftman.gcdn.co/videos/8113_tA2MHvYMQ5EmpUp4/master.m3u8" sr="https://320711.selcdn.ru/mnl/20200305.mp4">
+      <a-entity id="lesson2" stay  class="room"  visible="false" video-player-hls="onPlay:room-enter; onPause:room-exit; video:#chem2" l="https://riftman.gcdn.co/videos/8113_tA2MHvYMQ5EmpUp4/master.m3u8" sr="https://320711.selcdn.ru/mnl/20200305.mp4">
         <!-- MINIBACKPORTAL -->
-        <a-entity id="miniportal1"  position="0 0 -1.5" scale="0.5 0.5 0.5" material="color:#00ffff; opacity:0.1; transparent: true;" teleport="room:ton; position: -2 0 -3">
+        <a-entity id="miniportal1"  position="0 0 -1.5" scale="0.5 0.5 0.5" material="color:#00ffff; opacity:0.1; transparent: true;" teleport="room:ton; position: -2 0 -43">
           <a-entity  class="interractible" geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p12; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 360 0; loop: true; dur: 20000"></a-entity>
           <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p11; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 -360 0; loop: true; dur: 10000"></a-entity>
         </a-entity>
@@ -741,7 +1153,7 @@
 
 
       <!-- CAMERA -->
-      <a-entity id="cameraRig" movement-controls="constrainToNavMesh: true">
+      <a-entity id="cameraRig" movement-controls="constrainToNavMesh: true; enabled: true">
           <a-entity id="cursor" camera look-controls position="0 1.8 0" cursor="rayOrigin: mouse" raycaster="objects: .interractible" >
           </a-entity>
         <a-entity id="leftHand" hand-controls="hand: left; handModelStyle: highPoly; color: #94c6ff"></a-entity>
