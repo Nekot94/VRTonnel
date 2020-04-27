@@ -20,8 +20,12 @@
     <script src="components/setup-fade.js"></script>
     <script src="components/camera-look.js"></script>
     <script src="components/print-panel.js"></script>
+    <script src="components/agro-controller.js"></script>
     
     <script src="components/aframe-dialog-popup-component.js"></script>
+
+    <!-- signalir -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.3/signalr.min.js"></script>
 
 
     <!-- data -->
@@ -177,6 +181,8 @@
 
 
         <img  id="agrop1" src="https://320711.selcdn.ru/izobr/images/agro/agrop1.png">
+        <!-- <img  id="agrop2" src="/images/agro/agrop2.png"> -->
+        <img  id="agrop2" src="/images/agro/agro.png">
 
         <img  id="printp1" src="https://320711.selcdn.ru/izobr/images/printer/printp1.png">
         <img  id="printc" src="https://320711.selcdn.ru/izobr/images/printer/printc.png">
@@ -554,9 +560,9 @@
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
         <a-entity  gltf-model="#agrocapsule"  position = "-2.8 0.01 -3.5" >
-          <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
+          <a-entity id="agro-plane" class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
           position="0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 90 0"
-           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
+           material="shader: flat; src: #agrop2; transparent: true; alphaTest: 0.3" agro-controller="url:ws://reutov2.bdprog.ru/staticAgro"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
         <a-entity  gltf-model="#agrocapsule"  position = "-2.8 0.01 -4.5" >
