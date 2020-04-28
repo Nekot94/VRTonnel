@@ -69,13 +69,14 @@
         <!-- <a-asset-item id="lab2" src="https://320711.selcdn.ru/izobr/models/lab2.gltf"></a-asset-item> -->
         <!-- <a-asset-item id="lab2" src="https://320711.selcdn.ru/izobr/models/lab3.glb"></a-asset-item> -->
         <!-- <a-asset-item id="lab2" src="https://320711.selcdn.ru/izobr/models/lab3-2.glb"></a-asset-item> -->
-        <a-asset-item id="lab2" src="https://320711.selcdn.ru/izobr/models/lab3-3.glb"></a-asset-item>
+        <!-- <a-asset-item id="lab2" src="https://320711.selcdn.ru/izobr/models/lab3-3.glb"></a-asset-item> -->
+        <a-asset-item id="lab2" src="https://320711.selcdn.ru/izobr/models/lab3-4.glb"></a-asset-item>
 
         <!-- <a-asset-item id="printer" src="https://320711.selcdn.ru/izobr/models/printer1.gltf"></a-asset-item> -->
         <a-asset-item id="printer" src="https://320711.selcdn.ru/izobr/models/printer3.gltf"></a-asset-item>
         <a-asset-item id="shelf" src="https://320711.selcdn.ru/izobr/models/shelf2.gltf"></a-asset-item>
 
-        <a-asset-item id="brilok" src="models/brilokOp42.gltf"></a-asset-item>
+        <a-asset-item id="brilok" src="https://320711.selcdn.ru/izobr/models/brilokOp42.gltf"></a-asset-item>
 
         
 
@@ -182,11 +183,16 @@
 
         <img  id="agrop1" src="https://320711.selcdn.ru/izobr/images/agro/agrop1.png">
         <!-- <img  id="agrop2" src="/images/agro/agrop2.png"> -->
-        <img  id="agrop2" src="/images/agro/agro.png">
+        <img  id="agrop2" src="https://320711.selcdn.ru/izobr/images/agro/agro.png">
 
-        <img  id="printp1" src="https://320711.selcdn.ru/izobr/images/printer/printp1.png">
+        <img  id="printp1" src="https://320711.selcdn.ru/izobr/images/printer/printp4.png">
         <img  id="printc" src="https://320711.selcdn.ru/izobr/images/printer/printc.png">
         <img  id="printo" src="https://320711.selcdn.ru/izobr/images/printer/printo.png">
+
+        <img  id="statuso" src="https://320711.selcdn.ru/izobr/images/printer/statuso.png">
+        <img  id="statusc" src="https://320711.selcdn.ru/izobr/images/printer/statusc.png">
+        <img  id="pstartbut" src="https://320711.selcdn.ru/izobr/images/printer/pstartbut.png">
+        <img  id="ploadbut" src="https://320711.selcdn.ru/izobr/images/printer/ploadbut.png">
         
 
 
@@ -538,7 +544,7 @@
       </a-entity>
       
       <!-- AGROBOX -->
-      <a-entity id="agro"  class="room"  visible="false" gltf-model="#agro3" scale="1.6 1.6 1.6" position = "40 0 0" startp="40 0 0" >
+      <a-entity id="agro"  class="room"  visible="false" gltf-model="#agro3" scale="1.6 1.6 1.6" position = "40 0 0" startp="40 0 0" agro-controller="url:https://reutov3.bdprog.ru/staticAgro; font: fonts/Stem-Regular-msdf.json" >
         
         <!-- ADDMODELS -->
         <a-entity id="dnam" gltf-model="#dna" position = "2.65 0 -7.45" animation="property: rotation; from: 0 0 0; to: 0 -360 0; loop: true; dur: 10000 easing:easeInSine"></a-entity>
@@ -549,112 +555,114 @@
         <!-- AGROCAPSULES -->
         <a-entity  gltf-model="#agrocapsule"  position = "-2.8 0.01 -1.5" >
           <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
-         position="0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 90 0"
-          material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
+         position="0.6 1.5 0" scale="0.22 0.22 0.22" rotation="0 90 0"
+          material="shader: flat; src: #agrop2; transparent: true; alphaTest: 0.4"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
         <a-entity  gltf-model="#agrocapsule"  position = "-2.8 0.01 -2.5" >
           <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
-          position="0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 90 0"
-           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
+          position="0.6 1.5 0" scale="0.22 0.22 0.22" rotation="0 90 0"
+           material="shader: flat; src: #agrop2; transparent: true; alphaTest: 0.4"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
+        <!-- WORKING-CAPSULE -->
         <a-entity  gltf-model="#agrocapsule"  position = "-2.8 0.01 -3.5" >
-          <a-entity id="agro-plane" class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
-          position="0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 90 0"
-           material="shader: flat; src: #agrop2; transparent: true; alphaTest: 0.3" agro-controller="url:ws://reutov2.bdprog.ru/staticAgro"></a-entity>
+          <a-entity active id="agro-plane" class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
+          position="0.6 1.5 0" scale="0.22 0.22 0.22" rotation="0 90 0"
+           material="shader: flat; src: #agrop2; transparent: true; alphaTest: 0.1" >
+          </a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
         <a-entity  gltf-model="#agrocapsule"  position = "-2.8 0.01 -4.5" >
           <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
-          position="0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 90 0"
-           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
+          position="0.6 1.5 0" scale="0.22 0.22 0.22" rotation="0 90 0"
+           material="shader: flat; src: #agrop2; transparent: true; alphaTest: 0.4"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
         <a-entity  gltf-model="#agrocapsule"  position = "-2.8 0.01 -5.5" >
           <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
-          position="0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 90 0"
-           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
+          position="0.6 1.5 0" scale="0.22 0.22 0.22" rotation="0 90 0"
+           material="shader: flat; src: #agrop2; transparent: true; alphaTest: 0.4"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
         <a-entity  gltf-model="#agrocapsule"  position = "-2.8 0.01 -6.5" >
           <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
-          position="0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 90 0"
-           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
+          position="0.6 1.5 0" scale="0.22 0.22 0.22" rotation="0 90 0"
+           material="shader: flat; src: #agrop2; transparent: true; alphaTest: 0.4"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
-
+        <!-- 2ndrow -->
         <a-entity  gltf-model="#agrocapsule"  position = "-4.0 0.01 -1.5" >
           <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
-          position="-0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 -90 0"
-           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
+          position="-0.6 1.5 0" scale="0.22 0.22 0.22" rotation="0 -90 0"
+           material="shader: flat; src: #agrop2; transparent: true; alphaTest: 0.4"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
         <a-entity  gltf-model="#agrocapsule"  position = "-4.0 0.01 -2.5" >
           <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
-          position="-0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 -90 0"
-           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
+          position="-0.6 1.5 0" scale="0.22 0.22 0.22" rotation="0 -90 0"
+           material="shader: flat; src: #agrop2; transparent: true; alphaTest: 0.4"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
         <a-entity  gltf-model="#agrocapsule"  position = "-4.0 0.01 -3.5" >
           <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
-          position="-0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 -90 0"
-           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
+          position="-0.6 1.5 0" scale="0.22 0.22 0.22" rotation="0 -90 0"
+           material="shader: flat; src: #agrop2; transparent: true; alphaTest: 0.4"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
         <a-entity  gltf-model="#agrocapsule"  position = "-4.0 0.01 -4.5" >
           <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
-          position="-0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 -90 0"
-           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
+          position="-0.6 1.5 0" scale="0.22 0.22 0.22" rotation="0 -90 0"
+           material="shader: flat; src: #agrop2; transparent: true; alphaTest: 0.4"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
         <a-entity  gltf-model="#agrocapsule"  position = "-4.0 0.01 -5.5" >
           <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
-          position="-0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 -90 0"
-           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
+          position="-0.6 1.5 0" scale="0.22 0.22 0.22" rotation="0 -90 0"
+           material="shader: flat; src: #agrop2; transparent: true; alphaTest: 0.4"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
         <a-entity  gltf-model="#agrocapsule"  position = "-4.0 0.01 -6.5" >
           <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
-          position="-0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 -90 0"
-           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
+          position="-0.6 1.5 0" scale="0.22 0.22 0.22" rotation="0 -90 0"
+           material="shader: flat; src: #agrop2; transparent: true; alphaTest: 0.4"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
-
+        <!-- 3rdrow -->
         <a-entity  gltf-model="#agrocapsule"  position = "-8 0.01 -1.5" >
           <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
-          position="0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 90 0"
-           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
+          position="0.6 1.5 0" scale="0.22 0.22 0.22" rotation="0 90 0"
+           material="shader: flat; src: #agrop2; transparent: true; alphaTest: 0.4"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
         <a-entity  gltf-model="#agrocapsule"  position = "-8 0.01 -2.5" >
           <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
-          position="0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 90 0"
-           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
+          position="0.6 1.5 0" scale="0.22 0.22 0.22" rotation="0 90 0"
+           material="shader: flat; src: #agrop2; transparent: true; alphaTest: 0.4"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
         <a-entity  gltf-model="#agrocapsule"  position = "-8 0.01 -3.5" >
           <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
-          position="0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 90 0"
-           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
+          position="0.6 1.5 0" scale="0.22 0.22 0.22" rotation="0 90 0"
+           material="shader: flat; src: #agrop2; transparent: true; alphaTest: 0.4"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
         <a-entity  gltf-model="#agrocapsule"  position = "-8 0.01 -4.5" >
           <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
-          position="0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 90 0"
-           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
+          position="0.6 1.5 0" scale="0.22 0.22 0.22" rotation="0 90 0"
+           material="shader: flat; src: #agrop2; transparent: true; alphaTest: 0.4"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
         <a-entity  gltf-model="#agrocapsule"  position = "-8 0.01 -5.5" >
           <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
-          position="0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 90 0"
-           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
+          position="0.6 1.5 0" scale="0.22 0.22 0.22" rotation="0 90 0"
+           material="shader: flat; src: #agrop2; transparent: true; alphaTest: 0.4"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
         <a-entity  gltf-model="#agrocapsule"  position = "-8 0.01 -6.5" >
           <a-entity class="agropanel" geometry="primitive: plane; width: 3.31; height: 4.76"
-          position="0.6 1.5 0" scale="0.19 0.19 0.19" rotation="0 90 0"
-           material="shader: flat; src: #agrop1; transparent: true; alphaTest: 0.3"></a-entity>
+          position="0.6 1.5 0" scale="0.22 0.22 0.22" rotation="0 90 0"
+           material="shader: flat; src: #agrop2; transparent: true; alphaTest: 0.4"></a-entity>
           <a-entity gltf-model="#agroplant" position = "0 -0.1 0" animation="property: rotation; from: 0 0 0; to: 0 360 0; loop: true; dur: 20000 easing:linear"></a-entity>
         </a-entity>
 
@@ -803,9 +811,10 @@
         </a-entity>
         <!-- MAIN-PRINTER -->
         <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "1.2 0.54 -2.5">
-          <a-entity l="https://riftman.gcdn.co/streams/8113_10326/playlist.m3u8" class="printerpanel interractible" geometry="primitive: plane; width: 0.62; height: 0.18"
+          <a-entity id="main-printer" l="https://riftman.gcdn.co/streams/8113_10326/playlist.m3u8" class="printerpanel interractible" geometry="primitive: plane; width: 0.62; height: 0.18"
           position="0 0.68 0.53" scale="1 1 1" rotation="0 0 0"
-           material="shader: flat; src: #printo; transparent: true; alphaTest: 0.1" print-panel="showel: #printmodel; printpanelimg : #printp1">
+           material="shader: flat; src: #printo; transparent: true; alphaTest: 0.1" 
+           print-panel="showel: #printmodel; printpanelimg : #printp1; statusOImg: #statuso; statusCImg: #statusc; loadButImg: #ploadbut; startButImg: #pstartbut">
           </a-entity>
         </a-entity>
         <a-entity gltf-model="#printer" rotation="0 0 0" scale="1 1 1" position = "0.4 1.2 -2.5">

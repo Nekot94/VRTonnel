@@ -15,17 +15,6 @@ AFRAME.registerComponent('video-player-hls', {
         let isPlayed = false;
   
       el.addEventListener(data.onPlay, function () {
-        //   if (!video)
-        //    return;
-        //    if (!isPlayed) {
-        //       if (data.restart) video.currentTime = 0;
-        //       var playPromise = video.play();
-        //       if (playPromise !== null) {
-        //       playPromise.catch(() => { /* discard runtime error */ })
-        //       }
-        //   } else {
-        //       video.pause();
-        //   }
           
           console.log("fuu", el.getAttribute('l'));
           console.log("video", data.video);
