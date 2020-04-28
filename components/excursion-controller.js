@@ -17,8 +17,8 @@ AFRAME.registerComponent('excursion-controller', {
 
         var xobj = new XMLHttpRequest();
         xobj.overrideMimeType("application/json");
-        // xobj.open('GET', "data/" + data.edata + ".json", true);
-        xobj.open('GET', "https://320711.selcdn.ru/izobr/data/" + data.edata + ".json", true);
+        xobj.open('GET', "data/" + data.edata + ".json", true);
+        // xobj.open('GET', "https://320711.selcdn.ru/izobr/data/" + data.edata + ".json", true);
 
         xobj.onreadystatechange = _ => {
             if (xobj.readyState == 4 && xobj.status == "200") {

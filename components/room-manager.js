@@ -26,6 +26,10 @@ AFRAME.registerComponent('room-manager', {
             myRooms[id].interractibles = rooms[i].querySelectorAll('.interractible');
         }
 
+        this.password = href.split('?')[1];
+        this.password = this.password.split('#')[0];
+        console.log("pass", this.password);
+
         let room = href.split('#')[1];
         if (room) 
             room = room.split("/")[0];

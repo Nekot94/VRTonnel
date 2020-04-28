@@ -40,7 +40,7 @@ AFRAME.registerComponent('agro-controller', {
         });
 
 
-        connection.start();
+        connection.start(()=> connection.send("getAgro"));
 
     
     },

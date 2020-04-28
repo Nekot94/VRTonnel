@@ -77,7 +77,7 @@ AFRAME.registerComponent('print-panel', {
 
   
 
-            let videoPanel = this.createPanel("0.6", "0.3375", data.videoId, "0.341 0.228 0.01", "videoPanel");
+            let videoPanel = this.createPanel("0.425", "0.3375", data.videoId, "0.341 0.228 0.01", "videoPanel");
 
             mainPanel.appendChild(videoPanel); 
 
@@ -85,6 +85,7 @@ AFRAME.registerComponent('print-panel', {
                 onPlay: "printer-video-start",
                 onPause: "printer-video-pause",
                 video: data.videoId,
+                startLevel: 0
             });
 
             el.emit("printer-video-start");
