@@ -4,10 +4,10 @@
         "url":"https://320711.selcdn.ru/izobr/images/ex360/1.jpg", 
         "rotation": 180,
         "transitions":[
-            {"transitionId": 2, "additionalRotation": 0,  "position": "10 2 9", "latitude":10, "longitude":135, "radius": 18 }
+            {"transitionId": 2, "additionalRotation": 0,  "position": "10 2 9", "latitude":0, "longitude":135, "radius": 18 }
             ],
         "info":[
-                {"title":"привет привет привет привет привет привет", "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vel arcu metus.\n\n Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vel arcu metus.",
+                {"title":"Ракетный комплекс с крылатой ракетой П-5", "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vel arcu metus.\n\n Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vel arcu metus.",
                     "position": "0 0 -1", "latitude":12, "longitude":180, "radius": 10, "panelHeight": 12, "image": "https://320711.selcdn.ru/izobr/images/excursionstuff/rocket1.png", "imageWidth" : 7, "imageHeight": 4.2 }
             ]
      },
@@ -16,8 +16,8 @@
         "url":"https://320711.selcdn.ru/izobr/images/ex360/2.jpg",
         "rotation": 180,
         "transitions":[
-            {"transitionId": 1, "additionalRotation": 0, "position": "10 2 -9", "latitude":10, "longitude":125, "radius": 18 },
-            {"transitionId": 3, "additionalRotation": 0, "position": "-14 0 -9", "latitude":0, "longitude":300, "radius": 18 } 
+            {"transitionId": 1, "additionalRotation": 0, "position": "10 2 -9", "latitude":0, "longitude":50, "radius": 18 },
+            {"transitionId": 3, "additionalRotation": 0, "position": "-14 0 -9", "latitude":-10, "longitude":330, "radius": 18 } 
             ],
         "info":[
             {"title":"Ракетный комплекс с крылатой ракетой П-5", "text": "П-5 — первая в мире ракета с автоматически раскрывающимся в полёте крылом, стартующая из герметичного цилиндрического контейнера, имеющего минимальные габариты. Старт крылатой ракеты (КР) осуществлялся с подводной лодки (ПЛ) в надводном положении из поднимающегося в наклонное положение контейнера.\n\n Комплекс с КР П-5 предназначен для поражения береговых, административных, промышленных объектов и военно-морских баз, расположенных как на побережье, так и в глубине территории.\n\n В период 1959—1967 гг. комплекс был эффективным средством доставки ядерного оружия на межконтинентальную дальность в Вооруженных Силах СССР. ", 
@@ -29,8 +29,8 @@
         "url":"https://320711.selcdn.ru/izobr/images/ex360/3.jpg",
         "rotation": 180,
         "transitions":[
-            {"transitionId": 2, "additionalRotation": -90, "position": "-16 0 8", "latitude":10, "longitude":240, "radius": 18 },
-            {"transitionId": 4, "additionalRotation": 0, "position": "1 0 -5", "latitude":0, "longitude":80, "radius": 18} 
+            {"transitionId": 2, "additionalRotation": -90, "position": "-16 0 8", "latitude":-10, "longitude":260, "radius": 18 },
+            {"transitionId": 4, "additionalRotation": 0, "position": "1 0 -5", "latitude":-10, "longitude":150, "radius": 18} 
             ],
         "info":[
             {"title":"Ракетный комплекс с крылатой ракетой П-5", "text": "П-5 — первая в мире ракета с автоматически раскрывающимся в полёте крылом, стартующая из герметичного цилиндрического контейнера, имеющего минимальные габариты. Старт крылатой ракеты (КР) осуществлялся с подводной лодки (ПЛ) в надводном положении из поднимающегося в наклонное положение контейнера.\n\n Комплекс с КР П-5 предназначен для поражения береговых, административных, промышленных объектов и военно-морских баз, расположенных как на побережье, так и в глубине территории.\n\n В период 1959—1967 гг. комплекс был эффективным средством доставки ядерного оружия на межконтинентальную дальность в Вооруженных Силах СССР. ", 
@@ -42,8 +42,8 @@
         "url":"https://320711.selcdn.ru/izobr/images/ex360/4.jpg",
         "rotation": 180,
         "transitions":[
-            {"transitionId": 3, "additionalRotation": -90, "position": "-16 0 8", "latitude":10, "longitude":240, "radius": 18 },
-            {"transitionId": 5, "additionalRotation": 0, "position": "1 0 -5", "latitude":0, "longitude":80, "radius": 18} 
+            {"transitionId": 3, "additionalRotation": -90, "position": "-16 0 8", "latitude":-10, "longitude":290, "radius": 18 },
+            {"transitionId": 5, "additionalRotation": 0, "position": "1 0 -5", "latitude":-10, "longitude":20, "radius": 18} 
             ],
         "info":[
             {"title":"Ракетный комплекс с крылатой ракетой П-5", "text": "П-5 — первая в мире ракета с автоматически раскрывающимся в полёте крылом, стартующая из герметичного цилиндрического контейнера, имеющего минимальные габариты. Старт крылатой ракеты (КР) осуществлялся с подводной лодки (ПЛ) в надводном положении из поднимающегося в наклонное положение контейнера.\n\n Комплекс с КР П-5 предназначен для поражения береговых, административных, промышленных объектов и военно-морских баз, расположенных как на побережье, так и в глубине территории.\n\n В период 1959—1967 гг. комплекс был эффективным средством доставки ядерного оружия на межконтинентальную дальность в Вооруженных Силах СССР. ", 
@@ -55,8 +55,8 @@
         "url":"https://320711.selcdn.ru/izobr/images/ex360/5.jpg",
         "rotation": 180,
         "transitions":[
-            {"transitionId": 4, "additionalRotation": -90, "position": "-16 0 8", "latitude":10, "longitude":240, "radius": 18 },
-            {"transitionId": 6, "additionalRotation": 0, "position": "1 0 -5", "latitude":0, "longitude":80, "radius": 18} 
+            {"transitionId": 4, "additionalRotation": -90, "position": "-16 0 8", "latitude":-10, "longitude":220, "radius": 18 },
+            {"transitionId": 6, "additionalRotation": 0, "position": "1 0 -5", "latitude":-10, "longitude":320, "radius": 18} 
             ],
         "info":[
             {"title":"Ракетный комплекс с крылатой ракетой П-5", "text": "П-5 — первая в мире ракета с автоматически раскрывающимся в полёте крылом, стартующая из герметичного цилиндрического контейнера, имеющего минимальные габариты. Старт крылатой ракеты (КР) осуществлялся с подводной лодки (ПЛ) в надводном положении из поднимающегося в наклонное положение контейнера.\n\n Комплекс с КР П-5 предназначен для поражения береговых, административных, промышленных объектов и военно-морских баз, расположенных как на побережье, так и в глубине территории.\n\n В период 1959—1967 гг. комплекс был эффективным средством доставки ядерного оружия на межконтинентальную дальность в Вооруженных Силах СССР. ", 
@@ -68,8 +68,8 @@
         "url":"https://320711.selcdn.ru/izobr/images/ex360/6.jpg",
         "rotation": 180,
         "transitions":[
-            {"transitionId": 5, "additionalRotation": -90, "position": "-16 0 8", "latitude":10, "longitude":240, "radius": 18 },
-            {"transitionId": 7, "additionalRotation": 0, "position": "1 0 -5", "latitude":0, "longitude":80, "radius": 18} 
+            {"transitionId": 5, "additionalRotation": -90, "position": "-16 0 8", "latitude":-10, "longitude":210, "radius": 18 },
+            {"transitionId": 7, "additionalRotation": 0, "position": "1 0 -5", "latitude":-10, "longitude":100, "radius": 18} 
             ],
         "info":[
             {"title":"Ракетный комплекс с крылатой ракетой П-5", "text": "П-5 — первая в мире ракета с автоматически раскрывающимся в полёте крылом, стартующая из герметичного цилиндрического контейнера, имеющего минимальные габариты. Старт крылатой ракеты (КР) осуществлялся с подводной лодки (ПЛ) в надводном положении из поднимающегося в наклонное положение контейнера.\n\n Комплекс с КР П-5 предназначен для поражения береговых, административных, промышленных объектов и военно-морских баз, расположенных как на побережье, так и в глубине территории.\n\n В период 1959—1967 гг. комплекс был эффективным средством доставки ядерного оружия на межконтинентальную дальность в Вооруженных Силах СССР. ", 
