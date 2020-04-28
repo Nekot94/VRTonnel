@@ -8,7 +8,9 @@ AFRAME.registerComponent('room-manager', {
     },
 
     init: function () {
+
         
+
         this.rooms = document.getElementsByClassName("room");
         this.myRooms = {};
 
@@ -27,7 +29,7 @@ AFRAME.registerComponent('room-manager', {
         }
 
         this.password = href.split('?')[1];
-        this.password = this.password.split('#')[0];
+        this.password = this.password ? this.password.split('#')[0] : this.password;
         console.log("pass", this.password);
 
         let room = href.split('#')[1];

@@ -1,5 +1,8 @@
 <html>
   <head>
+      <!-- signalir -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.3/signalr.min.js"></script>
+    <!-- afarme -->
     <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@d893cfacc335696c7183943eab8165100c3a6e1c/dist/aframe-master.min.js"></script>
     <!-- <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script> -->
     <!-- <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script> -->
@@ -21,18 +24,17 @@
     <script src="components/camera-look.js"></script>
     <script src="components/print-panel.js"></script>
     <script src="components/agro-controller.js"></script>
+    <script src="components/signal-controller.js"></script>
     
     <script src="components/aframe-dialog-popup-component.js"></script>
 
-    <!-- signalir -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.3/signalr.min.js"></script>
-
+  
 
     <!-- data -->
     <script type="text/javascript" src="data/exdata.json"></script>
   </head>
   <body style="background-color: #000">
-    <a-scene room-manager="nav: true; startPos: 0 0 -40">
+    <a-scene room-manager="nav: true; startPos: 0 0 -40" signal-controller="url:https://reutov3.bdprog.ru/staticAgro">
 <!-- <a-scene color-space="sRGB" renderer="gammaOutput: true, physicallyCorrectLights: true"> -->
       <a-assets >
 

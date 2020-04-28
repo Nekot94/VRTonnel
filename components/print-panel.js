@@ -90,10 +90,14 @@ AFRAME.registerComponent('print-panel', {
 
             el.emit("printer-video-start");
 
+            let password = el.sceneEl.components['room-manager'].password;
+
             loadButton.addEventListener("click",  _ => {
-                data.showel.setAttribute("visible", true);
-                startButton.setAttribute("visible", true);
-                startButton.classList.add('interractible');
+                if (password == "print") {
+                    startButton.setAttribute("visible", true);
+                    startButton.classList.add('interractible');
+                }
+                data.showel.setAttribute("visible", true);        
                 loadButton.classList.remove('interractible');
             });
 
