@@ -13,8 +13,16 @@ AFRAME.registerComponent('print-panel', {
     init: function () {
         let data = this.data;
         let el = this.el;
-        console.log("psh",data.loadButImg, data.startButImg, data.statusCImg, data.statusOImg);
+        
+        let video = document.querySelector(data.videoId);
+        let lab = document.getElementById("lab");
+        lab.addEventListener("room-exit",  _ => video.muted = true);
+        lab.addEventListener("room-enter",  _ => video.muted = false);
+        
+
+
         this.addAnimation(el);
+        this.startButton = this.createPanel("0.45", "0.16", data.startButImg, "-0.3 -0.03 0.05", "startButton");
 
         el.addEventListener("click",  _ => {
             this.removeAnimation(el);
@@ -68,15 +76,15 @@ AFRAME.registerComponent('print-panel', {
             mainPanel.appendChild(loadButton);
 
 
-            let startButton = this.createPanel("0.45", "0.16", data.startButImg, "-0.3 -0.03 0.05", "startButton");
+            // this.startButton = this.createPanel("0.45", "0.16", data.startButImg, "-0.3 -0.03 0.05", "startButton");
             // startButton.classList.add('interractible');
-            startButton.setAttribute("visible", false);
+            this.startButton.setAttribute("visible", false);
 
-            this.addAnimation(startButton);
-            mainPanel.appendChild(startButton);
+            this.addAnimation(this.startButton);
+            mainPanel.appendChild(this.startButton);
 
 
-            this.percentText = this.createText(mainPanel, "percentText", "#0ff", "-0.3 -0.275 0", "0%");
+            this.percentText = this.createText(mainPanel, "percentText", "#0ff", "-0.3 -0.275 0.02", "0%");
   
 
             let videoPanel = this.createPanel("0.425", "0.3375", data.videoId, "0.341 0.228 0.01", "videoPanel");
@@ -104,7 +112,7 @@ AFRAME.registerComponent('print-panel', {
             });
 
 
-            startButton.addEventListener("click",  _ => {
+            this.startButton.addEventListener("click",  _ => {
                 if (this.status  != "idle") return;
                 console.log("Пошла печать");
                 startButton.setAttribute("visible", false);

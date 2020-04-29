@@ -20,7 +20,20 @@ AFRAME.registerComponent('signal-controller', {
 
 
         });
-        connection.start().then(_=>{ connection.invoke('gethistory'); });
+
+ 
+        
+        connection.start().then(_=>{
+           connection.invoke('gethistory'); 
+           printController.startButton.addEventListener("click",  _ => {
+            if (printController.status  != "idle") return;
+            console.log("Gooo");
+            connection.invoke("SendMessage", "Web", "startPrinter").catch(function (err) {
+              return console.error(err.toString());
+            });
+          });
+  
+       });
         
     }
 });
