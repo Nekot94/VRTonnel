@@ -20,26 +20,22 @@ AFRAME.registerComponent('agro-controller', {
         }
 
 
-        let connection = new signalR.HubConnectionBuilder().withUrl(data.url).build();
-        // let connection = el.sceneEl.components['signal-controller'].connection;
-        // console.log("conn", el.sceneEl.components);
-        // console.log("connection",connection);
+        // let connection = new signalR.HubConnectionBuilder().withUrl(data.url).build();
 
 
-        connection.on("ReceiveMessage", (user, message) => {
-            console.log("tpmsg", message);
-            this.changeCapsuleData(message);
+        // connection.on("ReceiveMessage", (user, message) => {
+        //     console.log("tpmsg",user, message);
+        //     if (user == "Reutow") {
+        //         let mes = message.replace(/"/g,'')
+        //         console.log("herbal", mes.split(": "));
+        //     }
+        //     if (user == "Agro" || user == "Agror")
+        //         this.changeCapsuleData(message);
 
 
-        });
-
-        // connection.on('receiveHistory',  (historyJson) => {
-        //     console.log("history", historyJson);
-        //     this.changeCapsuleData(historyJson);
         // });
 
-
-        connection.start().then(_=>{ connection.invoke('gethistory'); });
+        // connection.start().then(_=>{ connection.invoke('gethistory'); });
 
 
     },

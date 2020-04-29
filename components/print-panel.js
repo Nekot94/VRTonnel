@@ -6,7 +6,8 @@ AFRAME.registerComponent('print-panel', {
         startButImg: {type: "string"},
         statusOImg: {type: "string"},
         statusCImg: {type: "string"},
-        videoId: {type: 'string', default: "#printerVideo"}
+        videoId: {type: 'string', default: "#printerVideo"},
+        font: {type: 'string'}
     },
 
     init: function () {
@@ -58,8 +59,8 @@ AFRAME.registerComponent('print-panel', {
             let mainPanel = this.createPanel("1.3","1",data.printpanelimg, "0.3 -0.04 0.1");
             el.appendChild(mainPanel); 
 
-            let statusPanel = this.createPanel("0.336", "0.08", data.statusOImg, "-0.4 0.28 0.03", "statusPanel");
-            mainPanel.appendChild(statusPanel);
+            this.statusPanel = this.createPanel("0.336", "0.08", data.statusCImg, "-0.4 0.28 0.03", "statusPanel");
+            mainPanel.appendChild(this.statusPanel);
 
             let loadButton = this.createPanel("0.45", "0.16", data.loadButImg, "-0.3 0.119 0.05", "loadButton");
             loadButton.classList.add('interractible');
@@ -75,6 +76,7 @@ AFRAME.registerComponent('print-panel', {
             mainPanel.appendChild(startButton);
 
 
+            this.percentText = this.createText(mainPanel, "percentText", "#0ff", "-0.3 -0.275 0", "0%");
   
 
             let videoPanel = this.createPanel("0.425", "0.3375", data.videoId, "0.341 0.228 0.01", "videoPanel");
@@ -93,7 +95,7 @@ AFRAME.registerComponent('print-panel', {
             let password = el.sceneEl.components['room-manager'].password;
 
             loadButton.addEventListener("click",  _ => {
-                if (password == "print") {
+                if (password == "print"  && this.status  == "idle") {
                     startButton.setAttribute("visible", true);
                     startButton.classList.add('interractible');
                 }
@@ -103,9 +105,10 @@ AFRAME.registerComponent('print-panel', {
 
 
             startButton.addEventListener("click",  _ => {
+                if (this.status  != "idle") return;
                 console.log("Пошла печать");
                 startButton.setAttribute("visible", false);
-                statusPanel.setAttribute("material","src", data.statusCImg);
+                // this.statusPanel.setAttribute("material","src", data.statusCImg);
                 startButton.classList.remove('interractible');
             });
 
@@ -141,6 +144,30 @@ AFRAME.registerComponent('print-panel', {
             to: '1 1 1'
         });
         return panel;
+    },
+
+    createText: function(el, tclass, color, position, value) {
+        let text = document.createElement('a-entity');
+        text.setAttribute("text", {
+                    value: value,
+                    font: this.data.font,
+                    negate: false,
+                    color: color,
+                    wrapCount: 30,
+                    align: 'center'
+                  });
+        text.classList.add(tclass);
+        text.setAttribute("position",position);
+        text.setAttribute('animation__growup', {
+            property: 'scale',
+            dur: 500,
+            from: '0 0 0',
+            to: '1 1 1'
+        });
+
+        el.appendChild(text);
+        return text;
+
     },
 
     
@@ -180,6 +207,18 @@ AFRAME.registerComponent('print-panel', {
         
 
 
+    },
+
+    checkStatus: function(status) {
+        this.status = status;
+        // this.status ="huyatus";
+        console.log("status", this.status);
+        this.statusPanel.setAttribute("material","src", status != "idle" ? this.data.statusCImg : this.data.statusOImg);
+        
+    },
+
+    getProgress: function(value) {
+        this.percentText.setAttribute("text","value",value + "%")
     }
 
 
