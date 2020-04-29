@@ -106,9 +106,10 @@ AFRAME.registerComponent('print-panel', {
                 if (password == "print"  && this.status  == "idle") {
                     startButton.setAttribute("visible", true);
                     startButton.classList.add('interractible');
+                    loadButton.classList.remove('interractible');
                 }
                 data.showel.setAttribute("visible", true);        
-                loadButton.classList.remove('interractible');
+                
             });
 
 
