@@ -11,10 +11,12 @@ AFRAME.registerComponent('agro-controller', {
 
         let agropanels = document.getElementsByClassName(data.agropanelClass);
         let t, ttl, h, gs;
+        let tlist = [25, 23, 25, 22, 24, 24, 25, 23, 23, 22, 24, 24, 25, 23, 23, 22, 24, 24];
+        let hlist = [31, 30, 30, 29, 30, 32, 31, 30, 30, 29, 30, 32, 31, 30, 30, 29, 30, 32]
         for(let i=0; i<agropanels.length; i++) {
             ttl = this.createText(agropanels[i], "ttl", "#0ff", "-1.2 1.125 0", "256");
-            t = this.createText(agropanels[i], "temperature", "#ff9b48", "0.15 1.125 0", "25");
-            h = this.createText(agropanels[i], "humidity", "#0085ff", "-1.2 0.021 0", "99");
+            t = this.createText(agropanels[i], "temperature", "#ff9b48", "0.15 1.125 0", tlist[i]);
+            h = this.createText(agropanels[i], "humidity", "#0085ff", "-1.2 0.021 0", hlist[i]);
             gs = this.createText(agropanels[i], "growspeed", "#ff3366", "0.15 0.021 0", "0.1");
             if (agropanels[i].hasAttribute("active")) {this.activeT = t; this.activeH =h; } //With one capsule
         }
