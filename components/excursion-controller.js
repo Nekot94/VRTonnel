@@ -90,6 +90,8 @@ AFRAME.registerComponent('excursion-controller', {
                  item.classList.add("transition");
                  item.classList.add("interractible");
                  item.setAttribute("geometry","primitive", "plane");
+                 item.setAttribute("geometry","width", 1.2);
+                 item.setAttribute("geometry","height", 1.2);
                  item.setAttribute("position", this.data.sphereCoordinates ? this.getSphereCoordinate(exel.transitions[i].latitude, exel.transitions[i].longitude, exel.transitions[i].radius) :
                   exel.transitions[i].position); 
                  item.addEventListener("click",  _ => this.changeRoom(exel.transitions[i].transitionId, exel.transitions[i].additionalRotation));
@@ -179,9 +181,9 @@ AFRAME.registerComponent('excursion-controller', {
                     font: this.data.font,
                     negate: false,
                     color: color,
-                    wrapCount: 4,
+                    wrapCount: 3,
                     align: 'center',
-                    alphaTest: '0.2'
+                    alphaTest: '0.8'
                   });
         text.classList.add(tclass);
         text.setAttribute("position",position);
