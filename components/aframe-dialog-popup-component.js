@@ -250,7 +250,7 @@
         this.isOpen = !this.isOpen;
     
         if (this.data.active && this.dialogPlaneEl) {
-          this.positionDialogPlane();
+          // this.positionDialogPlane();
           this.dialogPlaneEl.setAttribute('visible', this.isOpen);
           this.openIconEl.setAttribute('visible', !this.isOpen);
           let info = document.getElementsByClassName("info");
@@ -499,9 +499,24 @@
           var vector2 = this.dialogPlaneEl.object3D.position;
           var vector3 = new THREE.Vector3(vector.x,  vector2.y, vector.z);
           // console.log("vector",vector2);
-          // console.log("vector",vector3);
+        //  console.log("vector",vector3);
           // // console.log("vector",vector2);
+          // this.dialogPlaneEl.object3D.lookAt(this.cameraEl.object3D.position);
+
           this.dialogPlaneEl.object3D.lookAt(vector3);
+          let pi = Math.PI;
+          let camr = this.cameraEl.object3D.rotation.y;
+          camr = camr % (2 * pi);
+          camr = (camr > 0) ? camr : 2 * pi + camr;
+          let pp =  this.dialogPlaneEl.object3D.position;
+          // console.log("camrp",this.dialogPlaneEl.object3D.position);
+          // console.log("camr",camr);
+          // let mvalue = (camr > -pi/2 && camr < pi / 2) ? 2 * pi  - camr :  pi + camr
+          let mvalue = (pp.x > 0 && pp.z > 0) || (pp.x < 0 && pp.z > 0) ? 2 * pi  - camr :  pi + camr
+          this.dialogPlaneEl.object3D.rotation.y = mvalue;
+          // console.log("rott",this.dialogPlaneEl.object3D.rotation, this.cameraEl.object3D.rotation);
+
+
         }
       },
       spawnEntities: function spawnEntities() {

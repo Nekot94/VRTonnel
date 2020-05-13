@@ -144,7 +144,7 @@ AFRAME.registerComponent('print-panel', {
         panel.setAttribute("geometry","height", height);
         panel.setAttribute("material","src", image);
         panel.setAttribute("material","transparent",0);
-        panel.setAttribute("material","alphaTest",0.1);
+        panel.setAttribute("material","alphaTest",0.3);
         panel.setAttribute("position", position);
         panel.setAttribute('animation__growup', {
             property: 'scale',

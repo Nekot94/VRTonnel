@@ -58,127 +58,79 @@ AFRAME.registerComponent('excursion-controller', {
 
 
         target.setAttribute('src', exel.url);
-        target.emit('set-image-fade-in');
-        target.addEventListener('materialtextureloaded', _=> {
-            target.emit('set-image-fade-out');
-            loader.setAttribute("visible", false);
+        // target.emit('set-image-fade-in');
+        // target.addEventListener('materialtextureloaded', _=> {
+        //     target.emit('set-image-fade-out');
+        //     loader.setAttribute("visible", false);
 
-         }); 
+        //  }); 
          
-         let rot  = exel.rotation + addRot;
-         console.log("rot", rot);
-
-         target.setAttribute("rotation", "0 "+ rot +" 0");
-         if (this.data.attachPoints)
-            linkParrent.setAttribute("rotation","0 "+ rot + " 0");
-
-         linkParrent.innerHTML = "";
-         for (let i=0; i<exel.transitions.length; i++)
-         {
-              let item = document.createElement('a-entity');
-              item.setAttribute("camera-look","");
-              item.setAttribute("material","shader","flat")
-              item.setAttribute("material","src",this.data.timg)
-              item.setAttribute("material","transparent",0);
-              item.classList.add("transition");
-              item.classList.add("interractible");
-              item.setAttribute("geometry","primitive", "plane");
-              item.setAttribute("position", this.data.sphereCoordinates ? this.getSphereCoordinate(exel.transitions[i].latitude, exel.transitions[i].longitude, exel.transitions[i].radius) :
-               exel.transitions[i].position); 
-              item.addEventListener("click",  _ => this.changeRoom(exel.transitions[i].transitionId, exel.transitions[i].additionalRotation));
-              this.addAnimation(item);
-              linkParrent.appendChild(item); 
-
-         }
-
-        //  for (let i=0; i<exel.info.length; i++)
-        //  {
-        //       let item = document.createElement('a-entity');
-        //       item.setAttribute("camera-look","");
-        //       item.setAttribute("material","shader","flat")
-        //       item.setAttribute("material","src",this.data.inimg)
-        //       item.setAttribute("material","transparent",0);
-        //       item.classList.add("info");
-        //       item.classList.add("interractible");
-        //       item.setAttribute("geometry","primitive", "plane");
-        //       item.setAttribute("position", this.data.sphereCoordinates ? this.getSphereCoordinate(exel.info[i].latitude, exel.info[i].longitude, exel.info[i].radius) :
-        //        exel.info[i].position); 
-        //       item.addEventListener("click",  _ => console.log("hehe"));
-        //       this.addAnimation(item);
-        //       linkParrent.appendChild(item); 
-
-        //       let infoPlane = document.createElement('a-entity');
-        //       infoPlane.setAttribute("material","shader","flat");
-        //       infoPlane.setAttribute("geometry","primitive", "plane");
-        //       infoPlane.setAttribute("geometry","width", "auto");
-        //       infoPlane.setAttribute("geometry","height", "auto");
-        //       infoPlane.setAttribute("material","color","#FFF");
-        //       infoPlane.setAttribute("position",  "1 0 0.1");
-        //       infoPlane.classList.add("infoPlane");
-        //       infoPlane.setAttribute("text", {
-        //         value: exel.info[i].text, 
-        //         font: this.data.font,
-        //         negate: false,
-        //         color: "#000",
-        //         width: 20
-        //       });
-
-        //       item.appendChild(infoPlane); 
-
-        //     //   let text = document.createElement('a-text');
-        //     //   text.setAttribute("value", exel.info[i].text);
-        //     //   text.setAttribute("font",this.data.font);
-        //     //   text.setAttribute("negate",false);
-        //     //   text.setAttribute("color","#000");
-        //     //   text.setAttribute("width","10");
-        //     // //   text.setAttribute("align","left");
-        //     //   text.setAttribute("anchor","center");
-        //     // //   text.setAttribute("baseline","center");
-
-        //     //   text.setAttribute("position",  "0 0 0.1");
-
-        //     //   infoPlane.setAttribute("geometry","width", text.getAttribute("value").length * 10 / 40);
-
-
-        //     //   infoPlane.appendChild(text); 
-
-
-        //  }
-
-
-        for (let i=0; i<exel.info.length; i++)
-        {
-          let popup = document.createElement('a-entity');
-          popup.classList.add("info");
-          // popup.setAttribute("position",  i + " 2 10");
-          popup.setAttribute("position", this.data.sphereCoordinates ? this.getSphereCoordinate(exel.info[i].latitude, exel.info[i].longitude, exel.info[i].radius) : exel.info[i].position); 
-
-          popup.setAttribute('dialog-popup', {
-            openIconImage: this.data.inoimg,
-            closeIconImage: this.data.incimg,
-            title: exel.info[i].title,
-            body: exel.info[i].text,
-            titleFont: this.data.font,
-            bodyFont: this.data.font,
-            addAttribute: 'camera-look',
-            bodyWrapCount: exel.info[i].bodyWrapCount ? exel.info[i].bodyWrapCount :  40,
-            titleWrapCount:  exel.info[i].titleWrapCount ? exel.info[i].titleWrapCount :  25,
-            dialogBoxHeight: exel.info[i].panelHeight ? exel.info[i].panelHeight : 10,
-            dialogBoxWidth: exel.info[i].panelWidth ? exel.info[i].panelWidth : 8,
-            image: exel.info[i].image ? exel.info[i].image : '',
-            imageWidth: exel.info[i].imageWidth ? exel.info[i].imageWidth : 2,
-            imageHeight: exel.info[i].imageHeight ? exel.info[i].imageHeight: 2
-          });
-        
-
-          linkParrent.appendChild(popup); 
-
-        }
+   
+        linkParrent.innerHTML = "";
 
 
          target.addEventListener('materialtextureloaded', _=> {
             target.emit('set-image-fade-out');
             loader.setAttribute("visible", false);
+            let rot  = exel.rotation + addRot;
+            console.log("rot", rot);
+   
+            target.setAttribute("rotation", "0 "+ rot +" 0");
+            if (this.data.attachPoints)
+               linkParrent.setAttribute("rotation","0 "+ rot + " 0");
+   
+            linkParrent.innerHTML = "";
+            for (let i=0; i<exel.transitions.length; i++)
+            {
+                 let item = document.createElement('a-entity');
+                 item.setAttribute("camera-look","");
+                 item.setAttribute("material","shader","flat")
+                 item.setAttribute("material","src",this.data.timg)
+                 item.setAttribute("material","transparent",0);
+                 item.classList.add("transition");
+                 item.classList.add("interractible");
+                 item.setAttribute("geometry","primitive", "plane");
+                 item.setAttribute("position", this.data.sphereCoordinates ? this.getSphereCoordinate(exel.transitions[i].latitude, exel.transitions[i].longitude, exel.transitions[i].radius) :
+                  exel.transitions[i].position); 
+                 item.addEventListener("click",  _ => this.changeRoom(exel.transitions[i].transitionId, exel.transitions[i].additionalRotation));
+                 this.addAnimation(item);
+                 linkParrent.appendChild(item);
+                 this.percentText = this.createText(item, exel.transitions[i].transitionId, "#fff", "0 0 0.04",  exel.transitions[i].transitionId);
+
+   
+            }
+   
+   
+   
+           for (let i=0; i<exel.info.length; i++)
+           {
+             let popup = document.createElement('a-entity');
+             popup.classList.add("info");
+             // popup.setAttribute("position",  i + " 2 10");
+             popup.setAttribute("position", this.data.sphereCoordinates ? this.getSphereCoordinate(exel.info[i].latitude, exel.info[i].longitude, exel.info[i].radius) : exel.info[i].position); 
+   
+             popup.setAttribute('dialog-popup', {
+               openIconImage: this.data.inoimg,
+               closeIconImage: this.data.incimg,
+               title: exel.info[i].title,
+               body: exel.info[i].text,
+               titleFont: this.data.font,
+               bodyFont: this.data.font,
+               addAttribute: 'camera-look',
+               bodyWrapCount: exel.info[i].bodyWrapCount ? exel.info[i].bodyWrapCount :  40,
+               titleWrapCount:  exel.info[i].titleWrapCount ? exel.info[i].titleWrapCount :  25,
+               dialogBoxHeight: exel.info[i].panelHeight ? exel.info[i].panelHeight : 10,
+               dialogBoxWidth: exel.info[i].panelWidth ? exel.info[i].panelWidth : 8,
+               image: exel.info[i].image ? exel.info[i].image : '',
+               imageWidth: exel.info[i].imageWidth ? exel.info[i].imageWidth : 2,
+               imageHeight: exel.info[i].imageHeight ? exel.info[i].imageHeight: 2
+             });
+           
+   
+             linkParrent.appendChild(popup); 
+   
+           }
+
 
          }); 
 
@@ -218,6 +170,30 @@ AFRAME.registerComponent('excursion-controller', {
             from: '0 0 0',
             to: '1 1 1'
         });
+
+    },
+    createText: function(el, tclass, color, position, value) {
+        let text = document.createElement('a-entity');
+        text.setAttribute("text", {
+                    value: value,
+                    font: this.data.font,
+                    negate: false,
+                    color: color,
+                    wrapCount: 4,
+                    align: 'center',
+                    alphaTest: '0.2'
+                  });
+        text.classList.add(tclass);
+        text.setAttribute("position",position);
+        text.setAttribute('animation__growup', {
+            property: 'scale',
+            dur: 500,
+            from: '0 0 0',
+            to: '1 1 1'
+        });
+
+        el.appendChild(text);
+        return text;
 
     }
 
