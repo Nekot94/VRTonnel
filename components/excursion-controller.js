@@ -5,15 +5,34 @@ AFRAME.registerComponent('excursion-controller', {
         timg: {type: "string"},
         inoimg: {type: "string", default: ''},
         incimg: {type: "string", default: ''},
+        homeb: {type: "string", default: ''},
+        homeb: {type: "string", default: ''},
+        exbuttons: {type: 'selector'},
         font: {type: "string"},
         linkp: {type: "selector"},
         attachPoints: {default: true},
         loader: {type: "selector", default:"#loader"},
-        sphereCoordinates: {default: true}
+        sphereCoordinates: {default: true},
+
     },
 
     init: function () {
         let data = this.data;
+
+        
+        this.backStack = [];
+        let backButton = this.createPanel("0.4", "0.4", data.backb, "-0.5 -1 -0.8", "-90 0 0", "backButton");
+        backButton.classList.add('interractible');
+        this.addAnimation(backButton);
+        data.exbuttons.appendChild(backButton);
+        
+
+       
+
+        let homeButton = this.createPanel("0.4", "0.4", data.homeb, "0.5 -1 -0.8", "-90 0 0", "homeButton");
+        homeButton.classList.add('interractible');
+        this.addAnimation(homeButton);
+        data.exbuttons.appendChild(homeButton);
 
         var xobj = new XMLHttpRequest();
         xobj.overrideMimeType("application/json");
@@ -25,18 +44,30 @@ AFRAME.registerComponent('excursion-controller', {
               this.exdata = JSON.parse(xobj.responseText);
 
               let href = window.location.href;
-              let room = href.split('#')[1];
-              if (room)
+              this.room = href.split('#')[1];
+              
+              if (this.room)
               {
-                 room = room.split("/")[1];
+                 this.room = this.room.split("/")[1];
               } 
 
-              if (!room || !this.exdata.find(e => e.id == room)) {
+              if (!this.room || !this.exdata.find(e => e.id == this.room)) {
+                // this.room = this.exdata[0].id;
                 this.changeRoom(this.exdata[0].id, 0, false);
               }
               else {
-                this.changeRoom(room);      
+                this.changeRoom(this.room);      
               }
+
+              homeButton.addEventListener("click",  _ => { if (this.exdata[0].id != this.room) this.changeRoom(this.exdata[0].id)});
+              backButton.addEventListener("click",  _ => { 
+                  if (this.backStack.length > 1 ) {
+                    this.backStack.pop();
+                    this.changeRoom(this.backStack.pop());
+                  } 
+
+              });
+              
             }
         };
         xobj.send(null);  
@@ -52,9 +83,18 @@ AFRAME.registerComponent('excursion-controller', {
         let linkParrent = this.data.linkp;
         let exel = this.exdata.find(e => e.id == num);
 
-        console.log("doURL", doURL);
+        // console.log("doURL", doURL);
+        this.room = num;
+        this.backStack.push(num);
+        // console.log("room", this.room);
+        console.log("backStack", this.backStack);
 
-        if (doURL) history.pushState( {} ,'', '#'+ this.el.id + '/' + num);
+        console.log("")
+
+        if (doURL) {
+            history.pushState( {} ,'', '#'+ this.el.id + '/' + num);
+            
+        }
 
 
         target.setAttribute('src', exel.url);
@@ -174,6 +214,29 @@ AFRAME.registerComponent('excursion-controller', {
         });
 
     },
+
+    createPanel: function(width, height, image, position, rotation="0 0 0", id){
+
+        let panel = document.createElement('a-entity');
+        panel.setAttribute("material","shader","flat");
+        if (id) panel.setAttribute("id", id);
+        panel.setAttribute("geometry","primitive", "plane");
+        panel.setAttribute("geometry","width", width);
+        panel.setAttribute("geometry","height", height);
+        panel.setAttribute("material","src", image);
+        panel.setAttribute("material","transparent",0);
+        panel.setAttribute("material","alphaTest",0.3);
+        panel.setAttribute("position", position);
+        panel.setAttribute("rotation", rotation);
+        panel.setAttribute('animation__growup', {
+            property: 'scale',
+            dur: 500,
+            from: '0 0 0',
+            to: '1 1 1'
+        });
+        return panel;
+    },
+
     createText: function(el, tclass, color, position, value) {
         let text = document.createElement('a-entity');
         text.setAttribute("text", {

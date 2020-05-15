@@ -188,6 +188,9 @@
         <img  id="infoClose" src="https://320711.selcdn.ru/izobr/images/excursionstuff/close.jpg">
         <img  id="info" src="https://320711.selcdn.ru/izobr/images/excursionstuff/info.jpg">
 
+        <img  id="homeb" src="https://320711.selcdn.ru/izobr/images/excursionstuff/home.png">
+        <img  id="backb" src="https://320711.selcdn.ru/izobr/images/excursionstuff/back.png">
+
 
         <img  id="agrop1" src="https://320711.selcdn.ru/izobr/images/agro/agrop1.png">
         <!-- <img  id="agrop2" src="/images/agro/agrop2.png"> -->
@@ -201,6 +204,8 @@
         <img  id="statusc" src="https://320711.selcdn.ru/izobr/images/printer/statusc.png">
         <img  id="pstartbut" src="https://320711.selcdn.ru/izobr/images/printer/pstartbut.png">
         <img  id="ploadbut" src="https://320711.selcdn.ru/izobr/images/printer/ploadbut.png">
+
+        
         
 
 
@@ -242,6 +247,10 @@
             material="color: white;"
             animation__scale="property: scale; dir: alternate; dur: 1000; easing: easeInOutSine; loop: true; from: 0 0 0; to: 1 1 1">
         </a-entity>
+        <a-entity
+          position="0 0.05 0"
+          text="value: Загрузка; font: fonts/Stem-Regular-msdf.json; negate: false; color: #fff; wrapCount: 60; align: center; alphaTest: 0.8"
+        ></a-entity>
       </a-entity>
 
  
@@ -1122,11 +1131,13 @@
    </a-entity>
         
       <!-- EXCURSION -->
-      <a-entity id="excursion" stay class="room"  visible="false" excursion-controller="target:#esphere;  edata:exdata; timg : #pointao; inoimg : #info; incimg : #infoClose; font: fonts/YaHeiCustom-msdf.json; linkp:#linkParent">
+      <a-entity id="excursion" stay class="room"  visible="false" excursion-controller="target:#esphere;  edata:exdata; timg : #pointao; inoimg : #info; incimg : #infoClose; font: fonts/YaHeiCustom-msdf.json; linkp:#linkParent; homeb:#homeb; backb:#backb; exbuttons:#exbuttons">
       <!-- MINIBACKPORTAL -->
-      <a-entity id="miniportal1"  position="0 0 -1.5" scale="0.5 0.5 0.5" material="color:#00ffff; opacity:0.1; transparent: true;" teleport="room:ton; position: 2 0 -60">
-        <a-entity  class="interractible" geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p12; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 360 0; loop: true; dur: 20000"></a-entity>
-        <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p11; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 -360 0; loop: true; dur: 10000"></a-entity>
+      <a-entity id="exbuttons">
+        <a-entity id="miniportal1"  position="0 0 -1.5" scale="0.5 0.5 0.5" material="color:#00ffff; opacity:0.1; transparent: true;" teleport="room:ton; position: 2 0 -60">
+          <a-entity  class="interractible" geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p12; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 360 0; loop: true; dur: 20000"></a-entity>
+          <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p11; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 -360 0; loop: true; dur: 10000"></a-entity>
+        </a-entity>
       </a-entity>
 
         <a-sky setup-fade="target:#esphere" color="#000" id="esphere" radius="100" rotation="0 0 0"></a-sky>
