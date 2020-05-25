@@ -73,14 +73,15 @@
         <!-- <a-asset-item id="lab2" src="https://320711.selcdn.ru/izobr/models/lab3-2.glb"></a-asset-item> -->
         <!-- <a-asset-item id="lab2" src="https://320711.selcdn.ru/izobr/models/lab3-3.glb"></a-asset-item> -->
         <!-- <a-asset-item id="lab2" src="https://320711.selcdn.ru/izobr/models/lab3-4.glb"></a-asset-item> -->
-        <a-asset-item id="lab2" src="https://320711.selcdn.ru/izobr/models/lab3-4n.glb"></a-asset-item>
+        <!-- <a-asset-item id="lab2" src="https://320711.selcdn.ru/izobr/models/lab3-4n.glb"></a-asset-item> -->
+        <a-asset-item id="lab2" src="https://320711.selcdn.ru/izobr/models/lab3-4nh1.glb"></a-asset-item>
         <!-- <a-asset-item id="lab2" src="/models/lab3-4b.glb"></a-asset-item> -->
         <!-- <a-asset-item id="laba" src="https://320711.selcdn.ru/izobr/models/lab3_a.glb"></a-asset-item> -->
-        <!-- <a-asset-item id="laba" src="/models/lab3_a3.glb"></a-asset-item>
-        <a-asset-item id="labb" src="/models/lab3_a3.glb"></a-asset-item> -->
+        <a-asset-item id="laba" src="https://320711.selcdn.ru/izobr/models/lab3_a3.glb"></a-asset-item>
+        <!-- <a-asset-item id="labb" src="/models/lab3_a3.glb"></a-asset-item> -->
         <!-- <a-asset-item id="laba" src="/models/lab3_a4.glb"></a-asset-item> -->
-        <a-asset-item id="laba" src="https://320711.selcdn.ru/izobr/models/lab3_a6.glb"></a-asset-item>
-        <!-- <a-asset-item id="laba" src="models/lab3_a2.glb"></a-asset-item> -->
+        <!-- <a-asset-item id="laba" src="/models/lab3_a6.glb"></a-asset-item> -->
+        <a-asset-item id="labb" src="https://320711.selcdn.ru/izobr/models/lab3_a2.glb"></a-asset-item>
 
         <!-- <a-asset-item id="printer" src="https://320711.selcdn.ru/izobr/models/printer1.gltf"></a-asset-item> -->
         <a-asset-item id="printer" src="https://320711.selcdn.ru/izobr/models/printer3.gltf"></a-asset-item>
@@ -713,7 +714,8 @@
       <!-- LABORATORY -->
       <a-entity id="lab"  class="room"  visible="false" gltf-model="#lab2" scale="1.6 1.6 1.6" position = "-40 0 0"  startp="-30 0 -8" animation-mixer>
         <!-- HAND-->
-        <a-entity id="laba1"  class="hand"  gltf-model="#laba" position = "0 0 0" animation-mixer ></a-entity>
+        <!-- <a-entity id="laba1"  class="hand"  gltf-model="#laba" position = "0 0 0" animation-mixer ></a-entity> -->
+        <a-entity id="laba2"  class="hand"  gltf-model="#laba" position = "-6 0 0" animation-mixer ></a-entity>
         <!-- <a-entity id="laba2"  class="hand"  gltf-model="#labb"  position = "-6 0 0" animation-mixer ></a-entity>  -->
         <!-- BACKPORTAL -->
         <a-entity class="interractible" id="portall" geometry="primitive: cylinder; height:6 width:1.2;" position="6 1.5 -1" scale="0.5 0.5 0.5" material="color:#00ffff; opacity:0.1; transparent: true;" teleport="room:ton; position: -2 0 -77">
