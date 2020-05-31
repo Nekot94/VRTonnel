@@ -241,6 +241,7 @@
         this.generateTitle();
         this.generateBody();
         this.generateImage();
+        this.generateImage(true);
       },
     
       /**
@@ -253,9 +254,11 @@
           // this.positionDialogPlane();
           this.dialogPlaneEl.setAttribute('visible', this.isOpen);
           this.openIconEl.setAttribute('visible', !this.isOpen);
+          this.isOpen ? this.closeIconEl.classList.add(this.data.aclass) : this.closeIconEl.classList.remove(this.data.aclass);
           let info = document.getElementsByClassName("info");
           for (let i=0; i<info.length; i++) {
-            if (info[i] == this.el) continue;
+            this.isOpen ? info[i].firstElementChild.classList.remove(this.data.aclass) : info[i].firstElementChild.classList.add(this.data.aclass);  
+            if (info[i] == this.el)  continue;
             info[i].setAttribute('visible', !this.isOpen)
           }
         }
@@ -271,7 +274,7 @@
             src = _this$data.openIconImage,
             openOn = _this$data.openOn;
         var openIcon = document.createElement('a-entity');
-        openIcon.classList.add(this.data.aclass);
+        if (!this.openIcon) openIcon.classList.add(this.data.aclass);
         openIcon.setAttribute('id', "".concat(this.el.getAttribute('id'), "--open-icon"));
         openIcon.setAttribute('position', Object.assign({}, this.el.getAttribute('position')));
         openIcon.setAttribute('geometry', {
@@ -313,7 +316,7 @@
             height = _this$data2.dialogBoxHeight,
             openOn = _this$data2.openOn;
         var closeIcon = document.createElement('a-entity');
-        closeIcon.classList.add(this.data.aclass);
+        // if (!this.closeIcon) closeIcon.classList.add(this.data.aclass);
         closeIcon.setAttribute('id', "".concat(this.el.getAttribute('id'), "--close-icon"));
         closeIcon.setAttribute('position', {
           x: 0,
@@ -429,7 +432,7 @@
       /**
        * Generates the image entity.
        */
-      generateImage: function generateImage() {
+      generateImage: function generateImage(back = false) {
         var _this$data5 = this.data,
             src = _this$data5.image,
             width = _this$data5.imageWidth,
@@ -439,19 +442,24 @@
         if (!src.length) {
           return null;
         }
-    
-        var image = this.imageEl || document.createElement('a-image');
+        let zc = back ? 0.005 : 0.02;
+        let w = back ? _this$data5.dialogBoxWidth + _this$data5.dialogBoxPadding : width;
+        let s = back ? "" : src;
+        var image =  (back ? this.imageElb : this.imageEl)  || document.createElement('a-image');
         image.setAttribute('id', "".concat(this.el.getAttribute('id'), "--image"));
-        image.setAttribute('src', src);
-        image.setAttribute('width', width);
+        image.setAttribute('src', s);
+        image.setAttribute('width', w);
         image.setAttribute('height', height);
         image.setAttribute('position', {
           x: 0,
           y: dialogBoxHeight / 2,
-          z: 0.01
+          z: zc
         });
         this.hasImage = true;
-        this.imageEl = image;
+        if (!back)
+          this.imageEl = image;
+        else 
+          this.imageElb = image
         return image;
       },
     
@@ -477,6 +485,7 @@
     
         if (image) {
           plane.appendChild(this.generateImage());
+          plane.appendChild(this.generateImage(true));
         }
     
         plane.setAttribute('material', {
