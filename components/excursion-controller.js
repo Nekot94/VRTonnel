@@ -21,7 +21,7 @@ AFRAME.registerComponent('excursion-controller', {
 
         
         this.backStack = [];
-        let backButton = this.createPanel("0.4", "0.4", data.backb, "-0.5 -1 -0.8", "-90 0 0", "backButton");
+        let backButton = this.createPanel("1", "1", data.backb, "-0.7 -2.9 -0.8", "-90 0 0", "backButton");
         backButton.classList.add('interractible');
         this.addAnimation(backButton);
         data.exbuttons.appendChild(backButton);
@@ -29,7 +29,7 @@ AFRAME.registerComponent('excursion-controller', {
 
        
 
-        let homeButton = this.createPanel("0.4", "0.4", data.homeb, "0.5 -1 -0.8", "-90 0 0", "homeButton");
+        let homeButton = this.createPanel("1", "1", data.homeb, "0.7 -2.9 -0.8", "-90 0 0", "homeButton");
         homeButton.classList.add('interractible');
         this.addAnimation(homeButton);
         data.exbuttons.appendChild(homeButton);
@@ -59,7 +59,8 @@ AFRAME.registerComponent('excursion-controller', {
                 this.changeRoom(this.room);      
               }
 
-              homeButton.addEventListener("click",  _ => { if (this.exdata[0].id != this.room) this.changeRoom(this.exdata[0].id)});
+              homeButton.setAttribute("teleport",{room:"ton", position: "2 0 -60", noOpacity: true})
+            //   homeButton.addEventListener("click",  _ => { if (this.exdata[0].id != this.room) this.changeRoom(this.exdata[0].id)});
               backButton.addEventListener("click",  _ => { 
                   if (this.backStack.length > 1 ) {
                     this.backStack.pop();
@@ -126,18 +127,22 @@ AFRAME.registerComponent('excursion-controller', {
                  item.setAttribute("camera-look","");
                  item.setAttribute("material","shader","flat")
                  item.setAttribute("material","src",this.data.timg)
-                 item.setAttribute("material","transparent",0);
+                //  item.setAttribute("material","transparent",0);
                  item.classList.add("transition");
                  item.classList.add("interractible");
-                 item.setAttribute("geometry","primitive", "plane");
-                 item.setAttribute("geometry","width", 1.2);
-                 item.setAttribute("geometry","height", 1.2);
+                //  item.setAttribute("geometry","primitive", "plane");
+                //  item.setAttribute("geometry","width", 1.2);
+                //  item.setAttribute("geometry","height", 1.2);
+
+                 item.setAttribute("geometry","primitive", "circle");
+                 item.setAttribute("geometry","radius", 0.8);
+                //  item.setAttribute("geometry","height", 1.2);
                  item.setAttribute("position", this.data.sphereCoordinates ? this.getSphereCoordinate(exel.transitions[i].latitude, exel.transitions[i].longitude, exel.transitions[i].radius) :
                   exel.transitions[i].position); 
                  item.addEventListener("click",  _ => this.changeRoom(exel.transitions[i].transitionId, exel.transitions[i].additionalRotation));
                  this.addAnimation(item);
                  linkParrent.appendChild(item);
-                 this.percentText = this.createText(item, exel.transitions[i].transitionId, "#fff", "0 0 0.04",  exel.transitions[i].transitionId);
+                 this.percentText = this.createText(item, exel.transitions[i].transitionId, "#006cec", "0 0 0.04",  exel.transitions[i].transitionId);
 
    
             }
@@ -155,6 +160,7 @@ AFRAME.registerComponent('excursion-controller', {
                openIconImage: this.data.inoimg,
                closeIconImage: this.data.incimg,
                title: exel.info[i].title,
+               titleColor: "#006cec",
                body: exel.info[i].text,
                titleFont: this.data.font,
                bodyFont: this.data.font,
@@ -246,7 +252,6 @@ AFRAME.registerComponent('excursion-controller', {
                     color: color,
                     wrapCount: 3,
                     align: 'center',
-                    alphaTest: '0.8'
                   });
         text.classList.add(tclass);
         text.setAttribute("position",position);

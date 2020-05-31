@@ -150,7 +150,7 @@
         },
         openIconRadius: {
           type: 'number',
-          default: 0.3
+          default: 0.35
         },
         openIconColor: {
           type: 'string',
@@ -316,20 +316,22 @@
         closeIcon.classList.add(this.data.aclass);
         closeIcon.setAttribute('id', "".concat(this.el.getAttribute('id'), "--close-icon"));
         closeIcon.setAttribute('position', {
-          x: width / 2,
-          y: height / 2,
+          x: 0,
+          y: -height * 0.51,
           z: 0.01
         });
         closeIcon.setAttribute('geometry', {
-          primitive: 'circle',
-          radius: radius
+          primitive: 'plane',
+          width: 7.225,
+          height: 0.85
         });
         closeIcon.setAttribute('material', {
           color: color,
           shader: "flat",
+          transparent: true,
           src: src
         });
-        this.addAnimation(closeIcon);
+        this.addAnimation(closeIcon,1.05);
 
         closeIcon.addEventListener(openOn, this.toggleDialogOpen.bind(this));
         this.closeIconEl = closeIcon;
@@ -459,7 +461,7 @@
       generateDialogPlane: function generateDialogPlane() {
         var _this$data6 = this.data,
             width = _this$data6.dialogBoxWidth,
-            height = _this$data6.dialogBoxHeight,
+            height = _this$data6.dialogBoxHeight + 1.5,
             padding = _this$data6.dialogBoxPadding,
             color = _this$data6.dialogBoxColor;
         var plane = this.dialogPlaneEl || document.createElement('a-entity');
@@ -525,13 +527,13 @@
         this.el.removeAttribute('position');
       },
 
-      addAnimation: function(item)
+      addAnimation: function(item, maxScale = 1.2)
       {
           item.setAttribute('animation__mouseenter', {
               property: 'scale',
               startEvents: 'mouseenter',
               dur: 200,
-              to: '1.2 1.2 1.2'
+              to: maxScale + ' ' + maxScale + ' ' + maxScale
             });
           
           item.setAttribute('animation__mouseleave', {
