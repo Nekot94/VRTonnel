@@ -70,6 +70,8 @@
           timeTextFont: { default: '70px Helvetica Neue'},
           cursorID: { default: 'cursor'},
           vrCursorID: { default: 'rightHand'},
+          circleImage: { default: 'videocircle'},
+          lineImage: {default: 'videoline'}
         },
   
         position_time_from_steps: function(){
@@ -140,13 +142,32 @@
             this.timeText.setAttribute("align", "center");
             this.timeText.setAttribute("font", this.data.timeTextFont);
             this.timeText.setAttribute("negate", false);
+            this.timeText.setAttribute("position", "1.08 0 -0.4");
+            this.timeText.setAttribute("scale", "0.7 0.7 0.7");
 
                // sphere
-            this.sphere = document.createElement("a-sphere");
-            this.sphere.setAttribute("color", this.data.barColor);
+            this.sphere = document.createElement("a-cylinder");
+            // this.sphere.setAttribute("color", this.data.barColor);
+            this.sphere.setAttribute("src", "#" + this.data.circleImage);
             this.sphere.setAttribute("radius", 0.11);
+            this.sphere.setAttribute("height", 0.01);
             // this.sphere.setAttribute("shader", "flat");
             this.sphere.setAttribute("position", "-1.3 0.3 0");
+            this.sphere.setAttribute("rotation", "90 0 0");
+            this.sphere.setAttribute("shader", "flat");
+
+            // this.sphere = document.createElement("a-entity");
+            // // this.sphere.setAttribute("radius", 0.14);
+            // this.sphere.setAttribute("src", "#" + this.data.circleImage);
+            // this.sphere.setAttribute("geometry", "primitive", "cylinder");
+            
+            // this.sphere.setAttribute("shader", "flat");
+            // this.sphere.setAttribute("width", "0.5");
+            // this.sphere.setAttribute("height", "0.5");
+            // // this.sphere.setAttribute("transparent", "true");
+            // // this.sphere.setAttribute("material","alphaTest", "0.1"); 
+            // // this.sphere.setAttribute("shader", "flat");
+            // this.sphere.setAttribute("position", "-1.3 0.3 0");
   
           // image sources for play/pause
   
@@ -267,8 +288,12 @@
           // Create transport bar
   
           this.bar = document.createElement("a-plane");
-          this.bar.setAttribute("color", "#000");
+          // this.bar.setAttribute("color", "#000");
           this.bar.setAttribute("class", "interractible");
+          // this.bar.setAttribute("src", "#" + this.data.lineImage);
+          this.bar.setAttribute("shader", "flat");
+          
+          // this.bar.setAttribute("transparent", "true");
   
           // On transport bar click, get point clicked, infer % of new pointer, and make video seek to that point
   
@@ -365,7 +390,7 @@
   
           this.position_control_from_camera();
   
-          this.bar.setAttribute("height", this.data.size/20.0);
+          this.bar.setAttribute("height", this.data.size/50.8);
           this.bar.setAttribute("width", this.data.size);
           this.bar.setAttribute("position", "0.0 0.3 0");
   
@@ -454,11 +479,11 @@
                     //   ctx.fillStyle = "white";
                     //   ctx.textAlign = "center";
                     //   ctx.fillText(time_info_text, this.bar_canvas.width/2, this.bar_canvas.height* 0.45);
-                      this.timeText.setAttribute("value",time_info_text);
+                      this.timeText.setAttribute("value", time_info_text);
   
                       // DEBUG PURPOSES
   
-      //                ctx.fillText(this.video_el.readyState, this.bar_canvas.width*0.1, this.bar_canvas.height* 0.65);
+      //                ctx.fillText(this.video_el.readyState, this.bar_canvas.width *0.1, this.bar_canvas.height* 0.65);
   
                       // If seeking to position, show
   

@@ -211,25 +211,17 @@
         <img  id="pstartbut" src="https://320711.selcdn.ru/izobr/images/printer/pstartbut.png">
         <img  id="ploadbut" src="https://320711.selcdn.ru/izobr/images/printer/ploadbut.png">
 
-        
-        
 
+        <img  id="videoplay" src="images/videomenu/video-play.png">
+        <img  id="videopause" src="images/videomenu/video-pause.png">
+        <img  id="videohome" src="images/videomenu/video-home.png">
+        <img  id="videocircle" src="images/videomenu/video-circle.png">
+        <img  id="videoline" src="images/videomenu/video-line.png">
 
-        
-  
-
-
-
-
-
- 
-
-
+      
         
 
 
-        <!-- test svg -->
-        <!-- <a-asset-item id="mozilla" src="images/biohazard.svg"></a-asset-item> -->
       </a-assets>
 
 
@@ -1159,13 +1151,14 @@
 
       <!-- VIDEO CHEMESTRY -->
         <a-entity id="lesson1" stay  class="room"  visible="false" video-player-hls="onPlay:room-enter; onPause:room-exit; video:#chem" l="https://riftman.gcdn.co/videos/8113_tA2MHvYMQ5EmpUp4/master.m3u8" sr="https://320711.selcdn.ru/mnl/20200305.mp4">
-        <!-- MINIBACKPORTAL -->
-        <a-entity id="miniportal1"  position="0 0 -1.5" scale="0.5 0.5 0.5" material="color:#00ffff; opacity:0.1; transparent: true;" teleport="room:ton; position: 2 0 -43">
-          <a-entity  class="interractible" geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p12; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 360 0; loop: true; dur: 20000"></a-entity>
-          <a-entity  geometry="primitive: plane; width: 2.084; height: 2.084" position="0 -2.9 0" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #p11; transparent: true; alphaTest:0.2" animation="property: rotation; from: 90 0 0; to: 90 -360 0; loop: true; dur: 10000"></a-entity>
+        <!-- Video-buttons -->
+        <a-entity class="video-buttons" position="0 -2 -2" rotation="45 0 0">
+          <a-entity  class="interractible"  teleport="room:ton; position: 2 0 -43; noOpacity: true" geometry="primitive: plane; width: 0.4; height: 0.4" position="-2.2 0 -0.3" scale="1 1 1"  rotation="90 0 180" material="side: double; shader: flat; src: #videohome; transparent: true" animation__mouseenter="property: scale; startEvents: mouseenter; dur: 200; to: 1.1 1.1 1.1" animation__mouseleave="property: scale; startEvents: mouseleave; dur: 200; to: 1 1 1"></a-entity>
+          <a-entity  class="interractible"   geometry="primitive: plane; width: 0.4; height: 0.4" position="-1.7 0 -0.35" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #videoplay; transparent: true" animation__mouseenter="property: scale; startEvents: mouseenter; dur: 200; to: 1.1 1.1 1.1" animation__mouseleave="property: scale; startEvents: mouseleave; dur: 200; to: 1 1 1"></a-entity>
+          <a-entity position="0 0 0" rotation="-90 0 0" class="interractible" video-controls="src:#chem; distance:0; size:2.8; background-color: #e8ecf9; bar-color: #006cec; timeTextFont:fonts/YaHeiCustom-msdf.json"></a-entity> 
+          
         </a-entity>
              <!-- TIMELINE -->
-        <a-entity position="0 -1 -2" rotation="-90 0 0" class="interractible" video-controls="src:#chem; distance:0; size:2.8; background-color: rgba(0,0,0,1); bar-color: #00ffff; timeTextFont:fonts/YaHeiCustom-msdf.json"></a-entity> 
   
           <a-videosphere id="vsphere1" radius="100" src="#chem" rotation="0 -90 0"></a-videosphers>
         </a-entity>
