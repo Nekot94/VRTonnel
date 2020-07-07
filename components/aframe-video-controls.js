@@ -327,6 +327,7 @@
               if(self.video_el.readyState > 0) {
   
                   self.video_el.currentTime = unit_offset * self.video_el.duration;
+                  self.video_el.play();
               }
   
               // Prevent propagation upwards (e.g: canvas click)
