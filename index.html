@@ -34,8 +34,9 @@
     <!-- data -->
     <script type="text/javascript" src="data/exdata.json"></script>
   </head>
+  <a id="myEnterARButton"></a>
   <body style="background-color: #000">
-    <a-scene room-manager="nav: true; startPos: 0 0 -40" signal-controller="url:https://reutov3.bdprog.ru/staticAgro">
+    <a-scene vr-mode-ui="enterARButton: #myEnterARButton" room-manager="nav: true; startPos: 0 0 -40" signal-controller="url:https://reutov3.bdprog.ru/staticAgro">
 <!-- <a-scene color-space="sRGB" renderer="gammaOutput: true, physicallyCorrectLights: true"> -->
       <a-assets >
 
@@ -1155,7 +1156,7 @@
         <!-- Video-buttons -->
         <a-entity class="video-buttons" position="0 -2 -2" rotation="45 0 0">
           <a-entity  class="interractible"  teleport="room:ton; position: 2 0 -43; noOpacity: true" geometry="primitive: plane; width: 0.4; height: 0.4" position="-2.2 0 -0.3" scale="1 1 1"  rotation="90 0 180" material="side: double; shader: flat; src: #videohome; transparent: true" animation__mouseenter="property: scale; startEvents: mouseenter; dur: 200; to: 1.1 1.1 1.1" animation__mouseleave="property: scale; startEvents: mouseleave; dur: 200; to: 1 1 1"></a-entity>
-          <a-entity  class="interractible"   play-pause="video:#chem; playImg: #videoplay; pauseImg: #videopause;" geometry="primitive: plane; width: 0.4; height: 0.4" position="-1.7 0 -0.35" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #videoplay; transparent: true" animation__mouseenter="property: scale; startEvents: mouseenter; dur: 200; to: 1.1 1.1 1.1" animation__mouseleave="property: scale; startEvents: mouseleave; dur: 200; to: 1 1 1"></a-entity>
+          <a-entity  class="interractible"   play-pause="video:#chem; playImg: #videoplay; pauseImg: #videopause;" geometry="primitive: plane; width: 0.4; height: 0.4" position="-1.7 0 -0.3" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #videoplay; transparent: true" animation__mouseenter="property: scale; startEvents: mouseenter; dur: 200; to: 1.1 1.1 1.1" animation__mouseleave="property: scale; startEvents: mouseleave; dur: 200; to: 1 1 1"></a-entity>
           <a-entity position="0 0 0" rotation="-90 0 0" class="interractible" video-controls="src:#chem; distance:0; size:2.8; background-color: #e8ecf9; bar-color: #006cec; timeTextFont:fonts/YaHeiCustom-msdf.json"></a-entity> 
           
         </a-entity>
@@ -1168,7 +1169,7 @@
           <!-- Video-buttons -->
           <a-entity class="video-buttons" position="0 -2 -2" rotation="45 0 0">
             <a-entity  class="interractible"  teleport="room:ton; position: -2 0 -43; noOpacity: true" geometry="primitive: plane; width: 0.4; height: 0.4" position="-2.2 0 -0.3" scale="1 1 1"  rotation="90 0 180" material="side: double; shader: flat; src: #videohome; transparent: true" animation__mouseenter="property: scale; startEvents: mouseenter; dur: 200; to: 1.1 1.1 1.1" animation__mouseleave="property: scale; startEvents: mouseleave; dur: 200; to: 1 1 1"></a-entity>
-            <a-entity  class="interractible"   play-pause="video:#chem2; playImg: #videoplay; pauseImg: #videopause " geometry="primitive: plane; width: 0.4; height: 0.4" position="-1.7 0 -0.35" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #videoplay; transparent: true" animation__mouseenter="property: scale; startEvents: mouseenter; dur: 200; to: 1.1 1.1 1.1" animation__mouseleave="property: scale; startEvents: mouseleave; dur: 200; to: 1 1 1"></a-entity>
+            <a-entity  class="interractible"   play-pause="video:#chem2; playImg: #videoplay; pauseImg: #videopause " geometry="primitive: plane; width: 0.4; height: 0.4" position="-1.7 0 -0.3" scale="1 1 1"  rotation="90 0 0" material="side: double; shader: flat; src: #videoplay; transparent: true" animation__mouseenter="property: scale; startEvents: mouseenter; dur: 200; to: 1.1 1.1 1.1" animation__mouseleave="property: scale; startEvents: mouseleave; dur: 200; to: 1 1 1"></a-entity>
             <a-entity position="0 0 0" rotation="-90 0 0" class="interractible" video-controls="src:#chem2; distance:0; size:2.8; background-color: #e8ecf9; bar-color: #006cec; timeTextFont:fonts/YaHeiCustom-msdf.json"></a-entity>     
           </a-entity>
   
